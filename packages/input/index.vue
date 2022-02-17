@@ -1,5 +1,5 @@
 <template>
-  <div class="mzl-append-input" :style="{'min-width':'auto'}">
+  <div :class="[`mzl-group-input-${size}`]" :style="{'min-width':'auto'}">
     <div :class="isClass" :style="isStyle" style="">
       <i :class="['left-icon','iconfont',leftIcon]" v-if="!showPassword&&leftIcon!=''"></i>
       <input :type="inptype" @focus="focus" @blur="blur" :value="modelValue"  @input="iptChange" :disabled="disabled" @change="change" :placeholder="placeholder" :autofocus="autofocus"/>
@@ -377,6 +377,11 @@ const isClass = computed(()=>{
     right:10px;
     top:10px;
     color:#c6c8cc;
+  }
+}
+.mzl-group-input-default{
+  .mzl-button{
+    padding:10px 20px !important;
   }
 }
 input::-webkit-input-placeholder { /* WebKit, Blink, Edge */

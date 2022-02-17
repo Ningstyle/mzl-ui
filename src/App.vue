@@ -132,27 +132,50 @@
 
   <h4>基本使用</h4>
   <span style="width:100%;margin-right:0;">
-    <m-table :options="options">
+    <m-table :options="options" :headStyle="headStyle" size="default">
+      <template #head-id="item">
+        <b>自定义 {{item.scope.title}}</b>
+      </template>
       <template #id="item">
         <div>{{item.scope.row.id}}</div>
       </template>
-      <template #action>
-        <m-button type="text" leftIcon="m-icon-edit" size="small">编辑</m-button>
+      <template #action="item">
+        <m-button type="text" leftIcon="m-icon-edit" size="small" :disabled="item.scope.rowIndex%2==0">编辑</m-button>
         <m-button type="text" leftIcon="m-icon-ashbin" style="color:#ec3437"  size="small">删除</m-button>
       </template>
     </m-table>
   </span>
 	
-	<h4>基本使用</h4>
+	<h4>基本使用-不同大小</h4>
 	<span style="width:300px;margin-right:0;">
-		<m-select v-model="selVal" placeholder="请选择"></m-select>
+		<m-select 
+			v-model="selVal" 
+			placeholder="请选择" 
+			:options="selOptions" 
+			@change="selchange"
+		>
+		</m-select>
 	</span>
+	<span style="width:250px;margin-right:0;">
+		<m-select v-model="selVal" placeholder="请选择" size="small" :options="selOptions" disabled></m-select>
+	</span>
+	<span style="width:200px;margin-right:0;">
+		<m-select v-model="selVal" placeholder="请选择" size="mini" :options="selOptions"></m-select>
+	</span>
+	<h4>可搜索过滤</h4>
 	<span style="width:300px;margin-right:0;">
-		<m-select v-model="selVal" placeholder="请选择" size="small"></m-select>
+		<m-select 
+			v-model="selVal1" 
+			placeholder="请选择" 
+			:options="selOptions1" 
+			@change="selchange1"
+			searchable
+		>
+		</m-select>
 	</span>
-	<span style="width:300px;margin-right:0;">
-		<m-select v-model="selVal" placeholder="请选择" size="mini"></m-select>
-	</span>
+  <span>
+    <m-dropdown></m-dropdown>
+  </span>
   <p>1</p>
   <p>1</p>
   <p>1</p>
@@ -163,11 +186,11 @@
   <p>1</p>
 </template>
 <script setup>
-import { reactive, ref } from "vue";
-
+import { onMounted, reactive, ref } from "vue";
 const value1 = ref('')
 const password = ref('')
-const selVal = ref('')
+const selVal = ref('aodaliya')
+const selVal1 = ref('')
 const state = reactive({
   options:{
     fileds:[
@@ -206,11 +229,86 @@ const state = reactive({
       {id:2,name:'刘老四',job:'农民',address:'可能在中国',from:"想象出来的"},
       {id:11,name:'白骨精',job:'妖精',address:'西游记',from:"西游记神话故事"},
     ]
+  },
+  selOptions:[
+    {
+      label:'中国',
+      value:'zhongguo'
+    },
+    {
+      label:'俄罗斯',
+      value:'eluosi',
+			disabled:true
+    },
+    {
+      label:'美国',
+      value:'meiguo'
+    },
+    {
+      label:'澳大利亚',
+      value:'aodaliya',
+			disabled:true
+    },
+    {
+      label:'巴基斯坦',
+      value:'bajisitan'
+    }
+  ],
+	selOptions1:[
+		{
+			label:'HTML',
+			value:"HTML"
+		},
+		{
+			label:'Node',
+			value:"Node"
+		},
+		{
+			label:'CSS',
+			value:"CSS"
+		},
+		{
+			label:'javascript',
+			value:"java"
+		},
+		{
+			label:'mzl-ui',
+			value:"mzl-ui"
+		},
+		{
+			label:'mzl-vi',
+			value:"mzl-vi"
+		},
+		{
+			label:'Npm',
+			value:"Npm"
+		},
+		{
+			label:'HTML',
+			value:"HTML"
+		},
+		{
+			label:'java',
+			value:"java"
+		},
+		{
+			label:'XML',
+			value:"XML"
+		},
+		{
+			label:'mzl-li',
+			value:"mzl-li"
+		}
+	],
+  headStyle:{
+    // color:"#fff",
+    // borderColor:"#0162B0"
   }
 })
-const {options } = state
+
+const {options, selOptions, selOptions1,headStyle } = state
 const focus = (e) =>{
-  // console.log(e);
+  console.log(e.target.value);
 }
 const blur = (e) =>{
   // console.log(e)
@@ -223,6 +321,14 @@ const change = (e) =>{
 }
 const clear = () =>{
   console.log("清空")
+}
+const selchange = (item,index) =>{
+	console.log(selVal.value);
+	// console.log(item,index);
+}
+const selchange1 = (item,index) =>{
+	// console.log(selVal1.value);
+	// console.log(item,index);
 }
 </script>
 <style scoped>

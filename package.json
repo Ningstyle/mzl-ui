@@ -1,7 +1,7 @@
 {
   "name": "mzl-ui",
   "author": "style'me",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "private": false,
   "main": "./dist/mzl-ui.umd.js",
   "module": "./dist/mzl-ui.es.js",
@@ -19,6 +19,7 @@
     "vite",
     "mzl-ui",
     "ui",
+    "vueui",
     "vertical",
     "horizontal"
   ],

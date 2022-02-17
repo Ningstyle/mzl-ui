@@ -1,14 +1,17 @@
 <template>
-  <div :class="[`mzl-table-${size}`]">
+  <div :class="[`mzl-table-${size}`,customClass]">
     <table>
       <thead v-if="showHeader">
         <tr>
-          <th v-for="(x,n) in options.fileds" :key="n" :style="{'text-align':x.align}">{{x.title}}</th>
+          <th v-for="(x,n) in options.fileds" :key="n" :style="[headStyle,{'text-align':x.align}]">
+            <slot :name="'head-'+x.field" :scope="x" v-if="$slot['head-'+x.field]"></slot>
+            <div v-else>{{x.title}}</div>
+          </th>
         </tr>  
       </thead>
       <tbody>
         <tr v-for="(v,i) in options.datas" :key="i">
-          <td v-for="(m,j) in options.fileds" :key="j" :style="{width:options.fileds[j].width?(options.fileds[j].width):'','text-align':options.fileds[j].align}">
+          <td v-for="(m,j) in options.fileds" :key="j" :style="[rowStyle,{width:options.fileds[j].width?(options.fileds[j].width):'','text-align':options.fileds[j].align}]">
             <slot :name="options.fileds[j].field" :scope="{rowIndex:i,cellIndex:j,row:v}" v-if="$slot[options.fileds[j].field]"></slot>
             <div v-else>{{options.datas[i][options.fileds[j].field]}}</div>
           </td>
@@ -41,9 +44,23 @@ const props = defineProps({
   showHeader:{
     type:Boolean,
     default:true
-  }
+  },
+  headStyle:{
+    type:Object,
+    default:()=>{
+      return {}
+    }
+  },
+  rowStyle:{
+    type:Object,
+    default:()=>{
+      return {}
+    }
+  },
+  customClass:String
 })
 const $slot = useSlots()
+console.log($slot)
 </script>
 
 <style lang="scss" scoped>
@@ -54,7 +71,7 @@ const $slot = useSlots()
   table{
     width:100%;
     border-radius: 2px;
-    border:1px solid #f0f0f0;
+    // border:1px solid #f0f0f0;
     box-sizing: border-box;
     border-spacing:0;
     thead{
@@ -66,11 +83,12 @@ const $slot = useSlots()
         color: #646468;
         font-weight: 550;
         font-size:14px;
-        border-bottom:1px solid #f0f0f0;
-        border-right:1px solid #f0f0f0;
+        border:1px solid #f0f0f0;
+        border-right:0;
+        background-color:#fafafa ;
       }
       th:last-child{
-        border-right:0;
+        border-right:1px solid #f0f0f0;
       }
     }
     tbody{
@@ -83,19 +101,22 @@ const $slot = useSlots()
           color: #505050;
           font-weight: 500;
           font-size:14px;
-          border-right:1px solid #f0f0f0;
-          border-bottom:1px solid #f0f0f0;
+          border:1px solid #f0f0f0;
+          border-right:0;
+          border-top:0;
         }
         td:last-child{
-          border-right:0;
+          border-bottom:1px solid #f0f0f0;
+          border-right:1px solid #f0f0f0;
+          
         }
         &:hover{
-          background:rgba(240,240,240,.4)
+          background:rgba(240,240,240,.2)
         }
       }
       tr:last-child{
         td{
-          border-bottom:0;
+          
         }
         
       }
@@ -109,7 +130,7 @@ const $slot = useSlots()
   table{
     width:100%;
     border-radius: 2px;
-    border:1px solid #f0f0f0;
+    // border:1px solid #f0f0f0;
     box-sizing: border-box;
     border-spacing:0;
     thead{
@@ -121,11 +142,12 @@ const $slot = useSlots()
         color: #646468;
         font-weight: 550;
         font-size:14px;
-        border-bottom:1px solid #f0f0f0;
-        border-right:1px solid #f0f0f0;
+        border:1px solid #f0f0f0;
+        border-right:0;
+        background-color:#fafafa ;
       }
       th:last-child{
-        border-right:0;
+        border-right:1px solid #f0f0f0;
       }
     }
     tbody{
@@ -138,16 +160,21 @@ const $slot = useSlots()
           color: #505050;
           font-weight: 500;
           font-size:14px;
-          border-right:1px solid #f0f0f0;
+          border:1px solid #f0f0f0;
+          border-right:0;
+          border-top:0;
+        }
+        td:last-child{
           border-bottom:1px solid #f0f0f0;
+          border-right:1px solid #f0f0f0;
         }
         &:hover{
-          background:rgba(240,240,240,.4)
+          background:rgba(240,240,240,.2)
         }
       }
       tr:last-child{
         td{
-          border-bottom:0;
+          // border:1px solid #f0f0f0;
         }
         
       }
@@ -161,7 +188,7 @@ const $slot = useSlots()
   table{
     width:100%;
     border-radius: 2px;
-    border:1px solid #f0f0f0;
+    // border:1px solid #f0f0f0;
     box-sizing: border-box;
     border-spacing:0;
     thead{
@@ -173,11 +200,12 @@ const $slot = useSlots()
         color: #646468;
         font-weight: 550;
         font-size:12px;
-        border-bottom:1px solid #f0f0f0;
-        border-right:1px solid #f0f0f0;
+        border:1px solid #f0f0f0;
+        border-right:0;
+        background-color:#fafafa ;
       }
       th:last-child{
-        border-right:0;
+        border-right:1px solid #f0f0f0;
       }
     }
     tbody{
@@ -190,16 +218,21 @@ const $slot = useSlots()
           color: #505050;
           font-weight: 500;
           font-size:12px;
-          border-right:1px solid #f0f0f0;
+          border:1px solid #f0f0f0;
+          border-right:0;
+          border-top:0;
+        }
+        td:last-child{
           border-bottom:1px solid #f0f0f0;
+          border-right:1px solid #f0f0f0;
         }
         &:hover{
-          background:rgba(240,240,240,.4)
+          background:rgba(240,240,240,.2)
         }
       }
       tr:last-child{
         td{
-          border-bottom:0;
+          // border-bottom:0;
         }
         
       }
