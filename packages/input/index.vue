@@ -104,7 +104,7 @@ const isClass = computed(()=>{
 })
 </script>
 <style scoped lang="scss">
-.mzl-input-default,.mzl-input-password-default,.mzl-input-password-showpassword-default{
+.mzl-input-default,.mzl-input-password-default,.mzl-input-password-showpassword-default,.mzl-group-input-default{
   width:100%;
   height:35px;
   border:1px solid #dcdfe6f6;
@@ -173,7 +173,7 @@ const isClass = computed(()=>{
     cursor: pointer;
   }
 }
-.mzl-input-small,.mzl-input-password-small,.mzl-input-password-showpassword-small{
+.mzl-input-small,.mzl-input-password-small,.mzl-input-password-showpassword-small,.mzl-group-input-small{
   width:100%;
   height:30px;
   border:1px solid #dcdfe6f6;
@@ -210,7 +210,7 @@ const isClass = computed(()=>{
     padding-right:30px
   }
 }
-.mzl-input-mini,.mzl-input-password-mini,.mzl-input-password-showpassword-mini{
+.mzl-input-mini,.mzl-input-password-mini,.mzl-input-password-showpassword-mini,.mzl-group-input-mini{
   width:100%;
   height:28px;
   border:1px solid #dcdfe6f6;
@@ -380,9 +380,45 @@ const isClass = computed(()=>{
   }
 }
 .mzl-group-input-default{
-  .mzl-button{
-    padding:10px 20px !important;
-  }
+	border: none;
+	height: auto;
+}
+.mzl-group-input-small{
+	border: none;
+	height: auto;
+	.mzl-input-clearable{
+		height: 30px;
+		.clearable-icon{
+			top:7px;
+			font-size: 13px;
+		}
+	}
+}
+.mzl-group-input-mini{
+	border: none;
+	.mzl-input-clearable{
+		height: 28px;
+		.clearable-icon{
+			top:8px;
+			font-size: 12px;
+		}
+	}
+}
+.mzl-group-input-default :deep(.mzl-button){
+  padding:9px 20px !important;
+	border-radius: 0 2px 2px 0;
+}
+.mzl-group-input-small :deep(.mzl-button){
+  padding:6.6px 15px !important;
+	border-radius: 0 2px 2px 0;
+}
+.mzl-group-input-mini :deep(.mzl-button){
+	padding:7px 15px !important;
+  font-size: 12px;
+	border-radius: 0 2px 2px 0;
+	i{
+		font-size: 12px;
+	}
 }
 input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    #c6c8cc;

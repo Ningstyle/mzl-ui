@@ -133,8 +133,8 @@
   <h4>基本使用</h4>
   <span style="width:100%;margin-right:0;">
     <m-table :options="options" :headStyle="headStyle" size="default">
-      <template #head-id="item">
-        <b>自定义 {{item.scope.title}}</b>
+      <template #head-job="item">
+				<m-dropdown :title="item.scope.title" :options="dorpoptions1" @change="dropchange1" trigger="hover" size="mini"></m-dropdown>
       </template>
       <template #id="item">
         <div>{{item.scope.row.id}}</div>
@@ -173,9 +173,38 @@
 		>
 		</m-select>
 	</span>
-  <span>
-    <m-dropdown></m-dropdown>
-  </span>
+	<h4>多选</h4>
+	<span style="width:300px;margin-right:0;">
+		<m-select 
+			v-model="selVal2" 
+			placeholder="请选择" 
+			:options="selOptions1" 
+			@change="selchange2"
+			multiple
+		>
+		</m-select>
+	</span>
+  <p>
+    <m-dropdown title="下拉菜单" :options="dorpoptions" @change="dropchange">
+			<template #Img>
+				<img src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="">
+			</template>
+		</m-dropdown>
+  </p>
+	<p>
+	  <m-dropdown title="下拉菜单" :options="dorpoptions" @change="dropchange" size="small">
+			<template #Img>
+				<img src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="">
+			</template>
+		</m-dropdown>
+	</p>
+	<p>
+	  <m-dropdown title="下拉菜单" :options="dorpoptions" @change="dropchange" size="mini" trigger="click">
+			<template #Img>
+				<img src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="">
+			</template>
+		</m-dropdown>
+	</p>
   <p>1</p>
   <p>1</p>
   <p>1</p>
@@ -191,6 +220,7 @@ const value1 = ref('')
 const password = ref('')
 const selVal = ref('aodaliya')
 const selVal1 = ref('')
+const selVal2 = ref([])
 const state = reactive({
   options:{
     fileds:[
@@ -206,7 +236,8 @@ const state = reactive({
       },
       {
         field:'job',
-        title:'职业'
+        title:'职业',
+				align:'center'
       },
       {
         field:'address',
@@ -300,13 +331,26 @@ const state = reactive({
 			value:"mzl-li"
 		}
 	],
+	dorpoptions:[
+		{label:"下拉菜单",icon:'m-icon-file'},
+		{label:"下拉菜单",icon:'m-icon-keyboard-9'},
+		{label:"下拉菜单",icon:'m-icon-link'},
+		{label:"下拉菜单",icon:'m-icon-file'},
+		{label:"下拉菜单",icon:'m-icon-file'},
+	],
+	dorpoptions1:[
+		{label:"放羊娃",icon:'m-icon-file'},
+		{label:"徒弟",icon:'m-icon-keyboard-9'},
+		{label:"农民",icon:'m-icon-link'},
+		{label:"妖精",icon:'m-icon-file'}
+	],
   headStyle:{
     // color:"#fff",
     // borderColor:"#0162B0"
   }
 })
 
-const {options, selOptions, selOptions1,headStyle } = state
+const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1 } = state
 const focus = (e) =>{
   console.log(e.target.value);
 }
@@ -330,6 +374,16 @@ const selchange1 = (item,index) =>{
 	// console.log(selVal1.value);
 	// console.log(item,index);
 }
+const dropchange = (item,index) =>{
+	console.log(item,index);
+}
+const dropchange1 = (item,index) =>{
+	console.log(item,index);
+}
+const selchange2 = (item,index) =>{
+	// console.log(selVal1.value);
+	console.log(item,index);
+}
 </script>
 <style scoped>
 span{
@@ -337,6 +391,6 @@ span{
   display:inline-block
 }
 div{
-  margin-bottom:10px;
+  /* margin-bottom:10px; */
 }
 </style>

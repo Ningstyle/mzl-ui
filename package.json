@@ -1,7 +1,7 @@
 {
   "name": "mzl-ui",
   "author": "style'me",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": false,
   "main": "./dist/mzl-ui.umd.js",
   "module": "./dist/mzl-ui.es.js",
@@ -27,9 +27,9 @@
     "dist/*"
   ],
   "license": "MIT",
-  "homepage": "https://codeym.com",
+  "homepage": "https://mzlui.codeym.com/",
   "bugs": {
-    "url": "https://codeym.com",
+    "url": "https://mzlui.codeym.com/",
     "email": "1046674804@qq.com"
   },
   "scripts": {

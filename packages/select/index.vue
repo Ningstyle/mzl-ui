@@ -7,7 +7,7 @@
 		<div class="mzl-select-option" :style="optionStyles">
 			<div class="mzl-select-option-find" :style="isOpenStyles">
 				<ul>
-					<li class="mzl-select-option-li" v-for="(item,index) in optionsData" :key="index" @mousedown="selChange(item,index)" :class="{'mzl-select-active':activeIndex == index||selVal==item[labelFiled],'mzl-select-disabled':item.disabled}">{{item[labelFiled]}}</li>
+					<li class="mzl-select-option-li" v-for="(item,index) in optionsData" :key="index" @mousedown="selChange(item,index)" :class="{'mzl-select-active':activeIndex == index||selVal==item[labelFiled]||item.selected,'mzl-select-disabled':item.disabled}">{{item[labelFiled]}} <i class="iconfont m-icon-select-bold" v-if="multiple&&item.selected"></i></li>
 				</ul>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 	import { ref, computed, reactive,onMounted,watch} from 'vue'
 	const emit = defineEmits(['update:modelValue','change'])
 	const props = defineProps({
-		modelValue:String,
+		modelValue:String|Array,
 		placeholder:String,
 		multiple:Boolean,
 		disabled:Boolean,
@@ -48,6 +48,10 @@
 			type:String,
 			default:'value'
 		},
+		multiple:Boolean
+	})
+	props.options.forEach((item,index)=>{
+		item.selected = false
 	})
 	const flag = ref(false)
 	const activeIndex = ref(-1)
@@ -86,15 +90,18 @@
 	// isopen styles
 
 	const blur = (e) => {
-		flag.value = false
-		new Promise((resolve, reject) => {
-			setTimeout(()=>{
-				optionStyles.display = 'none'
-			},60)
-			resolve();
-		}).then(() => {
-			isOpenStyles.height = '0px'
-		});
+		if(!props.multiple){
+			flag.value = false
+			new Promise((resolve, reject) => {
+				setTimeout(()=>{
+					optionStyles.display = 'none'
+				},60)
+				resolve();
+			}).then(() => {
+				isOpenStyles.height = '0px'
+			});
+		}
+		
 	}
 	
 	const input = (e)=>{
@@ -133,22 +140,27 @@
 	}
 	// 选择事件
 	const selChange = (item,index) =>{
-		if(!item.disabled){
-			activeIndex.value = index
-			selVal.value = item[props.labelFiled]
-			emit('update:modelValue', item[props.valueFiled])
-			emit('change',item,index)
-			flag.value = false
-			new Promise((resolve, reject) => {
-				setTimeout(()=>{
-					optionStyles.display = 'none'
-				},60)
-				resolve();
-			}).then(() => {
-				isOpenStyles.height = '0px'
-			});
+		if(!props.multiple){
+			if(!item.disabled){
+				activeIndex.value = index
+				selVal.value = item[props.labelFiled]
+				emit('update:modelValue', item[props.valueFiled])
+				emit('change',item,index)
+				flag.value = false
+				new Promise((resolve, reject) => {
+					setTimeout(()=>{
+						optionStyles.display = 'none'
+					},60)
+					resolve();
+				}).then(() => {
+					isOpenStyles.height = '0px'
+				});
+			}
+		}else{
+			if(!item.disabled){
+				item.selected = !item.selected
+			}
 		}
-		
 	}
 
 	const {isOpenStyles, optionStyles} = state
@@ -277,6 +289,10 @@
 					cursor: pointer;
 					color: #626262;
 					user-select:none;
+					font-weight: 550;
+					i{
+						float: right;
+					}
 					&:hover{
 						background:rgba(96, 98, 102,.1)
 					}
@@ -426,6 +442,7 @@
 				margin:0;
 				padding:0;
 				list-style: none;
+				font-weight: 550;
 				li{
 					padding:0 12px;
 					line-height: 40px;
@@ -433,6 +450,9 @@
 					cursor: pointer;
 					color: #626262;
 					user-select:none;
+					i{
+						float: right;
+					}
 					&:hover{
 						background:rgba(96, 98, 102,.1)
 					}
@@ -588,6 +608,10 @@
 					cursor: pointer;
 					color: #626262;
 					user-select:none;
+					font-weight: 550;
+					i{
+						float: right;
+					}
 					&:hover{
 						background:rgba(96, 98, 102,.1)
 					}

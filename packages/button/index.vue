@@ -1,7 +1,7 @@
 <template>
   <button :class="isClass" :style="styles">
     <i :class="isIconClass" v-if="leftIcon"></i>
-    <span :style="{'margin-left':leftIcon?'4px':'','margin-right':rightIcon?'4px':''}"><slot/></span>
+    <span :style="{'margin-left':$slot['default']==undefined?'0px':leftIcon?'4px':'0px','margin-right':$slot['default']==undefined?'0px':rightIcon?'4px':'0px'}"><slot/></span>
     <i :class="isIconClass" v-if="rightIcon"></i>
   </button>
 </template>
@@ -11,7 +11,7 @@
   }
 </script>
 <script setup>
-  import {computed} from 'vue'
+  import {computed,useSlots} from 'vue'
   const props = defineProps({
     type:{
       type:String,
@@ -36,6 +36,7 @@
      border:props.customColor,
      color:'#fff'
   }
+	const $slot = useSlots()
   const isClass = computed(()=>{
     return [
       props.size=='default'?'mzl-button':props.size=='medium'?'mzl-button-medium':props.size=='small'?'mzl-button-small':props.size=='mini'?'mzl-button-mini':'mzl-button',
