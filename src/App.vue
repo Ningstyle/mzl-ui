@@ -1,6 +1,6 @@
 <template>
   <h4>基本类型</h4>
-  <span><m-button>默认按钮</m-button></span>  
+  <span><m-button @click="openMsg">默认按钮</m-button></span>  
   <span><m-button type="primary">主要按钮</m-button></span> 
   <span><m-button type="success">成功按钮</m-button></span> 
   <span><m-button type="danger">危险按钮</m-button></span> 
@@ -222,7 +222,8 @@
   <p>1</p>
 </template>
 <script setup>
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, reactive, ref,getCurrentInstance} from "vue";
+import Message from '../packages/message/index'
 const value1 = ref('')
 const password = ref('')
 const selVal = ref('aodaliya')
@@ -372,6 +373,12 @@ const state = reactive({
 })
 
 const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1, radioOptions,checkOptions } = state
+const openMsg = ()=>{
+  Message({
+    type: 'success',
+    text: '登录失败'
+  })
+}
 const focus = (e) =>{
   console.log(e.target.value);
 }
@@ -411,6 +418,10 @@ const radioChange = (e)=>{
 const checkChange = (e) =>{
   console.log(checkVal.value);
 }
+const instance = getCurrentInstance()
+onMounted(()=>{
+  // instance.proxy.$message({ text: '登录失败', type: 'error' })
+})
 </script>
 <style scoped>
 span{

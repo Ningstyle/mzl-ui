@@ -7,7 +7,7 @@
 </template>
 <script>
   export default {
-    name:"m-button"
+    name:"mButton"
   }
 </script>
 <script setup>

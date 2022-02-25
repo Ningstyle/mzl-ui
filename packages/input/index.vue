@@ -3,7 +3,9 @@
     <div :class="isClass" :style="isStyle" style="">
       <i :class="['left-icon','iconfont',leftIcon]" v-if="!showPassword&&leftIcon!=''"></i>
       <input :type="inptype" @focus="focus" @blur="blur" :value="modelValue"  @input="iptChange" :disabled="disabled" @change="change" :placeholder="placeholder" :autofocus="autofocus"/>
-      <i class="clearable-icon iconfont m-icon-close" v-if="!showPassword&&clearable&&modelValue!=''" @click="clear"></i>
+       <transition name="slide-fade">
+        <i class="clearable-icon iconfont m-icon-close" v-if="!showPassword&&clearable&&modelValue!=''" @click="clear"></i>
+      </transition>
       <i :class="['right-icon','iconfont',rightIcon]" v-if="!showPassword&&rightIcon!=''"></i>
       <i v-if="showPassword"  :class="['password-icon','iconfont m-icon-browse']" @click="showPwd(type)"></i>
     </div>
@@ -13,7 +15,7 @@
 <script>
 import { reactive, ref,defineEmits,computed, useSlots} from 'vue'
 export default {
-  name:"m-input"
+  name:"mInput"
 }
 </script>
 <script setup>
@@ -436,5 +438,13 @@ input::-ms-input-placeholder { /* Microsoft Edge */
    color:    #c6c8cc;
 }
 
+.slide-fade-enter-active {
+  transition: all 0.1s ease-out;
+}
 
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
 </style>

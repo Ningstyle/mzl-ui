@@ -4,19 +4,21 @@
 			<input type="text" :readonly="!searchable" :placeholder="selVal==''?placeholder:selVal" @blur="blur" ref="selInp" :class="[selVal==''?'mzl-select-input':'mzl-select-input-value']" :disabled="disabled" @input="input" v-model="selVal">
 			<i :class="iconClass"></i>
 		</div>
-		<div class="mzl-select-option" :style="optionStyles">
-			<div class="mzl-select-option-find" :style="isOpenStyles">
-				<ul>
-					<li class="mzl-select-option-li" v-for="(item,index) in optionsData" :key="index" @mousedown="selChange(item,index)" :class="{'mzl-select-active':activeIndex == index||selVal==item[labelFiled]||item.selected,'mzl-select-disabled':item.disabled}">{{item[labelFiled]}} <i class="iconfont m-icon-select-bold" v-if="multiple&&item.selected"></i></li>
-				</ul>
+		<transition name="slide-fade">
+			<div class="mzl-select-option" v-if="isShow">
+				<div class="mzl-select-option-find">
+					<ul>
+						<li class="mzl-select-option-li" v-for="(item,index) in optionsData" :key="index" @mousedown="selChange(item,index)" :class="{'mzl-select-active':activeIndex == index||selVal==item[labelFiled]||item.selected,'mzl-select-disabled':item.disabled}">{{item[labelFiled]}} <i class="iconfont m-icon-select-bold" v-if="multiple&&item.selected"></i></li>
+					</ul>
+				</div>
 			</div>
-		</div>
+		</transition>
 	</div>
 </template>
 
 <script>
 	export default{
-		name:"m-select"
+		name:"mSelect"
 	}
 </script>
 <script setup>
@@ -52,24 +54,15 @@
 	props.options.forEach((item,index)=>{
 		item.selected = false
 	})
-	const flag = ref(false)
 	const activeIndex = ref(-1)
 	const selInp = ref(null)
+	const isShow = ref(false)
 	const optionsData = ref(props.options||[])
 	const selVal = ref(props.modelValue!=""?props.options.filter(item=>{return item[props.valueFiled] == props.modelValue})[0][props.labelFiled]:"")
-	let state = reactive({
-		isOpenStyles:{
-			'height':'0px'
-		},
-		optionStyles:{
-			'display':'none'
-		}
-	})
 	// icon class
 	const iconClass = computed(()=>{
 		return [
 			'select-icon iconfont m-icon-arrow-down',
-			flag.value?'select-icon-tranfromOut':'select-icon-tranfromIn'
 		]
 	})
 	// selece class
@@ -86,21 +79,10 @@
 			props.disabled?`mzl-select-input-${props.size}-disabled`:"",
 		]
 	})
-	// isopen styles
-
 	const blur = (e) => {
 		if(!props.multiple){
-			flag.value = false
-			new Promise((resolve, reject) => {
-				setTimeout(()=>{
-					optionStyles.display = 'none'
-				},60)
-				resolve();
-			}).then(() => {
-				isOpenStyles.height = '0px'
-			});
+			isShow.value = false
 		}
-		
 	}
 	
 	const input = (e)=>{
@@ -113,28 +95,8 @@
 	}
 	const handleSelect = () =>{
 		if(!props.disabled){
-			flag.value = !flag.value
-			if(flag.value){
-				selInp.value.focus()
-				const n = new Promise((resolve, reject) => {
-					setTimeout(()=>{
-						isOpenStyles.height = props.size=="mini"?'185px':'211px'
-					},20)
-					resolve();
-				}).then(() => {
-						optionStyles.display = 'block'
-				});
-				
-			}else{
-				new Promise((resolve, reject) => {
-					setTimeout(()=>{
-						optionStyles.display = 'none'
-					},60)
-					resolve();
-				}).then(() => {
-					isOpenStyles.height = '0px'
-				});
-			}
+			selInp.value.focus()
+			isShow.value = !isShow.value
 		}
 	}
 	// 选择事件
@@ -145,24 +107,15 @@
 				selVal.value = item[props.labelFiled]
 				emit('update:modelValue', item[props.valueFiled])
 				emit('change',item,index)
-				flag.value = false
-				new Promise((resolve, reject) => {
-					setTimeout(()=>{
-						optionStyles.display = 'none'
-					},60)
-					resolve();
-				}).then(() => {
-					isOpenStyles.height = '0px'
-				});
+				isShow.value = false
 			}
 		}else{
 			if(!item.disabled){
+				selInp.value.focus()
 				item.selected = !item.selected
 			}
 		}
 	}
-
-	const {isOpenStyles, optionStyles} = state
 </script>
 
 <style lang="scss" scoped>
@@ -232,7 +185,7 @@
 		.mzl-select-option-find{
 			width: 100%;
 			max-height: 211px;
-			height: 0px;
+			height: auto;
 			position: relative;
 			margin-top:13px;
 			padding:4px 0px;
@@ -276,7 +229,7 @@
 			}
 			ul{
 				width: 100%;
-				height: 100%;
+				max-height: 205px;
 				overflow-y: auto;
 				margin:0;
 				padding:0;
@@ -339,7 +292,7 @@
 		position: relative;
 		input{
 			width: 100%;
-			font-size: 14px;
+			font-size: 13px;
 			outline: none;
 			border: 0;
 			margin: 0;
@@ -391,7 +344,7 @@
 		.mzl-select-option-find{
 			width: 100%;
 			max-height: 211px;
-			height: 0px;
+			height: auto;
 			position: relative;
 			margin-top:13px;
 			padding:4px 0px;
@@ -435,15 +388,15 @@
 			}
 			ul{
 				width: 100%;
-				height: 100%;
+				max-height: 205px;
 				overflow-y: auto;
 				margin:0;
 				padding:0;
 				list-style: none;
 				li{
 					padding:0 12px;
-					line-height: 40px;
-					font-size:14px;
+					line-height: 35px;
+					font-size:13px;
 					cursor: pointer;
 					color: #626262;
 					user-select:none;
@@ -549,7 +502,7 @@
 		.mzl-select-option-find{
 			width: 100%;
 			max-height: 185px;
-			height: 0px;
+			height: auto;
 			position: relative;
 			margin-top:13px;
 			padding:4px 0px;
@@ -593,14 +546,14 @@
 			}
 			ul{
 				width: 100%;
-				height: 100%;
+				max-height: 179px;
 				overflow-y: auto;
 				margin:0;
 				padding:0;
 				list-style: none;
 				li{
 					padding:0 12px;
-					line-height: 35px;
+					line-height: 32px;
 					font-size:12px;
 					cursor: pointer;
 					color: #626262;
@@ -695,5 +648,17 @@ input:-ms-input-placeholder { /* Internet Explorer 10 ~ 11 */
 }
 input::-ms-input-placeholder { /* Microsoft Edge */
 	 color:#c6c8cc;
+}
+.slide-fade-enter-active {
+  transition: all 0.1s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  opacity: 0;
 }
 </style>

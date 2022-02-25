@@ -9,7 +9,7 @@
 <script>
 import { ref } from '@vue/reactivity'
 export default{
-  name:"m-radio"
+  name:"mRadio"
 }
 </script>
 <script setup>

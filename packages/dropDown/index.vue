@@ -3,21 +3,24 @@
     <div :class="[`mzl-dropdown-${size}-menu`]">
 			<slot name="Img"></slot><span>{{title}}</span> <i class="m-icon-arrow-down"></i>
 		</div>
-		<div class="mzl-dropdown-item">
-			<div class="mzl-dropdown-item-child" :style="isOpenStyles">
-				<ul>
-					<li v-for="(item,index) in options" :key="index" @click.stop="handleChange(item,index)">
-						<i :class="item.icon"></i>
-						{{item.label}}
-					</li>
-				</ul>
+		<transition name="slide-fade">
+			<div class="mzl-dropdown-item" v-if="isShow">
+				<div class="mzl-dropdown-item-child">
+					<ul>
+						<li v-for="(item,index) in options" :key="index" @click.stop="handleChange(item,index)">
+							<i :class="item.icon"></i>
+							{{item.label}}
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
+		</transition>
+		
   </div>
 </template>
 <script>
 export default{
-  name:"m-dropdown"
+  name:"mDropdown"
 }
 </script>
 <script setup>
@@ -41,7 +44,7 @@ const proprs = defineProps({
 	customClass:String
 })
 const $slot = useSlots()
-const flag = ref(false)
+const isShow = ref(false)
 const emit = defineEmits(['change'])
 const state = reactive({
 	isOpenStyles:{
@@ -51,42 +54,21 @@ const state = reactive({
 })
 const mouseover = () =>{
 	if(proprs.trigger=='hover'){
-		new Promise((resolve, reject) => {
-			setTimeout(()=>{
-				isOpenStyles.height = 'auto'
-			},20)
-			resolve();
-		}).then(() => {
-			isOpenStyles.display = 'block'
-		});
+		isShow.value = true
 	}
 }
 const mouseleave = () =>{
 	if(proprs.trigger=='hover'){
-		new Promise((resolve, reject) => {
-			setTimeout(()=>{
-				isOpenStyles.display = 'none'
-			},20)
-			resolve();
-		}).then(() => {
-			isOpenStyles.height = '0px'
-		});
+		isShow.value = false
 	}
 }
 const handleChange = (item,index)=>{
 	emit('change',item,index)
-	isOpenStyles.height = '0px'
-	isOpenStyles.display = 'none'
+	isShow.value = false
 }
 const handleClick = () =>{
 	if(proprs.trigger=='click'){
-		if(isOpenStyles.height == '0px'){
-			isOpenStyles.height = 'auto'
-			isOpenStyles.display = 'block'
-		}else{
-			isOpenStyles.height = '0px'
-			isOpenStyles.display = 'none'
-		}
+		isShow.value = !isShow.value
 	}
 }
 const { isOpenStyles } = state
@@ -448,5 +430,19 @@ const { isOpenStyles } = state
 		}
 		
 	}
+}
+.slide-fade-enter-active {
+  transition: all 0.1s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from{
+	opacity: 1;
+}
+.slide-fade-leave-to {
+  opacity: 0;
 }
 </style>
