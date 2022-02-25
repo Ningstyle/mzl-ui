@@ -1,15 +1,15 @@
 @font-face {
   font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1644241367511') format('truetype');
+  src: url("https://mzlui.codeym.com/iconfont.ttf") format("truetype");
 }
-[class*="m-icon"]{
-	font-family: "iconfont" !important;
-	font-size: 14px;
-	font-style: normal;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	float: none;
-	display: inline-block;
+[class*="m-icon"] {
+  font-family: "iconfont" !important;
+  font-size: 14px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  float: none;
+  display: inline-block;
 }
 .m-icon-shangchuan:before {
   content: "\e671";
@@ -770,4 +770,3 @@
 .m-icon-round-loading:before {
   content: "\eb74";
 }
-

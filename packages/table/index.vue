@@ -60,7 +60,6 @@ const props = defineProps({
   customClass:String
 })
 const $slot = useSlots()
-console.log($slot)
 </script>
 
 <style lang="scss" scoped>

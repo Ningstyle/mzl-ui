@@ -25,7 +25,6 @@
 	const props = defineProps({
 		modelValue:String|Array,
 		placeholder:String,
-		multiple:Boolean,
 		disabled:Boolean,
 		searchable:Boolean,
 		size:{
@@ -289,7 +288,6 @@
 					cursor: pointer;
 					color: #626262;
 					user-select:none;
-					font-weight: 550;
 					i{
 						float: right;
 					}
@@ -442,7 +440,6 @@
 				margin:0;
 				padding:0;
 				list-style: none;
-				font-weight: 550;
 				li{
 					padding:0 12px;
 					line-height: 40px;
@@ -608,7 +605,6 @@
 					cursor: pointer;
 					color: #626262;
 					user-select:none;
-					font-weight: 550;
 					i{
 						float: right;
 					}

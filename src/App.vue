@@ -205,6 +205,13 @@
 			</template>
 		</m-dropdown>
 	</p>
+  <h4>基本使用</h4>
+  <m-radio v-model="radioVal" :options="radioOptions" @change="radioChange" :inline="false"></m-radio>
+
+  <h4>基本使用</h4>
+  <!-- <m-checkbox v-model="checkVal" :options="checkOptions" @change="checkChange" :inline="true"></m-checkbox>
+  <m-checkbox v-model="checkVal" :options="checkOptions" @change="checkChange" :inline="true" size="small"></m-checkbox> -->
+  <m-checkbox v-model="checkVal" :options="checkOptions" @change="checkChange" :inline="true" size="default" customColor="#09b63d" customClass="dsdsdsdsds"></m-checkbox>
   <p>1</p>
   <p>1</p>
   <p>1</p>
@@ -221,6 +228,8 @@ const password = ref('')
 const selVal = ref('aodaliya')
 const selVal1 = ref('')
 const selVal2 = ref([])
+const radioVal = ref('zhongguo')
+const checkVal = ref(['deguo'])
 const state = reactive({
   options:{
     fileds:[
@@ -344,13 +353,25 @@ const state = reactive({
 		{label:"农民",icon:'m-icon-link'},
 		{label:"妖精",icon:'m-icon-file'}
 	],
+  radioOptions:[
+    {'label':"中国","value":"zhongguo","disabled":true},
+    {'label':"英国","value":"yingguo"},
+    {'label':"德国","value":"deguo"},
+    {'label':"法国","value":"faguo"}
+  ],
+  checkOptions:[
+    {'label':"中国","value":"zhongguo","disabled":true},
+    {'label':"英国","value":"yingguo"},
+    {'label':"德国","value":"deguo"},
+    {'label':"法国","value":"faguo"}
+  ],
   headStyle:{
     // color:"#fff",
     // borderColor:"#0162B0"
   }
 })
 
-const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1 } = state
+const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1, radioOptions,checkOptions } = state
 const focus = (e) =>{
   console.log(e.target.value);
 }
@@ -383,6 +404,12 @@ const dropchange1 = (item,index) =>{
 const selchange2 = (item,index) =>{
 	// console.log(selVal1.value);
 	console.log(item,index);
+}
+const radioChange = (e)=>{
+  console.log(e);
+}
+const checkChange = (e) =>{
+  console.log(checkVal.value);
 }
 </script>
 <style scoped>

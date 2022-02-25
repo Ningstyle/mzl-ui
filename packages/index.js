@@ -4,8 +4,10 @@ import mInput from './input/index';
 import mTable from './table/index';
 import mSelect from './select/index'
 import mDropdown from './dropDown/index'
+import mRadio from './radio/index'
+import mCheckbox from './checkbox/index'
 //存在所有组件
-const components = [mButton,mInput,mTable,mSelect,mDropdown]
+const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox]
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function(Vue, opts = {}) {
   components.forEach(component => {
