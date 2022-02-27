@@ -54,22 +54,20 @@ const flag = ref(props.modelValue||false)
 const handleSwitch = () =>{
   if(!props.disabled){
     flag.value = !flag.value
+    roundStyle.left = props.modelValue?props.width-20+'px':'2px'
+    flagTextStyle.left = props.modelValue?'6px':props.width-20+'px'
+    switchStyle.background = props.modelValue?props.activeColor:props.closeColor
+    if(props.modelValue){
+      flagText.value = "开"
+      switchText.value = props.activeText
+    }else{
+      flagText.value = "关"
+      switchText.value = props.closeText
+    }
     emit('update:modelValue',flag.value)
     emit('change',flag.value)
   }
 }
-watchEffect(()=>{
-  roundStyle.left = props.modelValue?props.width-20+'px':'2px'
-  flagTextStyle.left = props.modelValue?'6px':props.width-20+'px'
-  switchStyle.background = props.modelValue?props.activeColor:props.closeColor
-  if(props.modelValue){
-    flagText.value = "开"
-    switchText.value = props.activeText
-  }else{
-    flagText.value = "关"
-    switchText.value = props.closeText
-  }
-})
 
 </script>
 
