@@ -1,6 +1,6 @@
 <template>
   <Transition name="slide-fade">
-    <div class="mzl-message" :style="style[type]" v-show='isShow'>
+    <div :class="['mzl-message',customClass]" :style="style[type]" v-show='isShow'>
       <i :class="[style[type].icon]"></i>
       <span class="text">{{text}}</span>
     </div>
@@ -15,12 +15,12 @@ const props = defineProps({
   },
   type: {
     type: String,
-    // warn 警告  error 错误  success 成功
-    default: 'warn'
+    default: 'info'
   },
   icon:String,
   textColor:String,
-  bgColor:String
+  bgColor:String,
+  customClass:String
 })
 const state = reactive({
   style:{
@@ -59,7 +59,7 @@ const state = reactive({
 const isShow = ref(false)
 const {style} = state
 onMounted(() => {
-isShow.value = true
+  isShow.value = true
 })
 </script>
 <style scoped lang="scss">

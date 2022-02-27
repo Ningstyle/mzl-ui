@@ -7,7 +7,9 @@ import mzlUI3 from '../packages/select/index'
 import mzlUI4 from '../packages/dropDown/index'
 import mzlUI5 from '../packages/radio/index'
 import mzlUI6 from '../packages/checkbox/index'
-
+import mzlUI7 from '../packages/modal/index'
+import mzlUI8 from '../packages/drawer/index'
+import mzlUI9 from '../packages/switch/index'
 // import mzlUI from '../dist/mzl-ui.es'
 // import '../dist/style.css'
 const app = createApp(App)
@@ -27,4 +29,7 @@ app.use(mzlUI3)
 app.use(mzlUI4)
 app.use(mzlUI5)
 app.use(mzlUI6)
+app.use(mzlUI7)
+app.use(mzlUI8)
+app.use(mzlUI9)
 app.mount('#app')

@@ -7,16 +7,23 @@ import mDropdown from './dropDown/index'
 import mRadio from './radio/index'
 import mCheckbox from './checkbox/index'
 import Message  from './message/index'
+import Confirm  from './confirm/index'
+import mModal  from './modal/index'
+import mDrawer  from './drawer/index'
+import Loading from './loading/index'
+import mSwitch from './switch/index'
 //存在所有组件
-const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox]
+const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox,mModal,mDrawer,mSwitch]
 const install = app => {
   components.forEach(i => {
     app.use(i)
   })
-  app.config.globalProperties.$message = Message 
+  app.config.globalProperties.$message = Message;
+  app.config.globalProperties.$Confirm = Confirm;
+  app.config.globalProperties.$Loading = Loading;
 }
 const mzlUi = {
-  version: "0.3.8",
+  version: "0.4.1",
   install
 }
 /* istanbul ignore if */
@@ -34,6 +41,11 @@ export {
   mDropdown,
   mRadio,
   mCheckbox,
-  Message
+  Message,
+  Confirm,
+  mModal,
+  mDrawer,
+  Loading,
+  mSwitch
 }
 export default mzlUi

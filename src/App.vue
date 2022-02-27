@@ -211,7 +211,41 @@
   <h4>基本使用</h4>
   <!-- <m-checkbox v-model="checkVal" :options="checkOptions" @change="checkChange" :inline="true"></m-checkbox>
   <m-checkbox v-model="checkVal" :options="checkOptions" @change="checkChange" :inline="true" size="small"></m-checkbox> -->
-  <m-checkbox v-model="checkVal" :options="checkOptions" @change="checkChange" :inline="true" size="default" customColor="#09b63d" customClass="dsdsdsdsds"></m-checkbox>
+  <m-checkbox v-model="checkVal" :options="checkOptions" @change="checkChange" :inline="true" size="default" customColor="#09b63d"></m-checkbox>
+  <h4>基本使用</h4>
+  <m-modal v-model="modalShow" width="40%" top="15%" align="center">
+    <template #header>
+      <i class="m-icon-discount"></i> 这是标题
+    </template>
+    <template #content>
+      这是内容
+    </template>
+    <template #footer>
+      <m-button size="small" style="margin-right:15px" @click="modalShow = false">取消</m-button>
+      <m-button type="primary" size="small" @click="modalShow = false">确认</m-button>
+    </template>
+  </m-modal>
+  <h4>基本使用</h4>
+  <m-drawer v-model="drawerShow" direction="bottom" @close="drawerClose" @confirm="confirmFn" @cancel="cancelFn">
+    <template #content>
+      <div>这是内容区域...</div>
+      <div>这是内容区域...</div>
+      <div>这是内容区域...</div>
+    </template>
+  </m-drawer>
+  <div class="loadingTest" style="width:100%;height:400px">
+    <p>323232</p>
+    <p>323232</p>
+    <p>323232</p>
+    <p>323232</p>
+    <p>323232</p>
+    <p>323232</p>
+    <p>323232</p>
+    <p>323232</p>
+    <p>323232</p>
+  </div>
+  <h4>基本使用</h4>
+  <m-switch v-model="switchVal" @change="switchChange" :showTipsText="false" activeColor="#09b63d"></m-switch>
   <p>1</p>
   <p>1</p>
   <p>1</p>
@@ -224,6 +258,10 @@
 <script setup>
 import { onMounted, reactive, ref,getCurrentInstance} from "vue";
 import Message from '../packages/message/index'
+// import Confirm from '../packages/confirm/index'
+import Loading from '../packages/loading/index'
+const modalShow = ref(false)
+const drawerShow = ref(false)
 const value1 = ref('')
 const password = ref('')
 const selVal = ref('aodaliya')
@@ -231,6 +269,7 @@ const selVal1 = ref('')
 const selVal2 = ref([])
 const radioVal = ref('zhongguo')
 const checkVal = ref(['deguo'])
+const switchVal = ref(true)
 const state = reactive({
   options:{
     fileds:[
@@ -374,10 +413,46 @@ const state = reactive({
 
 const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1, radioOptions,checkOptions } = state
 const openMsg = ()=>{
-  Message({
-    type: 'success',
-    text: '登录失败'
+  Loading.show({
+    text:'正在加载中...',
+    target:'.loadingTest',
+    icon:'m-icon-loading1',
+    scrollLock:true,
+    textColor:'#fff',
+    bgColor:"rgba(0, 0, 0, 0.5)",
+    showIcon:true,
+    img:''
   })
+  setTimeout(()=>{
+    Loading.hide()
+  },5000)
+  // drawerShow.value = true
+  // Message({
+  //   type: 'success',
+  //   text: '登录失败',
+  // })
+  // Confirm({
+  //   title:"提示",
+  //   text: '您确认要删除这条数据吗？',
+  //   icon:"m-icon-collection_fill",
+  //   confirmText:"好的",
+  //   confirmShow:true,
+  //   cancelShow:true,
+  //   closeShow:true
+  // }).then(() => {
+  //   console.log("确定");
+  // }).catch(() => {
+  //   console.log('取消')
+  // })
+}
+const drawerClose = () => {
+  console.log("关闭了");
+}
+const confirmFn = () =>{
+  console.log("点击了确定");
+}
+const cancelFn = () =>{
+  console.log("点击了取消");
 }
 const focus = (e) =>{
   console.log(e.target.value);
@@ -418,8 +493,12 @@ const radioChange = (e)=>{
 const checkChange = (e) =>{
   console.log(checkVal.value);
 }
+const switchChange = (e) => {
+  console.log(e);
+}
 const instance = getCurrentInstance()
 onMounted(()=>{
+  
   // instance.proxy.$message({ text: '登录失败', type: 'error' })
 })
 </script>
@@ -430,5 +509,9 @@ span{
 }
 div{
   /* margin-bottom:10px; */
+}
+.loadingTest{
+  width:100%;
+  height:400px
 }
 </style>
