@@ -1,5 +1,5 @@
 <template>
-  <div class="mzl-switch-default">
+  <div :class="['mzl-switch-default',customClass]">
     <span class="mzl-switch-left-text"  v-if="textAlign=='left'&&closeText!=''&&activeText!=''" :style="{'color':modelValue?activeColor:closeColor}">{{switchText}}</span>
     <div class="mzl-switch-content"  :class="{'mzl-switch-disabled':disabled}" @click="handleSwitch" :style="[switchStyle,{'width':width+'px'}]">
       <span class="mzl-switch-round" :style="[roundStyle]"></span>
@@ -43,7 +43,8 @@ const props = defineProps({
     default:"left"
   },
   showTipsText:Boolean,
-  disabled:Boolean
+  disabled:Boolean,
+  customClass:String,
 })
 const roundStyle = reactive({"left":'2px'})
 const flagTextStyle = reactive({"left":props.width-20+'px'})

@@ -1,5 +1,11 @@
 # mzl-ui更新日志
 
+## v0.6.2/0.6.3
+##### optFile文件选择组件bug修复
+
+## v0.6.1
+##### optFile文件选择组件
+
 ## v0.6.0
 ##### 优化switch开关组件watchEffect引用问题
 

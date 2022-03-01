@@ -12,8 +12,10 @@ import mModal  from './modal/index'
 import mDrawer  from './drawer/index'
 import Loading from './loading/index'
 import mSwitch from './switch/index'
+import mTree from './tree/index'
+import mOptfile from './optfile/index'
 //存在所有组件
-const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox,mModal,mDrawer,mSwitch]
+const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox,mModal,mDrawer,mSwitch,mTree,mOptfile]
 const install = app => {
   components.forEach(i => {
     app.use(i)
@@ -46,6 +48,8 @@ export {
   mModal,
   mDrawer,
   Loading,
-  mSwitch
+  mSwitch,
+  mTree,
+  mOptfile
 }
 export default mzlUi

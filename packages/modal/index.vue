@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="mzl-modal-default" v-if="modelValue" @click="closeModal($event)">
+    <div :class="['mzl-modal-default',customClass]" v-if="modelValue" @click="closeModal($event)">
       <div class="mzl-modal-contentbox" :style="{'width':width,'top':top}">
         <div class="mzl-modal-header">
           <p class="mzl-modal-title" :style="{'text-align':align=='center'?align:''}">
@@ -52,7 +52,8 @@ const props = defineProps({
   closeOnModal:{
     type:Boolean,
     default:true
-  }
+  },
+  customClass:String
 })
 const emit = defineEmits(['update:modelValue','close'])
 const $slot = useSlots()

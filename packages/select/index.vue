@@ -2,7 +2,7 @@
 	<div :class="selectClass">
 		<div :class="selectInputClass" @click="handleSelect">
 			<input type="text" :readonly="!searchable" :placeholder="selVal==''?placeholder:selVal" @blur="blur" ref="selInp" :class="[selVal==''?'mzl-select-input':'mzl-select-input-value']" :disabled="disabled" @input="input" v-model="selVal">
-			<i :class="iconClass"></i>
+			<i :class="iconClass" :style="{'transform':rotate}"></i>
 		</div>
 		<transition name="slide-fade">
 			<div class="mzl-select-option" v-if="isShow">
@@ -57,6 +57,7 @@
 	const activeIndex = ref(-1)
 	const selInp = ref(null)
 	const isShow = ref(false)
+	const rotate = ref('rotate(0deg)')
 	const optionsData = ref(props.options||[])
 	const selVal = ref(props.modelValue!=""?props.options.filter(item=>{return item[props.valueFiled] == props.modelValue})[0][props.labelFiled]:"")
 	// icon class
@@ -82,6 +83,7 @@
 	const blur = (e) => {
 		if(!props.multiple){
 			isShow.value = false
+			rotate.value = 'rotate(0deg)'
 		}
 	}
 	
@@ -97,6 +99,11 @@
 		if(!props.disabled){
 			selInp.value.focus()
 			isShow.value = !isShow.value
+			if(isShow.value){
+				rotate.value = 'rotate(180deg)'
+			}else{
+				rotate.value = 'rotate(0deg)'
+			}
 		}
 	}
 	// 选择事件
@@ -108,6 +115,7 @@
 				emit('update:modelValue', item[props.valueFiled])
 				emit('change',item,index)
 				isShow.value = false
+				rotate.value = 'rotate(0deg)'
 			}
 		}else{
 			if(!item.disabled){
