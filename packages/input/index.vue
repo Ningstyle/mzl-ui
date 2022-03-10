@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import { reactive, ref,defineEmits,computed, useSlots} from 'vue'
+import { reactive, ref,computed, useSlots} from 'vue'
 export default {
   name:"mInput"
 }
@@ -21,7 +21,7 @@ export default {
 <script setup>
 const emit = defineEmits(['update:modelValue','clear','focus','blur','input','change'])
 const props = defineProps({
-  modelValue:String,
+  modelValue:String|Number,
   disabled:Boolean,
   clearable:Boolean,
   showPassword:Boolean,

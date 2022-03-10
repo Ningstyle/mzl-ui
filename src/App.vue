@@ -249,9 +249,18 @@
   <!-- 基本使用 -->
   <m-tree></m-tree>
   <h4>基本使用</h4>
-  <m-optfile id="file1" @beforeChange="beforeChange" @change="fileChange" multiple  targetType="box" label="" drop size="" imgListShow :fileList="fileList"></m-optfile>
-  <m-optfile id="file2" label="选择文件"></m-optfile>
-  <m-optfile id="file3" label="选择文件" showFileList multiple></m-optfile>
+  <m-optfile @beforeChange="beforeChange" @change="fileChange" multiple targetType="box" label="" drop size="" imgListShow :fileList="fileList"></m-optfile>
+  <m-optfile label="选择文件"></m-optfile>
+  <m-optfile label="选择文件" showFileList multiple  targetType="box" drop></m-optfile>
+  <h4>基本使用</h4>
+  <m-textarea v-model="textareaVal" placeholder="请输入内容" @input="textareaInpt"></m-textarea>
+  <h4>基本使用</h4>
+  <m-row>
+    <m-col :span="4">323232</m-col>
+    <m-col :span="4">54656565</m-col>
+  </m-row>
+  <h4>基本使用</h4>
+  <m-pagination :total="400" :current="1" :pageSize="9" @change="pagintaionChange" size="small" :activeColors="activeColors"></m-pagination>
   <p>1</p>
   <p>1</p>
   <p>1</p>
@@ -277,6 +286,7 @@ const radioVal = ref('zhongguo')
 const checkVal = ref(['deguo'])
 const switchVal = ref(true)
 const fileList = ref([{name:1},{name:2}])
+const textareaVal = ref("")
 const state = reactive({
   options:{
     fileds:[
@@ -415,10 +425,18 @@ const state = reactive({
   headStyle:{
     // color:"#fff",
     // borderColor:"#0162B0"
+  },
+  activeColors:{
+    "background":"#0e80eb",
+    "hoverBackground":"#0e80eb",
+    "borderColor":"#d9d9d9",
+    "hoverBorderColor":"#09b63d",
+    "color":"#f57b29",
+    "hoverColor":"#fff"
   }
 })
 
-const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1, radioOptions,checkOptions } = state
+const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1, radioOptions,checkOptions,activeColors } = state
 const openMsg = ()=>{
   Loading.show({
     text:'正在加载中...',
@@ -510,6 +528,12 @@ const fileChange = (files) =>{
   console.log('选择之后');
   console.log(files);
   // console.log(fileList.value);
+}
+const textareaInpt = (e)=>{
+  console.log(textareaVal.value);
+}
+const pagintaionChange = (e) => {
+  console.log(e);
 }
 const instance = getCurrentInstance()
 onMounted(()=>{

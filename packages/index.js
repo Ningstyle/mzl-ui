@@ -14,8 +14,12 @@ import Loading from './loading/index'
 import mSwitch from './switch/index'
 import mTree from './tree/index'
 import mOptfile from './optfile/index'
+import mTextarea from './textarea/index'
+import mRow from './mrow/index'
+import mCol from './mcol/index'
+import mPagination from './pagination/index'
 //存在所有组件
-const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox,mModal,mDrawer,mSwitch,mTree,mOptfile]
+const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox,mModal,mDrawer,mSwitch,mTree,mOptfile,mTextarea,mRow,mCol,mPagination]
 const install = app => {
   components.forEach(i => {
     app.use(i)
@@ -50,6 +54,10 @@ export {
   Loading,
   mSwitch,
   mTree,
-  mOptfile
+  mOptfile,
+  mTextarea,
+  mRow,
+  mCol,
+  mPagination
 }
 export default mzlUi

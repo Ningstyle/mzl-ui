@@ -1,6 +1,6 @@
 <template>
   <div :class="['mzl-optfile-default',customClass]">
-    <input type="file" :accept="accept" :multiple="multiple" :id="id" @change="testchange" hidden>
+    <input type="file" :accept="accept" :multiple="multiple" @change="testchange" hidden ref="refInp">
     <div class="mzl-preview-img-box">
       <transition-group name="list-img">
         <template  v-if="targetType=='box'&&imgListShow&&!showFileList">
@@ -16,7 +16,7 @@
         </template>
       </transition-group>
       <m-button :type="type" :leftIcon="icon" @click="changeFile" v-if="targetType=='btn'">{{label}}</m-button>
-      <div :class="['mzl-optfie-area',{'mzl-optfie-area-big':size=='big','mzl-opfile-area-active':activeFile}]" v-if="targetType=='box'" :id="id+'area'">
+      <div :class="['mzl-optfie-area',{'mzl-optfie-area-big':size=='big','mzl-opfile-area-active':activeFile}]" v-if="targetType=='box'" ref="refDiv">
         <div class="mzl-optfile-area-text" @click="changeFile">
           <div class="mzl-optfile-text-pos">
             <i :class="icon" class="icon-file"></i>
@@ -76,7 +76,6 @@ const props = defineProps({
       return []
     }
   },
-  id:String,
   drop:Boolean,
   customClass:String,
   showFileList:Boolean,
@@ -89,10 +88,12 @@ const FileList = reactive(props.fileList||[])
 const imgSrc = ref('')
 const lableText = ref(props.label)
 const activeFile = ref(false)
+const refInp = ref(null)
+const refDiv = ref(null)
 const changeFile = () =>{
   emit('beforeChange')
-  var file = document.getElementById(props.id)
-  file.click();
+  console.log(refInp);
+  refInp.value.click()
 }
 const testchange = (e) =>{
   File.unshift(...e.target.files)
@@ -110,7 +111,7 @@ const deleteImg = (index) =>{
 }
 onMounted(()=>{
   if(props.drop&&props.targetType=='box'){
-    let dropArea = document.getElementById(props.id+'area')
+    let dropArea = refDiv.value
     dropArea.addEventListener('drop',(e)=>{
       e.stopPropagation()
       e.preventDefault()
