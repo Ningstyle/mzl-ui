@@ -25,7 +25,7 @@ export default{
 }
 </script>
 <script setup>
-import {useSlots,ref,defineEmits,watchEffect} from 'vue'
+import {useSlots,ref,watchEffect} from 'vue'
 const props = defineProps({
   title:{
     type:String,

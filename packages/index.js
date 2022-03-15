@@ -18,8 +18,11 @@ import mTextarea from './textarea/index'
 import mRow from './mrow/index'
 import mCol from './mcol/index'
 import mPagination from './pagination/index'
+import $mzl from './function/index'
+import mDate from './date/index'
+import mBacktop from './backtop/index'
 //存在所有组件
-const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox,mModal,mDrawer,mSwitch,mTree,mOptfile,mTextarea,mRow,mCol,mPagination]
+const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox,mModal,mDrawer,mSwitch,mTree,mOptfile,mTextarea,mRow,mCol,mPagination,mDate,mBacktop]
 const install = app => {
   components.forEach(i => {
     app.use(i)
@@ -27,6 +30,7 @@ const install = app => {
   app.config.globalProperties.$message = Message;
   app.config.globalProperties.$Confirm = Confirm;
   app.config.globalProperties.$Loading = Loading;
+  app.config.globalProperties.$mzl = $mzl
 }
 const mzlUi = {
   version: "0.4.1",
@@ -58,6 +62,9 @@ export {
   mTextarea,
   mRow,
   mCol,
-  mPagination
+  mPagination,
+  $mzl,
+  mDate,
+  mBacktop
 }
 export default mzlUi

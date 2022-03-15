@@ -247,7 +247,6 @@
   <h4>基本使用</h4>
   <m-switch v-model="switchVal" @change="switchChange" :showTipsText="false" activeColor="#09b63d"></m-switch>
   <!-- 基本使用 -->
-  <m-tree></m-tree>
   <h4>基本使用</h4>
   <m-optfile @beforeChange="beforeChange" @change="fileChange" multiple targetType="box" label="" drop size="" imgListShow :fileList="fileList"></m-optfile>
   <m-optfile label="选择文件"></m-optfile>
@@ -261,6 +260,24 @@
   </m-row>
   <h4>基本使用</h4>
   <m-pagination :total="400" :current="1" :pageSize="9" @change="pagintaionChange" size="small" :activeColors="activeColors"></m-pagination>
+  <m-date v-model="dateVal" clearable @change="dateChange" @clear="Dateclear" @open="dateFoucs" @close="dateBlur" startDate="2022-01-01" endDate="2022-03-21" placeholder="请选择日期"></m-date>
+  <m-backtop></m-backtop>
+  <m-tree></m-tree>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
   <p>1</p>
   <p>1</p>
   <p>1</p>
@@ -273,20 +290,22 @@
 <script setup>
 import { onMounted, reactive, ref,getCurrentInstance} from "vue";
 import Message from '../packages/message/index'
-// import Confirm from '../packages/confirm/index'
+import Confirm from '../packages/confirm/index'
 import Loading from '../packages/loading/index'
+import $mzl from '../packages/function/index'
 const modalShow = ref(false)
 const drawerShow = ref(false)
 const value1 = ref('')
 const password = ref('')
 const selVal = ref('aodaliya')
 const selVal1 = ref('')
-const selVal2 = ref([])
+const selVal2 = ref(['HTML','Node'])
 const radioVal = ref('zhongguo')
 const checkVal = ref(['deguo'])
 const switchVal = ref(true)
 const fileList = ref([{name:1},{name:2}])
 const textareaVal = ref("")
+const dateVal = ref("")
 const state = reactive({
   options:{
     fileds:[
@@ -353,7 +372,7 @@ const state = reactive({
   ],
 	selOptions1:[
 		{
-			label:'HTML',
+			label:'HTML1',
 			value:"HTML"
 		},
 		{
@@ -438,37 +457,37 @@ const state = reactive({
 
 const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1, radioOptions,checkOptions,activeColors } = state
 const openMsg = ()=>{
-  Loading.show({
-    text:'正在加载中...',
-    target:'.loadingTest',
-    icon:'m-icon-loading1',
-    scrollLock:true,
-    textColor:'#fff',
-    bgColor:"rgba(0, 0, 0, 0.5)",
-    showIcon:true,
-    img:''
-  })
-  setTimeout(()=>{
-    Loading.hide()
-  },5000)
+  // Loading.show({
+  //   text:'正在加载中...',
+  //   target:'.loadingTest',
+  //   icon:'m-icon-loading1',
+  //   scrollLock:true,
+  //   textColor:'#fff',
+  //   bgColor:"rgba(0, 0, 0, 0.5)",
+  //   showIcon:true,
+  //   img:''
+  // })
+  // setTimeout(()=>{
+  //   Loading.hide()
+  // },5000)
   // drawerShow.value = true
   // Message({
   //   type: 'success',
   //   text: '登录失败',
   // })
-  // Confirm({
-  //   title:"提示",
-  //   text: '您确认要删除这条数据吗？',
-  //   icon:"m-icon-collection_fill",
-  //   confirmText:"好的",
-  //   confirmShow:true,
-  //   cancelShow:true,
-  //   closeShow:true
-  // }).then(() => {
-  //   console.log("确定");
-  // }).catch(() => {
-  //   console.log('取消')
-  // })
+  Confirm({
+    title:"提示",
+    text: '您确认要删除这条数据吗？',
+    icon:"m-icon-collection_fill",
+    confirmText:"好的",
+    confirmShow:true,
+    cancelShow:true,
+    closeShow:true
+  }).then(() => {
+    console.log("确定");
+  }).catch(() => {
+    console.log('取消')
+  })
 }
 const drawerClose = () => {
   console.log("关闭了");
@@ -494,13 +513,13 @@ const change = (e) =>{
 const clear = () =>{
   console.log("清空")
 }
-const selchange = (item,index) =>{
-	console.log(selVal.value);
+const selchange = (item) =>{
+	console.log(item);
 	// console.log(item,index);
 }
 const selchange1 = (item,index) =>{
-	// console.log(selVal1.value);
-	// console.log(item,index);
+	console.log(selVal1.value);
+	console.log(item,index);
 }
 const dropchange = (item,index) =>{
 	console.log(item,index);
@@ -508,9 +527,9 @@ const dropchange = (item,index) =>{
 const dropchange1 = (item,index) =>{
 	console.log(item,index);
 }
-const selchange2 = (item,index) =>{
+const selchange2 = (item) =>{
 	// console.log(selVal1.value);
-	console.log(item,index);
+	console.log(item);
 }
 const radioChange = (e)=>{
   console.log(e);
@@ -535,9 +554,25 @@ const textareaInpt = (e)=>{
 const pagintaionChange = (e) => {
   console.log(e);
 }
+const dateChange = (e) =>{
+  console.log(dateVal.value);
+  // console.log(e);
+}
+const Dateclear = () =>{
+  console.log('121212121');
+}
+const dateFoucs = (e) =>{
+  // console.log('开启');
+}
+const dateBlur = (e) => {
+  // console.log('关闭');
+}
 const instance = getCurrentInstance()
 onMounted(()=>{
-  
+  // console.log($mzl.formatDate(new Date(1609412149000),'yyyy-MM-dd hh:mm:ss'));
+  // console.log($mzl.formatDate(new Date(1609412149000),'yyyy-MM-dd'));
+  // console.log($mzl.formatDate(new Date(1609412149000),'hh:mm:ss'));
+  // console.log($mzl.formatDate(new Date(1609412149000),'yyyy'));
   // instance.proxy.$message({ text: '登录失败', type: 'error' })
 })
 </script>

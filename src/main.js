@@ -16,6 +16,8 @@ import mzlUI12 from '../packages/textarea/index'
 import mzlUI13 from '../packages/mrow/index'
 import mzlUI14 from '../packages/mcol/index'
 import mzlUI15 from '../packages/pagination/index'
+import mzlUI16 from '../packages/date/index'
+import mzlUI17 from '../packages/backtop/index'
 // import mzlUI from '../dist/mzl-ui.es'
 // import '../dist/style.css'
 const app = createApp(App)
@@ -44,4 +46,6 @@ app.use(mzlUI12)
 app.use(mzlUI13)
 app.use(mzlUI14)
 app.use(mzlUI15)
+app.use(mzlUI16)
+app.use(mzlUI17)
 app.mount('#app')

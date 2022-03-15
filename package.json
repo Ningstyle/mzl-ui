@@ -1,7 +1,7 @@
 {
   "name": "mzl-ui",
   "author": "style'me",
-  "version": "0.6.8",
+  "version": "0.7.5",
   "private": false,
   "main": "./dist/mzl-ui.umd.js",
   "module": "./dist/mzl-ui.es.js",

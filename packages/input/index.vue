@@ -2,7 +2,7 @@
   <div :class="[`mzl-group-input-${size}`]" :style="{'min-width':'auto'}">
     <div :class="isClass" :style="isStyle" style="">
       <i :class="['left-icon','iconfont',leftIcon]" v-if="!showPassword&&leftIcon!=''"></i>
-      <input :type="inptype" @focus="focus" @blur="blur" :value="modelValue"  @input="iptChange" :disabled="disabled" @change="change" :placeholder="placeholder" :autofocus="autofocus"/>
+      <input :type="inptype" @focus="focus" @blur="blur" :value="modelValue"  @input="iptChange" :disabled="disabled" @change="change" :placeholder="placeholder" :autofocus="autofocus" :readonly="readonly" :form="form"/>
        <transition name="slide-fade">
         <i class="clearable-icon iconfont m-icon-close" v-if="!showPassword&&clearable&&modelValue!=''" @click="clear"></i>
       </transition>
@@ -44,7 +44,9 @@ const props = defineProps({
   focusColor:{
     type:String,
     default:'#0e80eb'
-  }
+  },
+  readonly:Boolean,
+  form:String
 })
 const slot = useSlots()
 const isStyle = ref({})
@@ -82,7 +84,6 @@ const change = (e) =>{
   emit('change',e)
 }
 const clear = (e) =>{
-  props.modelValue = ''
   emit('update:modelValue', "")
   emit('clear')
 }

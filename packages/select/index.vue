@@ -1,14 +1,14 @@
 <template>
-	<div :class="selectClass">
-		<div :class="selectInputClass" @click="handleSelect">
-			<input type="text" :readonly="!searchable" :placeholder="selVal==''?placeholder:selVal" @blur="blur" ref="selInp" :class="[selVal==''?'mzl-select-input':'mzl-select-input-value']" :disabled="disabled" @input="input" v-model="selVal">
+	<div :class="selectClass" v-click-outside>
+		<div :class="selectInputClass">
+			<input type="text" :readonly="!searchable" :placeholder="selVal==''?placeholder:selVal" :class="[selVal==''?'mzl-select-input':'mzl-select-input-value']" :disabled="disabled" @input="input" :value="selVal">
 			<i :class="iconClass" :style="{'transform':rotate}"></i>
 		</div>
 		<transition name="slide-fade">
 			<div class="mzl-select-option" v-if="isShow">
 				<div class="mzl-select-option-find">
 					<ul>
-						<li class="mzl-select-option-li" v-for="(item,index) in optionsData" :key="index" @mousedown="selChange(item,index)" :class="{'mzl-select-active':activeIndex == index||selVal==item[labelFiled]||item.selected,'mzl-select-disabled':item.disabled}">{{item[labelFiled]}} <i class="iconfont m-icon-select-bold" v-if="multiple&&item.selected"></i></li>
+						<li class="mzl-select-option-li" v-for="(item,index) in optionsData" :key="index" @click="selChange(item,index)" :class="{'mzl-select-active':activeIndex == index||selVal==item[labelFiled]||item.selected,'mzl-select-disabled':item.disabled}">{{item[labelFiled]}} <i class="iconfont m-icon-select-bold" v-if="multiple&&item.selected"></i></li>
 					</ul>
 				</div>
 			</div>
@@ -52,14 +52,22 @@
 		multiple:Boolean
 	})
 	props.options.forEach((item,index)=>{
-		item.selected = false
+		if(!props.multiple){
+			item.selected = false
+		}else{
+			props.modelValue.forEach((item1,index1)=>{
+				if(item[props.valueFiled]==item1){
+					item.selected = true
+				}
+			})
+			console.log();
+		}
 	})
 	const activeIndex = ref(-1)
-	const selInp = ref(null)
 	const isShow = ref(false)
 	const rotate = ref('rotate(0deg)')
 	const optionsData = ref(props.options||[])
-	const selVal = ref(props.modelValue!=""?props.options.filter(item=>{return item[props.valueFiled] == props.modelValue})[0][props.labelFiled]:"")
+	const selVal = ref(props.multiple?props.modelValue:(props.modelValue!=""?props.options.filter(item=>{return item[props.valueFiled] == props.modelValue})[0][props.labelFiled]:""))
 	// icon class
 	const iconClass = computed(()=>{
 		return [
@@ -76,15 +84,14 @@
 	// select input class
 	const selectInputClass = computed(()=>{
 		return [
+			'mzl-select-input-box',
 			`mzl-select-input-${props.size}`,
 			props.disabled?`mzl-select-input-${props.size}-disabled`:"",
 		]
 	})
 	const blur = (e) => {
-		if(!props.multiple){
-			isShow.value = false
-			rotate.value = 'rotate(0deg)'
-		}
+		isShow.value = false
+		rotate.value = 'rotate(0deg)'
 	}
 	
 	const input = (e)=>{
@@ -95,32 +102,81 @@
 			optionsData.value.push(item)
 		})	
 	}
-	const handleSelect = () =>{
-		if(!props.disabled){
-			selInp.value.focus()
-			isShow.value = !isShow.value
-			if(isShow.value){
-				rotate.value = 'rotate(180deg)'
-			}else{
-				rotate.value = 'rotate(0deg)'
+	const vClickOutside = {
+   	beforeMount(el){
+			let handler = (e) =>{
+				if(!props.disabled){
+					if(!props.multiple){
+						if(el.contains(e.target)&&e.target.className.indexOf('mzl-select-option-li')==-1){
+							if(!isShow.value){
+								isShow.value = !isShow.value
+								if(isShow.value){
+									rotate.value = 'rotate(180deg)'
+								}else{
+									rotate.value = 'rotate(0deg)'
+								}
+							}	
+						}else{
+							if(isShow.value){
+								blur()
+							}
+						}
+					}else{
+						if(el.contains(e.target)){
+							if(!isShow.value){
+								isShow.value = !isShow.value
+								if(isShow.value){
+									rotate.value = 'rotate(180deg)'
+								}else{
+									rotate.value = 'rotate(0deg)'
+								}
+							}	
+						}else{
+							if(isShow.value){
+								blur()
+							}
+						}
+					}
+				}
 			}
+			el.handler = handler;
+			document.addEventListener('click',handler)
+		},
+		unmounted(el){
+			document.removeEventListener('click',el.handler)
 		}
 	}
 	// 选择事件
+	let labels = []
+	let indexs = []
 	const selChange = (item,index) =>{
 		if(!props.multiple){
 			if(!item.disabled){
 				activeIndex.value = index
 				selVal.value = item[props.labelFiled]
 				emit('update:modelValue', item[props.valueFiled])
-				emit('change',item,index)
-				isShow.value = false
-				rotate.value = 'rotate(0deg)'
+				emit('change',{lable:item.label,value:item.value,index:index})
+				blur()
 			}
 		}else{
 			if(!item.disabled){
-				selInp.value.focus()
+				Array.prototype.indexOf = function(val) {
+					for (var i = 0; i < this.length; i++) {
+					if (this[i] == val) return i; }
+					return -1;
+				};
 				item.selected = !item.selected
+				if(item.selected){
+					selVal.value.push(item[props.valueFiled])
+					labels.push(item.label)
+					indexs.push(index)
+				}else{
+					selVal.value.splice(selVal.value.indexOf(item[props.valueFiled]),1)
+					labels.splice(labels.indexOf(item.label),1)
+					indexs.splice(indexs.indexOf(index),1)
+				}
+				emit('update:modelValue', selVal.value)
+				emit('change',{lable:labels,value:selVal.value,index:indexs})
 			}
 		}
 	}
@@ -128,11 +184,18 @@
 
 <style lang="scss" scoped>
 	// 默认
-.mzl-select-default{
+.mzl-select-input-box,.mzl-select-default{
 	width:100% ;
 	height: auto;
 	margin:0;
 	position: relative;
+	.mzl-select-multiple{
+		width: 100%;
+		height:100%;
+		position: absolute;
+		top:0;
+		left:0;
+	}
 	.mzl-select-input-default{
 		width:100% ;
 		height: auto;
@@ -658,15 +721,16 @@ input::-ms-input-placeholder { /* Microsoft Edge */
 	 color:#c6c8cc;
 }
 .slide-fade-enter-active {
-  transition: all 0.1s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .slide-fade-leave-active {
-  transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
+  transform: translateY(-20px);
   opacity: 0;
 }
 </style>
