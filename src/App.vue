@@ -262,7 +262,7 @@
   <m-pagination :total="400" :current="1" :pageSize="9" @change="pagintaionChange" size="small" :activeColors="activeColors"></m-pagination>
   <m-date v-model="dateVal" clearable @change="dateChange" @clear="Dateclear" @open="dateFoucs" @close="dateBlur" startDate="2022-01-01" endDate="2022-03-21" placeholder="请选择日期"></m-date>
   <m-backtop></m-backtop>
-  <m-tree></m-tree>
+  <m-tree :options="treeOptions"></m-tree>
   <p>1</p>
   <p>1</p>
   <p>1</p>
@@ -452,10 +452,108 @@ const state = reactive({
     "hoverBorderColor":"#09b63d",
     "color":"#f57b29",
     "hoverColor":"#fff"
-  }
+  },
+  treeOptions:[
+      {
+        label:"一级",
+        value:"",
+        children:[
+          {
+            label:"一级1",
+            value:"",
+          },
+          {
+            label:"一级2",
+            value:"",
+          },
+          {
+            label:"一级3",
+            value:"",
+            children:[
+              {
+                label:"一级3-1",
+                value:"",
+              },
+              {
+                label:"一级3-2",
+                value:"",
+              },
+              {
+                label:"一级3-3",
+                value:"",
+              }
+            ]
+          }
+        ]
+      },
+      {
+        label:"二级",
+        value:"",
+        children:[
+          {
+            label:"二级1",
+            value:"",
+          },
+          {
+            label:"二级2",
+            value:"",
+          },
+          {
+            label:"二级3",
+            value:"",
+            children:[
+              {
+                label:"二级3-1",
+                value:"",
+              },
+              {
+                label:"二级3-2",
+                value:"",
+              },
+              {
+                label:"二级3-3",
+                value:"",
+              }
+            ]
+          }
+        ]
+      },
+      {
+        label:"三级",
+        value:"",
+        children:[
+          {
+            label:"三级1",
+            value:"",
+          },
+          {
+            label:"三级2",
+            value:"",
+          },
+          {
+            label:"三级3",
+            value:"",
+            children:[
+              {
+                label:"三级3-1",
+                value:"",
+              },
+              {
+                label:"三级3-2",
+                value:"",
+              },
+              {
+                label:"三级3-3",
+                value:"",
+              }
+            ]
+          }
+        ]
+      }
+    ]   
 })
 
-const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1, radioOptions,checkOptions,activeColors } = state
+const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1, radioOptions,checkOptions,activeColors,treeOptions } = state
 const openMsg = ()=>{
   // Loading.show({
   //   text:'正在加载中...',
