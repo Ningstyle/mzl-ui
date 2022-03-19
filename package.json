@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
+    "@vue/reactivity": "^3.2.31",
     "vite": "^2.7.2"
   }
 }
