@@ -1,16 +1,8 @@
 <template>
-  <div class="mzl-tree-default">
-    <li v-for="(item,index) in newOptions" :key="index" @click.stop="toggle($event,item,index)">
-      {{item.label}}
-      <transition name="slide-fade">
-        <ul v-show="item.isOpen" v-if="item.children&&item.children.length">
-          <m-tree
-          :index="index"
-          :options="item.children">
-          </m-tree>
-        </ul>
-      </transition>
-    </li>
+  <div :class="['mzl-tree-content-box',customClass]">
+    <template v-for="(item,index) in options" :key="index">
+      <tree-item  :items="item" :data-key="index" :icon="icon" :defaultOpenNodes="defaultOpenNodes" @nodeClick="nClick($event)" :options="options" :index="0" @change="changeKey($event)" :tabIndexs="tabKey" @selectClick="emit('selectClick',$event)" :multiple="multiple" :defaultSelectNodes="defaultSelectNodes"></tree-item>
+    </template>
   </div>
 </template>
 <script>
@@ -19,7 +11,9 @@ export default{
 }
 </script>
 <script setup>
-import {computed,ref} from 'vue'
+import {ref} from 'vue'
+import treeItem from './treeItem.vue'
+const emit = defineEmits(['nodeClick','selectClick'])
 const props = defineProps({
   options:{
     type:Object,
@@ -27,65 +21,24 @@ const props = defineProps({
       return {}
     }
   },
-  index:{
-    type:Number,
-    default:0
+  icon:String,
+  defaultOpenNodes:Array,
+  customClass:String,
+  multiple:Boolean,
+  defaultSelectNodes:{
+    type:Array,
+    default:()=>[]
   }
 })
-const newOptions = ref(props.options)
-const liRef = ref(null)
-const height = ref(24+'px')
-const isFolder = computed(()=>{
-  return props.options && props.options.length;
+
+props.options.forEach((item,index)=>{
+  item.key = index.toString()
 })
-const toggle = (e,item,index) => {
-  item.isOpen = !item.isOpen
-  console.log(e.target.querySelector('ul').clientHeight);
-  if (isFolder&&item.children.length) {
-    if(!item.isOpen){
-      height.value = '24px'
-    }else{
-      
-      height.value = (item.children.length+1)*18+'px'
-    }
-  }
+const tabKey = ref('')
+const changeKey = (e) =>{
+  tabKey.value = e
 }
-console.log(props.options);
+const nClick = (item) => {
+  emit('nodeClick',item)
+}
 </script>
-
-<style lang="scss" scoped>
-.slide-fade-enter-active,.slide-fade-enter-from {
-  height:v-bind(height);
-  transition: all .2s ease;
-}
-// .slide-fade-enter-to{
-//   height:auto;
-// }
-.slide-fade-leave-active {
-  transition: all .2s ease;
-  height:v-bind(height);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transition: all .2s ease;
-  height:0px;
-}
-.mzl-tree-default{
-  width:100%;
-  height:auto;
-  overflow:hidden;
-  ul{
-    margin:0;
-    overflow: hidden;
-  }
-  li{
-    list-style: none;
-    cursor: pointer;
-    font-size:14px;
-    color:#505050;
-    transition: all .2s ease;
-    line-height: 24px;
-  }
-}
-</style>
