@@ -42,7 +42,7 @@ import { mButton, mInput } from 'mzl-ui'
 <br/>
 
 # 贡献指南
-- 首先非常感谢您能选择为mzl-ui做出贡献,mzl-ui时基于vue3.2开发，mzl-ui离不开大家的共同贡献和维护，如果您想参与贡献，请阅读一下内容
+- 首先非常感谢您能选择为mzl-ui做出贡献,mzl-ui是基于vue3.2开发，mzl-ui离不开大家的共同贡献和维护，如果您想参与贡献，请阅读以下内容。
 ## Issue 规范
 - 在提交 issue 之前，请搜索相关内容是否已被提出。
 - 请说明 mzl-ui 和 Vue 的版本号，并提供操作系统和浏览器信息。推荐使用 JSFiddle 生成在线 demo，这能够更直观地重现问题。
@@ -54,7 +54,7 @@ import { mButton, mInput } from 'mzl-ui'
 - 提交 PR 前请 rebase，确保 commit 记录的整洁。
 - 确保 PR 是提交到 dev 分支，而不是 master 分支。
 - 如果是修复 bug，请在 PR 中给出描述信息。
-- 合并代码会有专人审核，避免滥用植入等你，审核通过后即可合并。
+- 合并代码会有专人审核，避免滥用植入等，审核通过后即可合并。
 ## 开发环境
 - 首先你需要 Node.js 14+，yarn 和 npm 6+。
 ## 组件开发规范
