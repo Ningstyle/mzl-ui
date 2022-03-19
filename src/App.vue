@@ -262,8 +262,7 @@
   <m-pagination :total="400" :current="1" :pageSize="9" @change="pagintaionChange" size="small" :activeColors="activeColors"></m-pagination>
   <m-date v-model="dateVal" clearable @change="dateChange" @clear="Dateclear" @open="dateFoucs" @close="dateBlur" startDate="2022-01-01" endDate="2022-03-21" placeholder="请选择日期"></m-date>
   <m-backtop></m-backtop>
-  <m-tree :options="treeOptions" @nodeClick="nodeClicks"></m-tree>
-   <!-- :defaultOpenNodes="['0-2-1']" -->
+  <m-tree :options="treeOptions" @nodeClick="nodeClicks" :defaultOpenNodes="['0-2-1']" multiple  :defaultSelectNodes="['0-2-1-0']"></m-tree>
   <p>1</p>
   <p>1</p>
   <p>1</p>
