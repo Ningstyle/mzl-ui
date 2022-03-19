@@ -229,7 +229,10 @@ onMounted(()=>{
             }
           },100)
         })
+        let nodeItems = getParents(props.options,v)
+        getSameLevelChile(nodeItems[1],nodeItems[nodeItems.length-1])
       })
+      
     }
   }
 })
