@@ -39,6 +39,8 @@ import { mButton, mInput } from 'mzl-ui'
 ## 联系我们
 - 如果您想加入我们，您可以通过邮件：liningning@codeym.com,或者添加进群：
 <img src="https://mzlui.codeym.com/ql.jpg"/>
+<br/>
+
 # 贡献指南
 #### 首先非常感谢您能选择为mzl-ui做出贡献,mzl-ui时基于vue3.2开发，mzl-ui离不开大家的共同贡献和维护，如果您想参与贡献，请阅读一下内容
 ## Issue 规范
