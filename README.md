@@ -49,10 +49,9 @@ import { mButton, mInput } from 'mzl-ui'
 ## Pull Request 规范
 - 请先 fork 一份到自己的项目下，不要直接在仓库下建分支。
 - commit 信息要以[组件名]: 描述信息 的形式填写，例如 Button: fix xxx bug。
-- 不要提交 lib 里面打包的文件。
 - 执行 npm run build 后可以正确打包文件。
 - 提交 PR 前请 rebase，确保 commit 记录的整洁。
-- 确保 PR 是提交到 dev 分支，而不是 master 分支。
+- 确保 PR 是提交到 dev 分支，而不是 main 分支。
 - 如果是修复 bug，请在 PR 中给出描述信息。
 - 合并代码会有专人审核，避免滥用植入等，审核通过后即可合并。
 ## 开发环境
