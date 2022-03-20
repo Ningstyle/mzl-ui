@@ -149,6 +149,7 @@
 	<h4>基本使用-不同大小</h4>
 	<span style="width:300px;margin-right:0;">
 		<m-select 
+      height="40px"
 			v-model="selVal" 
 			placeholder="请选择" 
 			:options="selOptions" 
