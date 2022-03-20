@@ -1,20 +1,30 @@
 <template>
-  <div :class="selectClass" :style="{ width: width }" v-click-outside>
+  <div
+    :class="[selectClass, customClass]"
+    :style="[
+      customClass ? {} : { width: parseInt(width) < 100 ? '100px' : width },
+    ]"
+    v-click-outside
+  >
     <div :class="selectInputClass">
       <input
         type="text"
         :readonly="!searchable"
         :placeholder="selVal == '' ? placeholder : selVal"
-        :style="customStyle"
+        :style="[customClass ? {} : customStyle]"
         :class="[selVal == '' ? 'mzl-select-input' : 'mzl-select-input-value']"
         :disabled="disabled"
         @input="input"
         :value="selVal"
       />
-      <i :class="iconClass" :style="[{ transform: rotate }, fixIcon]"></i>
+      <i
+        ref="selectIcon"
+        :class="iconClass"
+        :style="[{ transform: rotate }, fixIcon]"
+      ></i>
     </div>
     <transition name="slide-fade">
-      <div class="mzl-select-option" :style="{top:height}" v-if="isShow">
+      <div class="mzl-select-option" v-if="isShow">
         <div class="mzl-select-option-find">
           <ul>
             <li
@@ -49,11 +59,12 @@ export default {
 };
 </script>
 <script setup>
-import { ref, computed, reactive, onMounted, watch } from "vue";
+import { ref, computed, reactive, onMounted, watch, nextTick } from "vue";
 const emit = defineEmits(["update:modelValue", "change"]);
 const props = defineProps({
   modelValue: String | Array,
   placeholder: String,
+  customClass: String,
   disabled: Boolean,
   searchable: Boolean,
   size: {
@@ -111,25 +122,31 @@ const selVal = ref(
       })[0][props.labelFiled]
     : ""
 );
-const fixIcon = reactive({});
+/*1.增加选择框width和height属性的大小限制 高度最小是25px,width属性最小是100px
+ *2.动态计算下拉图标的行高
+ */
+const selectIcon = ref(null);
+const fixIcon = reactive({
+  top: 0,
+  height: "100%",
+  lineHeight: 0,
+});
+const fixIconLineHeight = () => {
+  let height = window.getComputedStyle(selectIcon.value).height;
+  nextTick(() => {
+    fixIcon.lineHeight = height;
+  });
+};
 // icon class
 const iconClass = computed(() => {
   return ["select-icon iconfont m-icon-arrow-down"];
 });
-
 //根据自定义的组件尺寸适配组件里面的下拉框相对位置以及图标居中
 const customStyle = computed(() => {
   let styles = {};
-  if (props.width || props.height) {
-    if (props.width) {
-      styles.width = props.width;
-    }
-    if (props.height) {
-      styles.height = props.height;
-      fixIcon.top = 0;
-      fixIcon.height = "100%";
-      fixIcon.lineHeight = props.height;
-    }
+  if (props.height) {
+    let height = parseInt(props.height) < 25 ? "25px" : props.height;
+    styles.height = height;
   }
   return styles;
 });
@@ -246,6 +263,9 @@ const selChange = (item, index) => {
     }
   }
 };
+onMounted(() => {
+  fixIconLineHeight() //根据设置的容器高度动态修正下拉图标居中
+});
 </script>
 
 <style lang="scss" scoped>
@@ -253,7 +273,7 @@ const selChange = (item, index) => {
 .mzl-select-input-box,
 .mzl-select-default {
   width: 100%;
-  height: auto;
+  height: 100%;
   margin: 0;
   position: relative;
   .mzl-select-multiple {
@@ -265,11 +285,12 @@ const selChange = (item, index) => {
   }
   .mzl-select-input-default {
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0;
     box-sizing: border-box;
     position: relative;
     input {
+      height: 100%;
       width: 100%;
       font-size: 14px;
       outline: none;
@@ -318,7 +339,7 @@ const selChange = (item, index) => {
     border-radius: 4px;
     box-sizing: border-box;
     background-color: #fff;
-    top: 38px;
+    top: 100%;
     z-index: 99;
     .mzl-select-option-find {
       width: 100%;
@@ -423,11 +444,12 @@ const selChange = (item, index) => {
   position: relative;
   .mzl-select-input-small {
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0;
     box-sizing: border-box;
     position: relative;
     input {
+      height: 100%;
       width: 100%;
       font-size: 13px;
       outline: none;
@@ -476,7 +498,7 @@ const selChange = (item, index) => {
     border-radius: 4px;
     box-sizing: border-box;
     background-color: #fff;
-    top: 34px;
+    top: 100%;
     z-index: 99;
     .mzl-select-option-find {
       width: 100%;
@@ -581,11 +603,12 @@ const selChange = (item, index) => {
   position: relative;
   .mzl-select-input-mini {
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0;
     box-sizing: border-box;
     position: relative;
     input {
+      height: 100%;
       width: 100%;
       font-size: 12px;
       outline: none;
@@ -634,7 +657,7 @@ const selChange = (item, index) => {
     border-radius: 4px;
     box-sizing: border-box;
     background-color: #fff;
-    top: 30px;
+    top: 100%;
     z-index: 99;
     .mzl-select-option-find {
       width: 100%;
