@@ -148,7 +148,10 @@
 	
 	<h4>基本使用-不同大小</h4>
 	<span style="width:300px;margin-right:0;">
+    <!--  customClass="custom" -->
 		<m-select 
+      width="30px"
+      height="32px"
 			v-model="selVal" 
 			placeholder="请选择" 
 			:options="selOptions" 
@@ -350,6 +353,10 @@ const state = reactive({
     {
       label:'中国',
       value:'zhongguo'
+    },
+    {
+      label:'中华人民共和国',
+      value:'zhongguocn'
     },
     {
       label:'俄罗斯',
@@ -706,6 +713,10 @@ onMounted(()=>{
 })
 </script>
 <style scoped>
+.custom{
+  width: 90px !important;
+  height: 32px !important;
+}
 span{
   margin:0 10px 10px 0;
   display:inline-block
