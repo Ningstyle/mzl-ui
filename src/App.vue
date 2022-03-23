@@ -151,7 +151,7 @@
     <!--  customClass="custom" -->
 		<m-select 
       width="30px"
-      height="32px"
+      height="50px"
 			v-model="selVal" 
 			placeholder="请选择" 
 			:options="selOptions" 

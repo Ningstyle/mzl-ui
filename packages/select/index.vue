@@ -18,7 +18,6 @@
         :value="selVal"
       />
       <i
-        ref="selectIcon"
         :class="iconClass"
         :style="[{ transform: rotate }, fixIcon]"
       ></i>
@@ -59,7 +58,15 @@ export default {
 };
 </script>
 <script setup>
-import { ref, computed, reactive, onMounted, watch, nextTick } from "vue";
+import {
+  ref,
+  computed,
+  reactive,
+  onMounted,
+  watch,
+  nextTick,
+  onUpdated,
+} from "vue";
 const emit = defineEmits(["update:modelValue", "change"]);
 const props = defineProps({
   modelValue: String | Array,
@@ -109,6 +116,7 @@ props.options.forEach((item, index) => {
     console.log();
   }
 });
+
 const activeIndex = ref(-1);
 const isShow = ref(false);
 const rotate = ref("rotate(0deg)");
@@ -125,28 +133,23 @@ const selVal = ref(
 /*1.增加选择框width和height属性的大小限制 高度最小是25px,width属性最小是100px
  *2.动态计算下拉图标的行高
  */
-const selectIcon = ref(null);
-const fixIcon = reactive({
-  top: 0,
-  height: "100%",
-  lineHeight: 0,
-});
-const fixIconLineHeight = () => {
-  let height = window.getComputedStyle(selectIcon.value).height;
-  nextTick(() => {
-    fixIcon.lineHeight = height;
-  });
-};
+const fixIcon = reactive({});
+
 // icon class
 const iconClass = computed(() => {
   return ["select-icon iconfont m-icon-arrow-down"];
 });
+
 //根据自定义的组件尺寸适配组件里面的下拉框相对位置以及图标居中
 const customStyle = computed(() => {
   let styles = {};
   if (props.height) {
     let height = parseInt(props.height) < 25 ? "25px" : props.height;
+    console.log(height);
     styles.height = height;
+    fixIcon.lineHeight = height
+    fixIcon.top = 0
+    fixIcon.height = '100%'
   }
   return styles;
 });
@@ -263,9 +266,6 @@ const selChange = (item, index) => {
     }
   }
 };
-onMounted(() => {
-  fixIconLineHeight() //根据设置的容器高度动态修正下拉图标居中
-});
 </script>
 
 <style lang="scss" scoped>
@@ -332,7 +332,7 @@ onMounted(() => {
     }
   }
   .mzl-select-option {
-    width: 100%;
+    min-width: 100%;
     height: auto;
     position: absolute;
     bottom: 0;
@@ -400,6 +400,7 @@ onMounted(() => {
           cursor: pointer;
           color: #626262;
           user-select: none;
+          white-space: nowrap;
           i {
             float: right;
           }
@@ -491,7 +492,7 @@ onMounted(() => {
     }
   }
   .mzl-select-option {
-    width: 100%;
+    min-width: 100%;
     height: auto;
     position: absolute;
     bottom: 0;
@@ -559,6 +560,7 @@ onMounted(() => {
           cursor: pointer;
           color: #626262;
           user-select: none;
+          white-space: nowrap;
           i {
             float: right;
           }
@@ -650,7 +652,7 @@ onMounted(() => {
     }
   }
   .mzl-select-option {
-    width: 100%;
+    min-width: 100%;
     height: auto;
     position: absolute;
     bottom: 0;
@@ -718,6 +720,7 @@ onMounted(() => {
           cursor: pointer;
           color: #626262;
           user-select: none;
+          white-space: nowrap;
           i {
             float: right;
           }
