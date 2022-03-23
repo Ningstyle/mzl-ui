@@ -150,8 +150,8 @@
 	<span style="width:300px;margin-right:0;">
     <!--  customClass="custom" -->
 		<m-select 
-      width="30px"
-      height="50px"
+      width="224px"
+      height="20px"
 			v-model="selVal" 
 			placeholder="请选择" 
 			:options="selOptions" 

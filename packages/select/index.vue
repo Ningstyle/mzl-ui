@@ -389,7 +389,9 @@ const selChange = (item, index) => {
       ul {
         width: 100%;
         max-height: 205px;
-        overflow-y: auto;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scrollbar-width: thin;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -549,10 +551,12 @@ const selChange = (item, index) => {
       ul {
         width: 100%;
         max-height: 205px;
-        overflow-y: auto;
+        overflow-y: scroll;
+        overflow-x: hidden;
         margin: 0;
         padding: 0;
         list-style: none;
+        scrollbar-width: thin;
         li {
           padding: 0 12px;
           line-height: 35px;
@@ -709,10 +713,12 @@ const selChange = (item, index) => {
       ul {
         width: 100%;
         max-height: 179px;
-        overflow-y: auto;
+        overflow-y: scroll;
+        overflow-x: hidden;
         margin: 0;
         padding: 0;
         list-style: none;
+        scrollbar-width: thin;
         li {
           padding: 0 12px;
           line-height: 32px;
