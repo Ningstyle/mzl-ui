@@ -266,6 +266,27 @@
   <m-date v-model="dateVal" clearable @change="dateChange" @clear="Dateclear" @open="dateFoucs" @close="dateBlur" startDate="2022-01-01" endDate="2022-03-21" placeholder="请选择日期"></m-date>
   <m-backtop></m-backtop>
   <m-tree :options="treeOptions" @nodeClick="nodeClicks" :defaultOpenNodes="['0-2-1']" multiple  :defaultSelectNodes="['0-2-1-0']"></m-tree>
+  <h4>折叠面板-基本使用</h4>
+  <m-collapse>
+    <m-collapse-item name="1">
+      <div>Consistent with real life: in line with the process and logic of real life, and comply with languages and habits that the users are used to;
+Consistent within interface: all elements should be consistent, such as: design style, icons and texts, position of elements, etc.</div>
+    </m-collapse-item>
+    <m-collapse-item name="2">
+      <div>Consistent with real life: in line with the process and logic of real life, and comply with languages and habits that the users are used to;
+Consistent within interface: all elements should be consistent, such as: design style, icons and texts, position of elements, etc.</div>
+    </m-collapse-item>
+    <m-collapse-item name="3">
+      <div>Consistent with real life: in line with the process and logic of real life, and comply with languages and habits that the users are used to;
+Consistent within interface: all elements should be consistent, such as: design style, icons and texts, position of elements, etc.</div>
+    </m-collapse-item>
+    <m-collapse-item name="4">
+      <div>Consistent with real life: in line with the process and logic of real life, and comply with languages and habits that the users are used to;
+Consistent within interface: all elements should be consistent, such as: design style, icons and texts, position of elements, etc.</div>
+    </m-collapse-item>
+  </m-collapse>
+  <h4>基本使用-菜单</h4>
+  <m-menu :options="menuOptions"></m-menu>
   <p>1</p>
   <p>1</p>
   <p>1</p>
@@ -585,10 +606,83 @@ const state = reactive({
         }
       ]
     }
-  ]   
+  ],
+  menuOptions:[
+    {
+      title:'菜单1'
+    },
+    {
+      title:'菜单2',
+      children:[
+        {
+          title:'菜单2-1'
+        },
+        {
+          title:'菜单2-2'
+        },
+        {
+          title:'菜单2-3',
+          children:[
+            {
+              title:'菜单2-3-1',
+              children:[
+                {
+                  title:'菜单2-3-1-1'
+                },
+                {
+                  title:'菜单2-3-1-2'
+                },
+              ]
+            },
+            {
+              title:'菜单2-3-2'
+            },
+          ]
+        },
+      ]
+    },
+    {
+      title:'菜单3',
+      children:[
+        {
+          title:'菜单3-1'
+        },
+        {
+          title:'菜单3-2'
+        }
+      ]
+    },
+    {
+      title:'菜单4',
+      children:[
+        {
+          title:'菜单4-1',
+          children:[
+            {
+              title:'菜单4-1-1'
+            },
+            {
+              title:'菜单4-1-2'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      title:'菜单5',
+      children:[
+        {
+          title:'菜单3-1'
+        }
+      ]
+    },
+    {
+      title:'菜单6'
+    }
+  ]  
 })
 
-const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1, radioOptions,checkOptions,activeColors,treeOptions } = state
+const {options, selOptions, selOptions1,headStyle, dorpoptions, dorpoptions1, radioOptions,checkOptions,activeColors,treeOptions,menuOptions } = state
 const openMsg = ()=>{
   // Loading.show({
   //   text:'正在加载中...',

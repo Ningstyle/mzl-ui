@@ -33,7 +33,7 @@
     "email": "1046674804@qq.com"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3002",
     "build": "vite build",
     "preview": "vite preview",
     "mzl-ui": "vite build"
