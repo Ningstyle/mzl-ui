@@ -225,10 +225,14 @@ const vClickOutside = {
       }
     };
     el.handler = handler;
-    document.addEventListener("click", handler);
+    if(typeof document !== 'undefined'){
+      document.addEventListener("click", handler);
+    }
   },
   unmounted(el) {
-    document.removeEventListener("click", el.handler);
+    if(typeof document !== 'undefined'){
+      document.removeEventListener("click", el.handler);
+    }
   },
 };
 // 选择事件

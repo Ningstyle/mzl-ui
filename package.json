@@ -1,7 +1,7 @@
 {
   "name": "mzl-ui",
   "author": "style'me",
-  "version": "0.7.7",
+  "version": "0.8.2",
   "private": false,
   "main": "./dist/mzl-ui.umd.js",
   "module": "./dist/mzl-ui.es.js",
@@ -38,13 +38,6 @@
     "preview": "vite preview",
     "mzl-ui": "vite build"
   },
-  "dependencies": {
-    "sass": "^1.49.7",
-    "vue": "^3.2.25"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^2.0.0",
-    "@vue/reactivity": "^3.2.31",
-    "vite": "^2.7.2"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

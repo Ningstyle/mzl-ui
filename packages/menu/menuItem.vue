@@ -1,5 +1,5 @@
 <template>
-  <li @click="toggler(items)">
+  <li @mouseover="toggler(items)" @mouseleave="hide(items)">
       <div class="mzl-menu-item-title-box">
         <span class="menu-icon">
           <i class="m-icon-modular"></i>
@@ -9,9 +9,9 @@
           <i class="m-icon-arrow-down-bold"></i>
         </span>
       </div>
-      <div class="mzl-menu-item-position-box" v-show="items.isOpen" v-if="items.children&&items.children.length">
+      <div class="mzl-menu-item-position-box" :style="{'left':index===0?'0':'242px','top':index==0?'60px':'0'}" v-show="items.isOpen" v-if="items.children&&items.children.length">
         <template v-for="(item,i) in items.children" :key="i">
-            <menu-item :items="item" :index="i"></menu-item>
+            <menu-item :items="item" :index="index+i"></menu-item>
         </template>
       </div>
     </li>
@@ -25,9 +25,31 @@ const props = defineProps({
   },
   index:Number
 })
+const getParents = (option, key) => {
+  for (var i in option) {
+    if (option[i].key == key) {
+      return [option[i]];
+    }
+    if (option[i].children) {
+      var ro = getParents(option[i].children, key);
+      if (ro !== undefined) {
+        return ro.concat(option[i]);
+      }
+    }
+  }
+}
 console.log(props.items);
 const toggler = (item) => {
+  console.log(item)
   item.isOpen = true
+}
+const hide = (item) =>{
+  setTimeout(() => {
+    if(!item.isOpen){
+      item.isOpen = false
+    }
+    
+  }, 100);
 }
 </script>
 
@@ -59,7 +81,8 @@ li{
     .mzl-menu-item-position-box{
       width: 240px;
       position: absolute;
-      left:0;
+      top:60px;
+      left:240px;
       // top:62px;
       background: #20222a;
     }

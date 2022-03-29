@@ -70,10 +70,14 @@ onMounted(() => {
   watchEffect(()=>{
     if(props.modelValue){
       if(props.scrollLock){
-        document.body.style['overflow'] = 'hidden'
+        if(typeof document !== 'undefined'){
+          document.body.style['overflow'] = 'hidden'
+        }
       }
     }else{
-      document.body.style['overflow'] = 'initial'
+      if(typeof document !== 'undefined'){
+        document.body.style['overflow'] = 'initial'
+      }
     }
   })
 })

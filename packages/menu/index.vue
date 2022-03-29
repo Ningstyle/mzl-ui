@@ -1,7 +1,7 @@
 <template>
     <div class="mzl-menu-default-box">
         <template v-for="(item,index) in options" :key="index">
-            <menu-item :items="item" :index="index"></menu-item>
+            <menu-item :items="item" :index="0"></menu-item>
         </template>
     </div>
 </template>
