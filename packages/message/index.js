@@ -3,9 +3,11 @@ import mMessage from './index.vue'
 
 export default ({ text, type,timeout,icon,textColor,bgColor,customClass}) => {
   // 动态创建一个DOM容器
-  const div = document.createElement('div')
+  const div = typeof document !== 'undefined'?typeof document.createElement !== 'undefined'?document.createElement('div'):'':''
   div.setAttribute('class', 'mzlui-meassage-container')
-  document.body.appendChild(div)
+  if(typeof document !== 'undefined'){
+    document.body.appendChild(div)
+  }
   let timer = null
   // 传递给组件的选项
   const vnode = createVNode(mMessage, { text, type,timeout,icon,textColor,bgColor,customClass})
@@ -13,7 +15,9 @@ export default ({ text, type,timeout,icon,textColor,bgColor,customClass}) => {
   clearTimeout(timer)
   timer = setTimeout(() => {
     render(null, div)
-    document.body.removeChild(div)
+    if(typeof document !== 'undefined'){
+      document.body.removeChild(div)
+    }
     clearTimeout(timer)
   }, timeout||2500)
 }

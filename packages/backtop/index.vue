@@ -47,9 +47,13 @@ const backtop = () =>{
   timer.value = setInterval(()=>{
     scrollTop.value-=30
     if(props.target=='body'){
-      document.body.scrollTop =scrollTop.value = document.documentElement.scrollTop =scrollTop.value
+      if(typeof document !== 'undefined'){
+        document.body.scrollTop =scrollTop.value = document.documentElement.scrollTop =scrollTop.value
+      }
     }else{
-      document.querySelector(props.target).scrollTop=scrollTop.value
+      if(typeof document !== 'undefined'){
+        document.querySelector(props.target).scrollTop=scrollTop.value
+      }
     }
     if(scrollTop.value<=0){
       scrollTop.value=0
@@ -58,8 +62,9 @@ const backtop = () =>{
   })
 }
 const handleScroll = () =>{
-  // window.pageYOffset
-  scrollTop.value = props.target=='body'?(document.body.scrollTop || document.documentElement.scrollTop):document.querySelector(props.target).scrollTop
+  if(typeof document !== 'undefined'){
+    scrollTop.value = props.target=='body'?(document.body.scrollTop || document.documentElement.scrollTop):document.querySelector(props.target).scrollTop
+  }
   if(scrollTop.value>=props.visibilityHeight){
     backtopShow.value = true
   }else{
@@ -68,16 +73,25 @@ const handleScroll = () =>{
 }
 onMounted(()=>{
   if(props.target=='body'){
-    window.addEventListener("scroll", handleScroll, false);
+    if(typeof window !== 'undefined'){
+      window.addEventListener("scroll", handleScroll, false);
+    }
   }else{
-    document.querySelector(props.target).addEventListener("scroll", handleScroll, false);
+    if(typeof document !== 'undefined'){
+      document.querySelector(props.target).addEventListener("scroll", handleScroll, false);
+    }
   }
 })
 onBeforeUnmount(()=>{
   if(props.target=='body'){
-    window.removeEventListener("scroll",handleScroll);
+    if(typeof window !== 'undefined'){
+      window.removeEventListener("scroll",handleScroll);
+    }
   }else{
-    document.querySelector(props.target).removeEventListener("scroll",handleScroll);
+    if(typeof document !== 'undefined'){
+      document.querySelector(props.target).removeEventListener("scroll",handleScroll);
+    }
+    
   }
 })
 </script>

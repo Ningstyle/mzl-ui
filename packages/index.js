@@ -21,8 +21,11 @@ import mPagination from './pagination/index'
 import $mzl from './function/index'
 import mDate from './date/index'
 import mBacktop from './backtop/index'
+import mCollapse from './collapse/index'
+import mCollapseItem from './collapse/item/index'
+import mMenu from './collapse/index'
 //存在所有组件
-const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox,mModal,mDrawer,mSwitch,mTree,mOptfile,mTextarea,mRow,mCol,mPagination,mDate,mBacktop]
+const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox,mModal,mDrawer,mSwitch,mTree,mOptfile,mTextarea,mRow,mCol,mPagination,mDate,mBacktop,mCollapse,mCollapseItem,mMenu]
 const install = app => {
   components.forEach(i => {
     app.use(i)
@@ -65,6 +68,9 @@ export {
   mPagination,
   $mzl,
   mDate,
-  mBacktop
+  mBacktop,
+  mCollapse,
+  mCollapseItem,
+  mMenu
 }
 export default mzlUi
