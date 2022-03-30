@@ -21,6 +21,8 @@ import mzlUI17 from '../packages/backtop/index'
 import mzlUI18 from '../packages/collapse/index'
 import mzlUI19 from '../packages/collapse/item/index'
 import mzlUI20 from '../packages/menu/index'
+import mzlUI21 from '../packages/tabs/index'
+import mzlUI22 from '../packages/tab-pane/index'
 // import mzlUI from '../dist/mzl-ui.es'
 // import '../dist/style.css'
 const app = createApp(App)
@@ -54,4 +56,6 @@ app.use(mzlUI17)
 app.use(mzlUI18)
 app.use(mzlUI19)
 app.use(mzlUI20)
+app.use(mzlUI21)
+app.use(mzlUI22)
 app.mount('#app')
