@@ -38,6 +38,18 @@
     "preview": "vite preview",
     "mzl-ui": "vite build"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "pinia": "^2.0.12",
+    "sass": "^1.49.7",
+    "sass-loader": "^12.6.0",
+    "vite-plugin-md": "^0.12.4",
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.14",
+    "highlight.js": "^11.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
+    "@vue/reactivity": "^3.2.31",
+    "vite": "^2.7.2"
+  }
 }
