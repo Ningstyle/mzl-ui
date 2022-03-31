@@ -310,6 +310,18 @@ Consistent within interface: all elements should be consistent, such as: design 
   <p>1</p>
   <p>1</p>
   <p>1</p>
+<h4>基本使用</h4>
+<m-tabs>
+  <m-tab-pane   label="选项卡一"  name='选项卡一' >
+     选项卡一
+    </m-tab-pane>
+      <m-tab-pane   label="选项卡二"  name='选项卡二' >
+     选项卡二
+    </m-tab-pane>
+      <m-tab-pane   label="选项卡三"  name='选项卡三' >
+     选项卡三
+    </m-tab-pane>
+</m-tabs>
 </template>
 <script setup>
 import { onMounted, reactive, ref,getCurrentInstance} from "vue";
