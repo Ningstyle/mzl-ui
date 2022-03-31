@@ -82,7 +82,7 @@ const props = defineProps({
   imgListShow:Boolean
 })
 const $slot = useSlots()
-const windowURL = window.URL || window.webkitURL;
+const windowURL = typeof window !== 'undefined'?window.URL || window.webkitURL:'';
 const File = reactive([])
 const FileList = reactive(props.fileList||[])
 const imgSrc = ref('')

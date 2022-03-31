@@ -14,7 +14,7 @@ const obj = reactive({
   position:'fixed',
   scrollLock:true,
 })
-const $loading = createApp(mLoading, {obj}).mount(document.createElement('div'))
+const $loading = createApp(mLoading, {obj}).mount(typeof document !== 'undefined'?typeof document.createElement !== 'undefined'?document.createElement('div'):'':'')
 // console.log($loading);
 const Loading = {
   show(data) { // 控制显示loading的方法
@@ -31,30 +31,44 @@ const Loading = {
       watchEffect(()=>{
         if(data.target!=undefined){
           if(obj.scrollLock){
-            document.querySelector(data.target).classList.add("mzl-loading-parentClass")
+            if(typeof document !== 'undefined'){
+              document.querySelector(data.target).classList.add("mzl-loading-parentClass")
+            }
           }else{
             setTimeout(()=>{
-              document.querySelector(data.target).classList.remove("mzl-loading-parentClass")
+              if(typeof document !== 'undefined'){
+                document.querySelector(data.target).classList.remove("mzl-loading-parentClass")
+              }
             },500)
           }
         }else{
           if(obj.scrollLock){
-            document.body.classList.add("mzl-loading-parentClass")
+            if(typeof document !== 'undefined'){
+              document.body.classList.add("mzl-loading-parentClass")
+            }
           }else{
-            document.body.classList.remove("mzl-loading-parentClass")
+            if(typeof document !== 'undefined'){
+              document.body.classList.remove("mzl-loading-parentClass")
+            }
           }
         }
         
       })
       if(data.target!=undefined){
-        document.querySelector(data.target).appendChild($loading.$el)
+        if(typeof document !== 'undefined'){
+          document.querySelector(data.target).appendChild($loading.$el)
+        }
         obj.position = 'absolute'
       }else{
-        document.body.appendChild($loading.$el)
+        if(typeof document !== 'undefined'){
+          document.body.appendChild($loading.$el)
+        }
         obj.position = 'fixed'
       }
     }else{
-      document.body.appendChild($loading.$el)
+      if(typeof document !== 'undefined'){
+        document.body.appendChild($loading.$el)
+      }
     }
     
   },
@@ -63,10 +77,14 @@ const Loading = {
     obj.show = false
     if(obj.target!='body'){
       setTimeout(()=>{
-        document.querySelector(obj.target).classList.remove("mzl-loading-parentClass")
+        if(typeof document !== 'undefined'){
+          document.querySelector(obj.target).classList.remove("mzl-loading-parentClass")
+        }
       },500)
     }else{
-      document.body.classList.remove("mzl-loading-parentClass")
+      if(typeof document !== 'undefined'){
+        document.body.classList.remove("mzl-loading-parentClass")
+      }
     }
   }
 }

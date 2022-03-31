@@ -113,9 +113,13 @@ const cancelBtn = () =>{
 }
 watchEffect(()=>{
   if(props.modelValue){
-    document.body.style="overflow:hidden"
+    if(typeof document !== 'undefined'){
+      document.body.style="overflow:hidden"
+    }
   }else{
-    document.body.style="overflow:initial"
+    if(typeof document !== 'undefined'){
+      document.body.style="overflow:initial"
+    }
   }
 })
 const closeOfModal = (e) =>{

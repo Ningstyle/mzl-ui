@@ -1,23 +1,25 @@
 <template>
-  <transition name="fade">
-    <div :class="['mzl-modal-default',customClass]" v-if="modelValue" @click="closeModal($event)">
-      <div class="mzl-modal-contentbox" :style="{'width':width,'top':top}">
-        <div class="mzl-modal-header">
-          <p class="mzl-modal-title" :style="{'text-align':align=='center'?align:''}">
-            <slot name="header" v-if="$slot['header']"></slot>
-            <span v-else>{{title}}</span>
-          </p>
-          <i class="mzl-modal-close m-icon-close" @click="close" v-if="showClose"></i>
-        </div>
-        <div class="mzl-modal-content">
-          <slot name="content"></slot>
-        </div>
-        <div class="mzl-modal-footer" :style="{'text-align':align=='center'?align:''}">
-          <slot name="footer"></slot>
+  <Teleport to="body">
+    <transition name="fade">
+      <div :class="['mzl-modal-default',customClass]" v-if="modelValue" @click="closeModal($event)">
+        <div class="mzl-modal-contentbox" :style="{'width':width,'top':top}">
+          <div class="mzl-modal-header">
+            <p class="mzl-modal-title" :style="{'text-align':align=='center'?align:''}">
+              <slot name="header" v-if="$slot['header']"></slot>
+              <span v-else>{{title}}</span>
+            </p>
+            <i class="mzl-modal-close m-icon-close" @click="close" v-if="showClose"></i>
+          </div>
+          <div class="mzl-modal-content">
+            <slot name="content"></slot>
+          </div>
+          <div class="mzl-modal-footer" :style="{'text-align':align=='center'?align:''}">
+            <slot name="footer"></slot>
+          </div>
         </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </Teleport> 
 </template>
 <script>
 export default{
@@ -25,7 +27,7 @@ export default{
 }
 </script>
 <script setup>
-import {useSlots,ref,watchEffect} from 'vue'
+import {useSlots,ref,watchEffect,onMounted} from 'vue'
 const props = defineProps({
   title:{
     type:String,
@@ -36,7 +38,10 @@ const props = defineProps({
     type:String,
     default:""
   },
-  scrollLock:Boolean,
+  scrollLock: {
+    type:Boolean,
+    default:true
+  },
   width:{
     type:String,
     default:'35%'
@@ -61,14 +66,20 @@ const close = () =>{
   emit('close')
   emit('update:modelValue',false)
 }
-watchEffect(()=>{
-  if(props.modelValue){
-    if(props.scrollLock){
-      document.body.style="overflow:hidden"
+onMounted(() => {
+  watchEffect(()=>{
+    if(props.modelValue){
+      if(props.scrollLock){
+        if(typeof document !== 'undefined'){
+          document.body.style['overflow'] = 'hidden'
+        }
+      }
+    }else{
+      if(typeof document !== 'undefined'){
+        document.body.style['overflow'] = 'initial'
+      }
     }
-  }else{
-    document.body.style="overflow:initial"
-  }
+  })
 })
 const closeModal = (e) =>{
   if(props.closeOnModal){
