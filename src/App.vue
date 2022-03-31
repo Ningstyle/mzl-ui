@@ -151,7 +151,7 @@
     <!--  customClass="custom" -->
 		<m-select 
       width="224px"
-      height="20px"
+      height="40px"
 			v-model="selVal" 
 			placeholder="请选择" 
 			:options="selOptions" 
@@ -286,7 +286,10 @@ Consistent within interface: all elements should be consistent, such as: design 
     </m-collapse-item>
   </m-collapse>
   <h4>基本使用-菜单</h4>
-  <m-menu :options="menuOptions"></m-menu>
+  <!-- :theme="{bgColor:'#0e80eb',activeBgColor:'#0b6ac3'}" -->
+  <m-menu :options="menuOptions" @change="menuChange" >
+    <m-dropdown title="下拉菜单" :options="dorpoptions" size="small"></m-dropdown>
+  </m-menu>
   <p>1</p>
   <p>1</p>
   <p>1</p>
@@ -621,33 +624,42 @@ const state = reactive({
   ],
   menuOptions:[
     {
-      title:'菜单1'
+      title:'菜单1',
+      icon:'m-icon-modular',
     },
     {
       title:'菜单2',
+      icon:'m-icon-modular',
       children:[
         {
-          title:'菜单2-1'
+          title:'菜单2-1',
+          icon:'m-icon-modular',
         },
         {
-          title:'菜单2-2'
+          title:'菜单2-2',
+          icon:'m-icon-modular'
         },
         {
           title:'菜单2-3',
+          icon:'m-icon-modular',
           children:[
             {
               title:'菜单2-3-1',
+              icon:'m-icon-modular',
               children:[
                 {
-                  title:'菜单2-3-1-1'
+                  title:'菜单2-3-1-1',
+                  icon:'m-icon-modular',
                 },
                 {
-                  title:'菜单2-3-1-2'
+                  title:'菜单2-3-1-2',
+                  icon:'m-icon-modular',
                 },
               ]
             },
             {
-              title:'菜单2-3-2'
+              title:'菜单2-3-2',
+              icon:'m-icon-modular',
             },
           ]
         },
@@ -655,26 +667,35 @@ const state = reactive({
     },
     {
       title:'菜单3',
+      icon:'m-icon-modular',
+      disabled:true,
       children:[
         {
-          title:'菜单3-1'
+          title:'菜单3-1',
+          icon:'m-icon-modular',
         },
         {
-          title:'菜单3-2'
+          title:'菜单3-2',
+          icon:'m-icon-modular',
         }
       ]
     },
     {
       title:'菜单4',
+      icon:'m-icon-modular',
       children:[
         {
           title:'菜单4-1',
+          icon:'m-icon-modular',
           children:[
             {
-              title:'菜单4-1-1'
+              title:'菜单4-1-1',
+              icon:'m-icon-modular',
+              disabled:true,
             },
             {
-              title:'菜单4-1-2'
+              title:'菜单4-1-2',
+              icon:'m-icon-modular',
             }
           ]
         }
@@ -682,14 +703,17 @@ const state = reactive({
     },
     {
       title:'菜单5',
+      icon:'m-icon-modular',
       children:[
         {
-          title:'菜单3-1'
+          title:'菜单5-1',
+          icon:'m-icon-modular',
         }
       ]
     },
     {
-      title:'菜单6'
+      title:'菜单6',
+      icon:'m-icon-modular',
     }
   ]  
 })
@@ -807,6 +831,9 @@ const dateBlur = (e) => {
   // console.log('关闭');
 }
 const nodeClicks = (item) => {
+  console.log(item);
+}
+const menuChange = (item) =>{
   console.log(item);
 }
 const instance = getCurrentInstance()
