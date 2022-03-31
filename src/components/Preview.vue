@@ -16,8 +16,6 @@
 
 <script setup>
 import { onMounted, ref, nextTick } from "vue";
-// import Prism from 'prismjs';
-// import "/themes/custom.css";
 const props = defineProps({
   compName: {
     type: String,
@@ -46,9 +44,7 @@ async function getSourceCode() {
   const isDev = import.meta.env.MODE === "development";
   if (isDev) {
     sourceCode.value = (
-      await import(
-        /* @vite-ignore */ `/packages/${props.compName}/doc/${props.demoName}.vue?raw`
-      )
+      await import(/* @vite-ignore */ `/packages/${props.compName}/doc/${props.demoName}.vue?raw`)
     ).default;
   } else {
     sourceCode.value = await fetch(
@@ -56,7 +52,6 @@ async function getSourceCode() {
     ).then((res) => res.text());
   }
 }
-
 onMounted(() => {
   getSourceCode();
 });

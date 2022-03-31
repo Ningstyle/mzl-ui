@@ -3,7 +3,7 @@
     <div class="imgLogo">
       <img src="../assets/logo.png" alt="mzl-ui" />
     </div>
-    <h3>一套适合开发者使用的轻量级UI组件库，完美支持vite+vue3</h3>
+    <h3>一套适合开发者使用的轻量级UI组件库，完美支持vue3</h3>
     <div class="tiBox">
       <p>
         完美支持vite+vue3版本，更小的体积，更快的响应，更强的拓展性，让我们一起向未来，拥抱这精彩的vue世界！
