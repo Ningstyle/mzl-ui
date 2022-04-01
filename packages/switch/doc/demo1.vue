@@ -1,10 +1,13 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" placeholder="基本使用"></m-input>
+  <m-switch v-model="switchVal" @change="switchChange"></m-switch>
 </template>
 
 <!-- js -->
 <script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
+import { ref } from "vue";
+const switchVal = ref(false);
+const switchChange = (e) => {
+  console.log(e);
+};
 </script>

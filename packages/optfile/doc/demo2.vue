@@ -1,10 +1,4 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" disabled placeholder="禁用状态"></m-input>
+  <m-optfile label="选择文件" type="primary" showFileList></m-optfile>
 </template>
-
-<!-- js -->
-<script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
-</script>

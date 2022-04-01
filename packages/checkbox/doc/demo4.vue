@@ -1,14 +1,23 @@
 <!-- html -->
 <template>
-  <m-space>
-    <m-input v-model="value1" leftIcon="m-icon-search"></m-input>
-    <m-input v-model="value2" rightIcon="m-icon-calendar"></m-input>
-  </m-space>
+  <m-checkbox
+    v-model="checkboxVal"
+    :options="checkOptions"
+    :inline="false"
+  ></m-checkbox>
 </template>
 
 <!-- js -->
 <script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
+import { reactive, ref } from "vue";
+const checkboxVal = ref([]);
+const state = reactive({
+  checkOptions: [
+    { label: "中国", value: "zhongguo" },
+    { label: "英国", value: "yingguo" },
+    { label: "德国", value: "deguo" },
+    { label: "法国", value: "faguo" },
+  ],
+});
+const { checkOptions } = state;
 </script>

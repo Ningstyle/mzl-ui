@@ -1,13 +1,9 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" clearable @clear="clear" placeholder="可清空"></m-input>
+  <m-pagination
+    :total="100"
+    :current="1"
+    :pageSize="10"
+    size="small"
+  ></m-pagination>
 </template>
-
-<!-- js -->
-<script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
-  const clear = () =>{
-    console.log("清空")
-  }
-</script>

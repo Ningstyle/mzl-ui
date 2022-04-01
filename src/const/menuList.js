@@ -100,7 +100,7 @@ export default [
       {
         "title-cn": "Date 日期选择",
         "title-en": "Datepicker",
-        path: "/mzlui/datepicker",
+        path: "/mzlui/date",
       },
       { "title-cn": "Tree 树形控件", "title-en": "Tree", path: "/mzlui/tree" },
     ],

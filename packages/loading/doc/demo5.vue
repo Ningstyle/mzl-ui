@@ -1,16 +1,22 @@
 <!-- html -->
 <template>
-  <m-space>
-    <m-input v-model="value1"  placeholder="默认大小"></m-input>
-    <m-input v-model="value2"  placeholder="小的" size="small"></m-input>
-    <m-input v-model="value3"  placeholder="更小的" size="mini"></m-input>
-  </m-space>
+  <m-button @click="openLoading">更多自定义配置项</m-button>
 </template>
 
 <!-- js -->
 <script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
-  const value3 = ref('')
+  import Loading from "../index.js"; //此处为本地示例，请使用import { Loading } from "mzl-ui";
+  const openLoading = () => {
+    Loading.show({
+      text:'正在加载mzl-ui...',
+      icon:'m-icon-loading3',
+      scrollLock:true,
+      textColor:'#333',
+      bgColor:"rgba(248,253,255,.9)",
+      showIcon:true,
+    })
+    setTimeout(()=>{
+      Loading.hide()
+    },5000)
+  }
 </script>

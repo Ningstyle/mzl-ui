@@ -8,75 +8,81 @@ import demo6 from './demo6.vue'
 import demo7 from './demo7.vue'
 import demo8 from './demo8.vue'
 import Attributes from './Attributes.vue'
+import Format from './format.vue'
 import Event from './Events.vue'
 import preview from '@/components/preview.vue'
 </script>
 
-# Input 输入框
+# Date 日期组件
 
-#### 数据输入框类型，通过键盘输入字符
+#### 用于快捷选择日期的组件
 
 <br/>
 
 ## 基本使用
 
-#### input 的基本使用
+#### Date 组件基本使用示例。
 
 <demo1/>
-<preview compName="input" demoName="demo1"/>
+<preview compName="date" demoName="demo1"/>
 
 ## 禁用状态
 
-#### input 的禁用状态，通过 _disabled_ 属性限制输入及操作
+#### 通过 _disabled_ 属性开启禁用。
 
 <demo2/>
-<preview compName="input" demoName="demo2"/>
-
-## 可清空数据
-
-#### input 的 value 可快捷清空，通过 _clearable_ 属性启用
-
-<demo3/>
-<preview compName="input" demoName="demo3"/>
-
-## 带图标
-
-#### 可使用 _leftIcon_ 或者 _rightIcon_ 来定义显示图标并确定显示的位置。需要注意的是如果定义了右侧显示图标，那 _clearable_ 将不再起作用
-
-<demo4/>
-<preview compName="input" demoName="demo4"/>
+<preview compName="date" demoName="demo2"/>
 
 ## 不同大小
 
-#### 通过设置 _size_ 属性来适应不同大小
+#### 通过 _size_ 属性设置显示不同大小。
+
+<demo3/>
+<preview compName="date" demoName="demo3"/>
+
+## 选择年
+
+#### 通过设置 _type="year"_ 快捷选择年。
+
+<demo4/>
+<preview compName="date" demoName="demo4"/>
+
+## 选择月
+
+#### 通过设置 _type="month"_ 快捷选择月。
 
 <demo5/>
-<preview compName="input" demoName="demo5"/>
+<preview compName="date" demoName="demo5"/>
 
-## 组合输入
+## 格式化日期显示
 
-#### 可通过插槽完成组合输入，插槽名默认为 _btn_
+#### 通过设置 _format_ 格式化日期显示。
 
 <demo6/>
-<preview compName="input" demoName="demo6"/>
+<preview compName="date" demoName="demo6"/>
 
-## 密码类型
+## 日期选择范围限制
 
-#### 密码类型的输入框，可通过 _showPassword_ 来启用是否开启显示密码
+#### 设置可选择的日期范围限制。
 
 <demo7/>
-<preview compName="input" demoName="demo7"/>
+<preview compName="date" demoName="demo7"/>
 
-## 自定义 Focus 颜色
+## 自定义活动元素颜色
 
-#### 通过 _focusColor_ 属性自定义 input 在获取焦点后的颜色
+#### 设置可选择的日期范围限制。
 
 <demo8/>
-<preview compName="input" demoName="demo8"/>
+<preview compName="date" demoName="demo8"/>
 
 ## Attributes 参数
 
 <Attributes/>
+<br/>
+
+## format 日期格式说明
+
+<Format/>
 <br/>
 
 ## Event 事件

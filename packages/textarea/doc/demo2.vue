@@ -1,10 +1,14 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" disabled placeholder="禁用状态"></m-input>
+  <m-textarea
+    v-model="textareaVal"
+    placeholder="请输入内容"
+    disabled
+  ></m-textarea>
 </template>
 
 <!-- js -->
 <script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
+import { ref } from "vue";
+const textareaVal = ref("");
 </script>

@@ -1,14 +1,26 @@
 <!-- html -->
 <template>
   <m-space>
-    <m-input v-model="value1" leftIcon="m-icon-search"></m-input>
-    <m-input v-model="value2" rightIcon="m-icon-calendar"></m-input>
+    <m-dropdown title="hover唤醒" :options="dorpoptions"></m-dropdown>
+    <m-dropdown
+      title="click唤醒"
+      :options="dorpoptions"
+      trigger="click"
+    ></m-dropdown>
   </m-space>
 </template>
 
 <!-- js -->
 <script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
+import { reactive } from "vue";
+const state = reactive({
+  dorpoptions: [
+    { label: "菜单1" },
+    { label: "菜单2" },
+    { label: "菜单3" },
+    { label: "菜单4" },
+    { label: "菜单5" },
+  ],
+});
+const { dorpoptions } = state;
 </script>

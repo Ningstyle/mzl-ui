@@ -1,10 +1,9 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" disabled placeholder="禁用状态"></m-input>
+  <m-pagination
+    :total="100"
+    :current="1"
+    :pageSize="10"
+    disabled
+  ></m-pagination>
 </template>
-
-<!-- js -->
-<script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
-</script>

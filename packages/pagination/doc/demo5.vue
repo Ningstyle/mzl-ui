@@ -1,16 +1,15 @@
 <!-- html -->
 <template>
-  <m-space>
-    <m-input v-model="value1"  placeholder="默认大小"></m-input>
-    <m-input v-model="value2"  placeholder="小的" size="small"></m-input>
-    <m-input v-model="value3"  placeholder="更小的" size="mini"></m-input>
-  </m-space>
+  <m-pagination
+    :total="200"
+    :current="1"
+    :pageSize="10"
+    :maxSize="8"
+  ></m-pagination>
+  <m-pagination
+    :total="1000"
+    :current="1"
+    :pageSize="20"
+    :maxSize="20"
+  ></m-pagination>
 </template>
-
-<!-- js -->
-<script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
-  const value3 = ref('')
-</script>

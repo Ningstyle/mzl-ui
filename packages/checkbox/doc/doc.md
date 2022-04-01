@@ -6,77 +6,75 @@ import demo4 from './demo4.vue'
 import demo5 from './demo5.vue'
 import demo6 from './demo6.vue'
 import demo7 from './demo7.vue'
-import demo8 from './demo8.vue'
 import Attributes from './Attributes.vue'
+import Options from './options.vue'
 import Event from './Events.vue'
 import preview from '@/components/preview.vue'
 </script>
 
-# Input 输入框
+# Checkbox 多选
 
-#### 数据输入框类型，通过键盘输入字符
+#### 常用从一组数据中选择多个数据
 
 <br/>
 
 ## 基本使用
 
-#### input 的基本使用
+#### checkbox 组件的基本使用，需要一个主要的 _options_ 参数。
 
 <demo1/>
-<preview compName="input" demoName="demo1"/>
+<preview compName="checkbox" demoName="demo1"/>
 
-## 禁用状态
+## 默认选中
 
-#### input 的禁用状态，通过 _disabled_ 属性限制输入及操作
+#### _v-model_ 添加默认绑定选项 _value_ 值。
 
 <demo2/>
-<preview compName="input" demoName="demo2"/>
+<preview compName="checkbox" demoName="demo2"/>
 
-## 可清空数据
+## 禁用选项
 
-#### input 的 value 可快捷清空，通过 _clearable_ 属性启用
+#### 可以针对 _options_ 下某个选项来添加 _disabled_ 属性实现禁用选项。
 
 <demo3/>
-<preview compName="input" demoName="demo3"/>
+<preview compName="checkbox" demoName="demo3"/>
 
-## 带图标
+## 垂直排列
 
-#### 可使用 _leftIcon_ 或者 _rightIcon_ 来定义显示图标并确定显示的位置。需要注意的是如果定义了右侧显示图标，那 _clearable_ 将不再起作用
+#### 可以通过设置 _inline_ 属性为 _false_ 实现垂直排列。
 
 <demo4/>
-<preview compName="input" demoName="demo4"/>
+<preview compName="checkbox" demoName="demo4"/>
+
+## 匹配不同格式的数据
+
+#### 默认 _options_ 接收 _label_ 和 _value_ 作为显示和值绑定，你可以根据 _labelFiled_ 和 _valueFiled_ 来重新确定字段的绑定，更方便的匹配不同格式的数据。
+
+<demo5/>
+<preview compName="checkbox" demoName="demo5"/>
 
 ## 不同大小
 
-#### 通过设置 _size_ 属性来适应不同大小
-
-<demo5/>
-<preview compName="input" demoName="demo5"/>
-
-## 组合输入
-
-#### 可通过插槽完成组合输入，插槽名默认为 _btn_
+#### 可以通过设置 _size_ 属性来显示不同大小。
 
 <demo6/>
-<preview compName="input" demoName="demo6"/>
+<preview compName="checkbox" demoName="demo6"/>
 
-## 密码类型
+## 自定义颜色
 
-#### 密码类型的输入框，可通过 _showPassword_ 来启用是否开启显示密码
+#### 可以通过设置 _customColor_ 属性为选中的选项自定义你喜欢的颜色。
 
 <demo7/>
-<preview compName="input" demoName="demo7"/>
-
-## 自定义 Focus 颜色
-
-#### 通过 _focusColor_ 属性自定义 input 在获取焦点后的颜色
-
-<demo8/>
-<preview compName="input" demoName="demo8"/>
+<preview compName="checkbox" demoName="demo7"/>
 
 ## Attributes 参数
 
 <Attributes/>
+<br/>
+
+## options API
+
+<Options/>
 <br/>
 
 ## Event 事件

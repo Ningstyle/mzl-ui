@@ -1,14 +1,17 @@
 <!-- html -->
 <template>
-  <m-space>
-    <m-input v-model="value1" leftIcon="m-icon-search"></m-input>
-    <m-input v-model="value2" rightIcon="m-icon-calendar"></m-input>
-  </m-space>
+  <m-switch v-model="switchVal" closeText="关闭" activeText="开启"></m-switch>
+  <m-switch
+    v-model="switchVal1"
+    closeText="关闭"
+    activeText="开启"
+    textAlign="right"
+  ></m-switch>
 </template>
 
 <!-- js -->
 <script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
+import { ref } from "vue";
+const switchVal = ref(true);
+const switchVal1 = ref(true);
 </script>

@@ -1,14 +1,12 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" clearable>
-    <template #btn>
-      <m-button type="primary" leftIcon="m-icon-search">搜索</m-button>
-    </template>
-  </m-input>
-</template>
-
-<!-- js -->
-<script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
-</script>
+  <m-pagination
+    :total="100"
+    :current="1"
+    :pageSize="10"
+    prevText="上一页"
+    nextText="下一页"
+    showTotal
+    jumper
+  ></m-pagination>
+</template>>

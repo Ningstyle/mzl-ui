@@ -1,14 +1,142 @@
 <!-- html -->
 <template>
-  <m-space>
-    <m-input v-model="value1" leftIcon="m-icon-search"></m-input>
-    <m-input v-model="value2" rightIcon="m-icon-calendar"></m-input>
-  </m-space>
+  <m-tree
+    :options="treeOptions"
+    multiple
+    :defaultSelectNodes="['0-1', '0-2-1-0']"
+  ></m-tree>
 </template>
 
 <!-- js -->
 <script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
+import { reactive } from "vue";
+const state = reactive({
+  treeOptions: [
+    {
+      label: "一级",
+      value: "",
+      children: [
+        {
+          label: "一级1",
+          value: "",
+        },
+        {
+          label: "一级2",
+          value: "",
+        },
+        {
+          label: "一级3",
+          value: "",
+          children: [
+            {
+              label: "一级3-1",
+              value: "",
+            },
+            {
+              label: "一级3-2",
+              value: "",
+              children: [
+                {
+                  label: "一级3-2-1",
+                  value: "",
+                },
+                {
+                  label: "一级3-2-2",
+                  value: "",
+                },
+                {
+                  label: "一级3-2-3",
+                  value: "",
+                },
+              ],
+            },
+            {
+              label: "一级3-3",
+              value: "",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      label: "二级",
+      value: "",
+      children: [
+        {
+          label: "二级1",
+          value: "",
+        },
+        {
+          label: "二级2",
+          value: "",
+        },
+        {
+          label: "二级3",
+          value: "",
+          children: [
+            {
+              label: "二级3-1",
+              value: "",
+              children: [
+                {
+                  label: "二级3-1-1",
+                  value: "",
+                },
+                {
+                  label: "二级3-1-2",
+                  value: "",
+                },
+                {
+                  label: "二级3-1-3",
+                  value: "",
+                },
+              ],
+            },
+            {
+              label: "二级3-2",
+              value: "",
+            },
+            {
+              label: "二级3-3",
+              value: "",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      label: "三级",
+      value: "",
+      children: [
+        {
+          label: "三级1",
+          value: "",
+        },
+        {
+          label: "三级2",
+          value: "",
+        },
+        {
+          label: "三级3",
+          value: "",
+          children: [
+            {
+              label: "三级3-1",
+              value: "",
+            },
+            {
+              label: "三级3-2",
+              value: "",
+            },
+            {
+              label: "三级3-3",
+              value: "",
+            },
+          ],
+        },
+      ],
+    },
+  ],
+});
+const { treeOptions } = state;
 </script>

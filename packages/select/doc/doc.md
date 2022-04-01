@@ -8,75 +8,81 @@ import demo6 from './demo6.vue'
 import demo7 from './demo7.vue'
 import demo8 from './demo8.vue'
 import Attributes from './Attributes.vue'
+import Options from './options.vue'
 import Event from './Events.vue'
 import preview from '@/components/preview.vue'
 </script>
 
-# Input 输入框
+# Select 下拉框
 
-#### 数据输入框类型，通过键盘输入字符
+#### 使用下拉的形式选择需要的数据
 
 <br/>
 
 ## 基本使用
 
-#### input 的基本使用
+#### select 下拉框基本使用示例,需要一个主要的 _options_ 参数
 
 <demo1/>
-<preview compName="input" demoName="demo1"/>
+<preview compName="select" demoName="demo1"/>
 
 ## 禁用状态
 
-#### input 的禁用状态，通过 _disabled_ 属性限制输入及操作
+#### 可以设置 _disabled_ 属性来实现禁用状态
 
 <demo2/>
-<preview compName="input" demoName="demo2"/>
+<preview compName="select" demoName="demo2"/>
 
-## 可清空数据
+## 禁用选项
 
-#### input 的 value 可快捷清空，通过 _clearable_ 属性启用
+#### 可以针对 _options_ 下某个选项来添加 _disabled_ 属性实现禁用选项
 
 <demo3/>
-<preview compName="input" demoName="demo3"/>
+<preview compName="select" demoName="demo3"/>
 
-## 带图标
+## 匹配不同格式的数据
 
-#### 可使用 _leftIcon_ 或者 _rightIcon_ 来定义显示图标并确定显示的位置。需要注意的是如果定义了右侧显示图标，那 _clearable_ 将不再起作用
+#### 默认 _options_ 接收 _label_ 和 _value_ 作为显示和值绑定，你可以根据 _labelFiled_ 和 _valueFiled_ 来重新确定字段的绑定，更方便的匹配不同格式的数据。
 
 <demo4/>
-<preview compName="input" demoName="demo4"/>
+<preview compName="select" demoName="demo4"/>
 
 ## 不同大小
 
-#### 通过设置 _size_ 属性来适应不同大小
+#### 通过设置 _size_ 属性来显示不同大小的 select
 
 <demo5/>
-<preview compName="input" demoName="demo5"/>
+<preview compName="select" demoName="demo5"/>
 
-## 组合输入
+## 可过滤搜索
 
-#### 可通过插槽完成组合输入，插槽名默认为 _btn_
+#### 通过设置 _searchable_ 属性来开启过滤搜索
 
 <demo6/>
-<preview compName="input" demoName="demo6"/>
+<preview compName="select" demoName="demo6"/>
 
-## 密码类型
+## 自定义宽高
 
-#### 密码类型的输入框，可通过 _showPassword_ 来启用是否开启显示密码
+#### 通过设置 _width_ 和 _height_ 自定义宽高
 
 <demo7/>
-<preview compName="input" demoName="demo7"/>
+<preview compName="select" demoName="demo7"/>
 
-## 自定义 Focus 颜色
+## 多选
 
-#### 通过 _focusColor_ 属性自定义 input 在获取焦点后的颜色
+#### 通过设置 _multiple_ 属性来开启多选
 
 <demo8/>
-<preview compName="input" demoName="demo8"/>
+<preview compName="select" demoName="demo8"/>
 
 ## Attributes 参数
 
 <Attributes/>
+<br/>
+
+## options API
+
+<Options/>
 <br/>
 
 ## Event 事件

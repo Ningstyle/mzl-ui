@@ -6,77 +6,75 @@ import demo4 from './demo4.vue'
 import demo5 from './demo5.vue'
 import demo6 from './demo6.vue'
 import demo7 from './demo7.vue'
-import demo8 from './demo8.vue'
 import Attributes from './Attributes.vue'
 import Event from './Events.vue'
+import ActiveColors from './activeColors.vue'
 import preview from '@/components/preview.vue'
 </script>
 
-# Input 输入框
+# Pagination 分页
 
-#### 数据输入框类型，通过键盘输入字符
+#### 用于页面数据请求过多分批请求
 
 <br/>
 
 ## 基本使用
 
-#### input 的基本使用
+#### Pagination 组件基本使用示例。
 
 <demo1/>
-<preview compName="input" demoName="demo1"/>
+<preview compName="pagination" demoName="demo1"/>
 
 ## 禁用状态
 
-#### input 的禁用状态，通过 _disabled_ 属性限制输入及操作
+#### 通过 _disabled_ 属性来开启禁用。
 
 <demo2/>
-<preview compName="input" demoName="demo2"/>
+<preview compName="pagination" demoName="demo2"/>
 
-## 可清空数据
+## 小型分页
 
-#### input 的 value 可快捷清空，通过 _clearable_ 属性启用
+#### 通过 _size=small_ 属性来开启。
 
 <demo3/>
-<preview compName="input" demoName="demo3"/>
+<preview compName="pagination" demoName="demo3"/>
 
-## 带图标
+## 无边框
 
-#### 可使用 _leftIcon_ 或者 _rightIcon_ 来定义显示图标并确定显示的位置。需要注意的是如果定义了右侧显示图标，那 _clearable_ 将不再起作用
+#### 通过 _border=false_ 属性来开启。
 
 <demo4/>
-<preview compName="input" demoName="demo4"/>
+<preview compName="pagination" demoName="demo4"/>
 
-## 不同大小
+## 每页展示最大页数
 
-#### 通过设置 _size_ 属性来适应不同大小
+#### 通过 _maxSize_ 控制每页展示最大页数，超出将进行滚动。
 
 <demo5/>
-<preview compName="input" demoName="demo5"/>
+<preview compName="pagination" demoName="demo5"/>
 
-## 组合输入
+## 更多配置
 
-#### 可通过插槽完成组合输入，插槽名默认为 _btn_
+#### 更多额外拓展配置项。
 
 <demo6/>
-<preview compName="input" demoName="demo6"/>
+<preview compName="pagination" demoName="demo6"/>
 
-## 密码类型
+## 自定义样式
 
-#### 密码类型的输入框，可通过 _showPassword_ 来启用是否开启显示密码
+#### 可通过 _activeColors_ 对象自定义分页样式。
 
 <demo7/>
-<preview compName="input" demoName="demo7"/>
+<preview compName="pagination" demoName="demo7"/>
 
-## 自定义 Focus 颜色
-
-#### 通过 _focusColor_ 属性自定义 input 在获取焦点后的颜色
-
-<demo8/>
-<preview compName="input" demoName="demo8"/>
-
-## Attributes 参数
+## attributes 参数
 
 <Attributes/>
+<br/>
+
+## ActiveColors 配置项
+
+<ActiveColors/>
 <br/>
 
 ## Event 事件

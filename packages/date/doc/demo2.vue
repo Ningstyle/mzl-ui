@@ -1,10 +1,10 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" disabled placeholder="禁用状态"></m-input>
+  <m-date v-model="dateVal" disabled placeholder="请选择日期"> </m-date>
 </template>
 
 <!-- js -->
 <script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
+import { ref } from "vue";
+const dateVal = ref("");
 </script>
