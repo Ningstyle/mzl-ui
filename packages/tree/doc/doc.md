@@ -21,42 +21,54 @@ import preview from '@/components/preview.vue'
 
 #### tree 组件基本使用示例。
 
-<demo1/>
+<div class="componetnsBox">
+  <demo1/>
+</div>
 <preview compName="tree" demoName="demo1"/>
 
 ## 默认展开
 
 #### 通过 _defaultOpenNodes_ 属性设置默认展开的节点。
 
-<demo2/>
+<div class="componetnsBox">
+  <demo2/>
+</div>
 <preview compName="tree" demoName="demo2"/>
 
 ## 可选择
 
 #### 通过 _multiple_ 属性启用可选择的树。
 
-<demo3/>
+<div class="componetnsBox">
+  <demo3/>
+</div>
 <preview compName="tree" demoName="demo3"/>
 
 ## 默认选中
 
 #### 通过 _defaultSelectNodes_ 属性设置默认选中的节点。
 
-<demo4/>
+<div class="componetnsBox">
+  <demo4/>
+</div>
 <preview compName="tree" demoName="demo4"/>
 
 ## 禁用状态
 
 #### 通过对数据项增加 _disabled:true_ 来设置禁用指定节点。
 
-<demo5/>
+<div class="componetnsBox">
+  <demo5/>
+</div>
 <preview compName="tree" demoName="demo5"/>
 
 ## 匹配不同格式
 
 #### 通过设置 _labelFiled_ 可替换默认 _lable_ 字段的展示，匹配不同数据格式。
 
-<demo6/>
+<div class="componetnsBox">
+  <demo6/>
+</div>
 <preview compName="tree" demoName="demo6"/>
 
 ## Attributes 参数

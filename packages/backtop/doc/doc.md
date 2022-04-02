@@ -16,21 +16,27 @@ import preview from '@/components/preview.vue'
 
 #### Backtop 组件基本使用示例。
 
-<demo1/>
+<div class="componetnsBox">
+  <demo1/>
+</div>
 <preview compName="backtop" demoName="demo1"/>
 
 ## 绑定指定元素
 
 #### 绑定指定元素监测滚动来触发。
 
-<demo2/>
+<div class="componetnsBox">
+  <demo2/>
+</div>
 <preview compName="backtop" demoName="demo2"/>
 
 ## 自定义元素展示
 
 #### 通过插槽的方式自定义元素展示
 
-<demo3/>
+<div class="componetnsBox">
+  <demo3/>
+</div>
 <preview compName="backtop" demoName="demo3"/>
 
 ## Attributes 参数

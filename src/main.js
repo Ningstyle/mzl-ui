@@ -3,7 +3,7 @@ import App from "./App.vue";
 import { createPinia } from "pinia";
 import mzlUI from "../packages/index";
 import hljs from "highlight.js";
-import "highlight.js/styles/color-brewer.css";
+// import "highlight.js/styles/color-brewer.css";
 
 import router from "@/router";
 // import mzlUI from '../dist/mzl-ui.es'

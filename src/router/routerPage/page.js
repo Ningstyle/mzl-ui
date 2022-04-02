@@ -55,6 +55,11 @@ export default [
         component: () => import("/packages/textarea/doc/doc.md"),
       },
       {
+        path: "Space",
+        name: "Space 间距",
+        component: () => import("/packages/Space/doc/doc.md"),
+      },
+      {
         path: "select",
         name: "Select 下拉框",
         component: () => import("/packages/select/doc/doc.md"),
@@ -103,6 +108,16 @@ export default [
         path: "tree",
         name: "Tree 树形控件",
         component: () => import("/packages/tree/doc/doc.md"),
+      },
+      {
+        path: "menu",
+        name: "Menu 菜单",
+        component: () => import("/packages/menu/doc/doc.md"),
+      },
+      {
+        path: "tabs",
+        name: "Tab 切换",
+        component: () => import("/packages/tabs/doc/doc.md"),
       },
       {
         path: "message",

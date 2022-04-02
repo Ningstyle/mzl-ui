@@ -22,49 +22,63 @@ import preview from '@/components/preview.vue'
 
 #### Pagination 组件基本使用示例。
 
-<demo1/>
+<div class="componetnsBox">
+  <demo1/>
+</div>
 <preview compName="pagination" demoName="demo1"/>
 
 ## 禁用状态
 
 #### 通过 _disabled_ 属性来开启禁用。
 
-<demo2/>
+<div class="componetnsBox">
+  <demo2/>
+</div>
 <preview compName="pagination" demoName="demo2"/>
 
 ## 小型分页
 
 #### 通过 _size=small_ 属性来开启。
 
-<demo3/>
+<div class="componetnsBox">
+  <demo3/>
+</div>
 <preview compName="pagination" demoName="demo3"/>
 
 ## 无边框
 
 #### 通过 _border=false_ 属性来开启。
 
-<demo4/>
+<div class="componetnsBox">
+  <demo4/>
+</div>
 <preview compName="pagination" demoName="demo4"/>
 
 ## 每页展示最大页数
 
 #### 通过 _maxSize_ 控制每页展示最大页数，超出将进行滚动。
 
-<demo5/>
+<div class="componetnsBox">
+  <demo5/>
+</div>
 <preview compName="pagination" demoName="demo5"/>
 
 ## 更多配置
 
 #### 更多额外拓展配置项。
 
-<demo6/>
+<div class="componetnsBox">
+  <demo6/>
+</div>
 <preview compName="pagination" demoName="demo6"/>
 
 ## 自定义样式
 
 #### 可通过 _activeColors_ 对象自定义分页样式。
 
-<demo7/>
+<div class="componetnsBox">
+  <demo7/>
+</div>
 <preview compName="pagination" demoName="demo7"/>
 
 ## attributes 参数

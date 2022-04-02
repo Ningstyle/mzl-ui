@@ -16,19 +16,25 @@ import preview from '@/components/preview.vue'
 
 #### Confirm 消息确认基本使用示例。
 
-<demo1/>
+<div class="componetnsBox">
+  <demo1/>
+</div>
 <preview compName="confirm" demoName="demo1"/>
 
 #### 你也可以通过获取组件实例的方式来调用。
 
-<demo2/>
+<div class="componetnsBox">
+  <demo2/>
+</div>
 <preview compName="confirm" demoName="demo2"/>
 
 ## 拓展自定义配置
 
 #### 自定义配置整个消息确认框的元素
 
-<demo3/>
+<div class="componetnsBox">
+  <demo3/>
+</div>
 <preview compName="confirm" demoName="demo3"/>
 
 ## Attributes 参数

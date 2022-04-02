@@ -15,7 +15,9 @@ import preview from '@/components/preview.vue'
 
 <br/>
 
-<demo1/>
+<div class="componetnsBox">
+  <demo1/>
+</div>
 <preview compName="layout" demoName="demo1"/>
 
 ## 位置偏移
@@ -23,7 +25,9 @@ import preview from '@/components/preview.vue'
 #### 通过 _offset_ 设置偏移占用指定的列数。
 
 <br/>
-<demo2/>
+<div class="componetnsBox">
+  <demo2/>
+</div>
 <preview compName="layout" demoName="demo2"/>
 
 ## Attributes 参数

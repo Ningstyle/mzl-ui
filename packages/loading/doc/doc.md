@@ -18,33 +18,43 @@ import preview from '@/components/preview.vue'
 
 #### loading 组件基本使用示例。
 
-<demo1/>
+<div class="componetnsBox">
+  <demo1/>
+</div>
 <preview compName="loading" demoName="demo1"/>
 
 #### 你也可以通过获取组件实例的方式来调用。
 
-<demo2/>
+<div class="componetnsBox">
+  <demo2/>
+</div>
 <preview compName="loading" demoName="demo2"/>
 
 ## 区域加载
 
 #### 可通过设置 _target_（元素类名或 ID）来为指定区域添加。
 
-<demo3/>
+<div class="componetnsBox">
+  <demo3/>
+</div>
 <preview compName="loading" demoName="demo3"/>
 
 ## 自定义加载图片
 
 #### 可通过设置 _img_ 来自定义加载图片，自定义后 _icon_ 将失效。
 
-<demo4/>
+<div class="componetnsBox">
+  <demo4/>
+</div>
 <preview compName="loading" demoName="demo4"/>
 
 ## 更多自定义配置项
 
 #### 更多配置项示例。
 
-<demo5/>
+<div class="componetnsBox">
+  <demo5/>
+</div>
 <preview compName="loading" demoName="demo5"/>
 
 ## Attributes 参数

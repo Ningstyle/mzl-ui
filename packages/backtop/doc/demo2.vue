@@ -1,13 +1,7 @@
 <!-- html -->
 <template>
   <!-- html -->
-  <div
-    class="testBacktop"
-    style="width: 100%; height: 400px; overflow-y: scroll"
-  >
-    <p>scroll</p>
-  </div>
-
+  <div class="testBacktop" style="height: 400px; overflow-y: scroll"></div>
   <m-backtop target=".testBacktop"></m-backtop>
 </template>
 
@@ -24,7 +18,6 @@ onMounted(() => {
 </script>
 <style lang="scss" scoped>
 .testBacktop {
-  width: 100%;
   height: 300px;
   overflow-y: scroll;
   border: 1px solid #f0f0f0;
