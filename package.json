@@ -1,7 +1,7 @@
 {
   "name": "mzl-ui",
   "author": "style'me",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "private": false,
   "main": "./dist/mzl-ui.umd.js",
   "module": "./dist/mzl-ui.es.js",
@@ -35,9 +35,22 @@
   "scripts": {
     "dev": "vite --port 3002",
     "build": "vite build",
+    "build:html": "vite build --config ./build.js",
     "preview": "vite preview",
     "mzl-ui": "vite build"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "highlight.js": "^11.4.0",
+    "pinia": "^2.0.12",
+    "sass": "^1.49.7",
+    "sass-loader": "^12.6.0",
+    "vite-plugin-md": "^0.12.4",
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.14"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
+    "@vue/reactivity": "^3.2.31",
+    "vite": "^2.7.2"
+  }
 }

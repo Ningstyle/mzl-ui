@@ -17,10 +17,7 @@
         @input="input"
         :value="selVal"
       />
-      <i
-        :class="iconClass"
-        :style="[{ transform: rotate }, fixIcon]"
-      ></i>
+      <i :class="iconClass" :style="[{ transform: rotate }, fixIcon]"></i>
     </div>
     <transition name="slide-fade">
       <div class="mzl-select-option" v-if="isShow">
@@ -80,7 +77,7 @@ const props = defineProps({
   },
   width: {
     type: String,
-    default: "",
+    default: "260px",
   },
   height: {
     type: String,
@@ -145,11 +142,10 @@ const customStyle = computed(() => {
   let styles = {};
   if (props.height) {
     let height = parseInt(props.height) < 25 ? "25px" : props.height;
-    console.log(height);
     styles.height = height;
-    fixIcon.lineHeight = height
-    fixIcon.top = 0
-    fixIcon.height = '100%'
+    fixIcon.lineHeight = height;
+    fixIcon.top = 0;
+    fixIcon.height = "100%";
   }
   return styles;
 });
@@ -225,12 +221,12 @@ const vClickOutside = {
       }
     };
     el.handler = handler;
-    if(typeof document !== 'undefined'){
+    if (typeof document !== "undefined") {
       document.addEventListener("click", handler);
     }
   },
   unmounted(el) {
-    if(typeof document !== 'undefined'){
+    if (typeof document !== "undefined") {
       document.removeEventListener("click", el.handler);
     }
   },

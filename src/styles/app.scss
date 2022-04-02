@@ -1,0 +1,99 @@
+body {
+  color: #000000d9;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  background-color: #fff;
+  font-feature-settings: "tnum";
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color: #000000d9;
+  font-weight: 500;
+}
+.mzl-ui-doc {
+  font-family: Avenir, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Helvetica Neue, Arial, Noto Sans, sans-serif, apple color emoji,
+    segoe ui emoji, Segoe UI Symbol, noto color emoji, sans-serif;
+}
+pre {
+  margin: 0;
+}
+pre > code {
+  font-family: Lucida Console, Consolas, Monaco, Andale Mono, Ubuntu Mono,
+    monospace;
+  line-height: 1.7;
+  direction: ltr;
+  white-space: pre;
+  text-align: left;
+  word-wrap: normal;
+  word-break: normal;
+  word-spacing: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  background: 0 0;
+  font-size: 14px;
+  border: 1px solid #f0f0f0;
+}
+.color-itembox {
+  width: 100%;
+  height: 100px;
+  li {
+    list-style: none;
+    width: 240px;
+    height: 100%;
+    left: none;
+    float: left;
+    margin-right: 0.5vw;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    span {
+      width: 100%;
+      display: inline-block;
+      line-height: 24px;
+      font-size: 14px;
+    }
+    span:first-child {
+      margin-top: 12px;
+    }
+  }
+  span.outherColor {
+    width: 90px;
+    height: 100%;
+    display: inline-block;
+    margin-right: 0.5vw;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    font-size: 14px;
+  }
+}
+.componetnsBox {
+  padding: 30px 15px;
+  border: 1px solid #f0f0f0;
+  border-bottom: 0px;
+  border-radius: 4px 4px 0 0;
+  box-sizing: border-box;
+}
+pre > code > span {
+  font-size: 14px;
+}
