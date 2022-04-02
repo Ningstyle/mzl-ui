@@ -2,7 +2,7 @@
 <template>
   <m-popover
     trigger="click"
-    placement="right-start"
+    placement="right"
     width="600"
     @after-enter="AfterEneter"
   >
@@ -40,7 +40,7 @@
     </div>
     <!--  -->
     <template #reference>
-      <m-button type="success" size="medium">成功按钮</m-button>
+      <m-button size="medium">click激活</m-button>
     </template>
   </m-popover>
 </template>

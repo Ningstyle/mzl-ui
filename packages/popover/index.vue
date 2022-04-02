@@ -16,7 +16,7 @@
       >
         <div class="popover-arrow" ref="popoverArrow"></div>
         <div :class="['popover-box-content']" :style="popoverStyles">
-          <div v-if="title" v-text="title"></div>
+          <div v-if="title" v-text="title" class="popover-title"></div>
           <slot>{{ content }}</slot>
         </div>
       </div>
@@ -84,6 +84,7 @@ const showPopover = computed(() => {
   if (props.trigger !== "manual") {
     return visible.value;
   } else {
+    console.log(props.modelValue);
     //自定义触发
     return props.modelValue;
   }
@@ -99,21 +100,25 @@ const popoverStyles = computed(() => {
 //计算arrow的位置
 const reference = ref(null);
 const popoverArrow = ref(null);
-// const geticonsite = ref("");
 onMounted(() => {
-  console.log(reference.value.clientWidth)
+  console.log(reference.value.clientWidth);
   if (props.placement.includes("top") || props.placement.includes("bottom")) {
-    let clientWidth = reference.value.clientWidth
-    popoverArrow.value.style.setProperty("--geticonsite", clientWidth/2 + 'px');
+    let clientWidth = reference.value.clientWidth;
+    popoverArrow.value.style.setProperty(
+      "--geticonsite",
+      clientWidth / 2 + "px"
+    );
   } else if (
     props.placement.includes("left") ||
     props.placement.includes("right")
   ) {
-    let clientHeight = reference.value.clientHeight
-    popoverArrow.value.style.setProperty("--geticonsite", clientHeight/2 + 'px');
+    let clientHeight = reference.value.clientHeight;
+    popoverArrow.value.style.setProperty(
+      "--geticonsite",
+      clientHeight / 2 + "px"
+    );
   }
 });
-console.log(reference);
 
 const timer = ref(null);
 //点击触发
@@ -184,6 +189,12 @@ function handleAfterLeave() {
   }
   &-content {
     overflow: auto;
+    .popover-title {
+      color: #303133;
+      font-size: 16px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
   }
   .top {
     bottom: 100%;
@@ -382,7 +393,7 @@ function handleAfterLeave() {
     }
   }
   .right-start {
-    --geticonsite:0;
+    --geticonsite: 0;
     left: 100%;
     top: 0;
     margin-left: 12px;
@@ -429,7 +440,7 @@ function handleAfterLeave() {
 }
 
 .slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.3s cubic-bezier(1, 0.5, 0.6, 1);
 }
 
 .slide-fade-enter-from,
