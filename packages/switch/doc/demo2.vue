@@ -1,10 +1,10 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" disabled placeholder="禁用状态"></m-input>
+  <m-switch v-model="switchVal" disabled></m-switch>
 </template>
 
 <!-- js -->
 <script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
+import { ref } from "vue";
+const switchVal = ref(true);
 </script>

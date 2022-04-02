@@ -1,16 +1,85 @@
 <!-- html -->
 <template>
-  <m-space>
-    <m-input v-model="value1"  placeholder="默认大小"></m-input>
-    <m-input v-model="value2"  placeholder="小的" size="small"></m-input>
-    <m-input v-model="value3"  placeholder="更小的" size="mini"></m-input>
-  </m-space>
+  <m-menu :options="menuOptions" theme="black" type="horizontal"></m-menu>
 </template>
 
 <!-- js -->
 <script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
-  const value3 = ref('')
+import { reactive } from "vue";
+const state = reactive({
+  menuOptions: [
+    {
+      title: "菜单1",
+    },
+    {
+      title: "菜单2",
+      children: [
+        {
+          title: "菜单2-1",
+        },
+        {
+          title: "菜单2-2",
+        },
+        {
+          title: "菜单2-3",
+          children: [
+            {
+              title: "菜单2-3-1",
+              children: [
+                {
+                  title: "菜单2-3-1-1",
+                },
+                {
+                  title: "菜单2-3-1-2",
+                },
+              ],
+            },
+            {
+              title: "菜单2-3-2",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "菜单3",
+      children: [
+        {
+          title: "菜单3-1",
+        },
+        {
+          title: "菜单3-2",
+        },
+      ],
+    },
+    {
+      title: "菜单4",
+      children: [
+        {
+          title: "菜单4-1",
+          children: [
+            {
+              title: "菜单4-1-1",
+            },
+            {
+              title: "菜单4-1-2",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "菜单5",
+      children: [
+        {
+          title: "菜单3-1",
+        },
+      ],
+    },
+    {
+      title: "菜单6",
+    },
+  ],
+});
+const { menuOptions } = state;
 </script>

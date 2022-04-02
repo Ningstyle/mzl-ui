@@ -1,16 +1,24 @@
 <!-- html -->
 <template>
-  <m-space>
-    <m-input v-model="value1"  placeholder="默认大小"></m-input>
-    <m-input v-model="value2"  placeholder="小的" size="small"></m-input>
-    <m-input v-model="value3"  placeholder="更小的" size="mini"></m-input>
-  </m-space>
+  <m-checkbox
+    v-model="checkboxVal"
+    :options="checkOptions"
+    labelFiled="name"
+    valueFiled="id"
+  ></m-checkbox>
 </template>
 
 <!-- js -->
 <script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
-  const value3 = ref('')
+import { reactive, ref } from "vue";
+const checkboxVal = ref([0, 2]);
+const state = reactive({
+  checkOptions: [
+    { name: "小明", id: 0 },
+    { name: "小李", id: 1 },
+    { name: "小红", id: 2 },
+    { name: "小王", id: 3 },
+  ],
+});
+const { checkOptions } = state;
 </script>

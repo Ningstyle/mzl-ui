@@ -1,16 +1,23 @@
 <!-- html -->
 <template>
-  <m-space>
-    <m-input v-model="value1"  placeholder="默认大小"></m-input>
-    <m-input v-model="value2"  placeholder="小的" size="small"></m-input>
-    <m-input v-model="value3"  placeholder="更小的" size="mini"></m-input>
+  <m-space :inline="false">
+    <m-radio v-model="radioVal" :options="radioOptions"></m-radio>
+    <m-radio v-model="radioVal" :options="radioOptions" size="small"></m-radio>
+    <m-radio v-model="radioVal" :options="radioOptions" size="mini"></m-radio>
   </m-space>
 </template>
 
 <!-- js -->
 <script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
-  const value3 = ref('')
+import { reactive, ref } from "vue";
+const radioVal = ref("zhongguo");
+const state = reactive({
+  radioOptions: [
+    { label: "中国", value: "zhongguo" },
+    { label: "英国", value: "yingguo" },
+    { label: "德国", value: "deguo" },
+    { label: "法国", value: "faguo" },
+  ],
+});
+const { radioOptions } = state;
 </script>

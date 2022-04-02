@@ -1,14 +1,10 @@
 <!-- html -->
 <template>
-  <m-space>
-    <m-input v-model="value1" leftIcon="m-icon-search"></m-input>
-    <m-input v-model="value2" rightIcon="m-icon-calendar"></m-input>
-  </m-space>
+  <m-date v-model="dateVal" placeholder="请选择日期" type="year"> </m-date>
 </template>
 
 <!-- js -->
 <script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
+import { ref } from "vue";
+const dateVal = ref("");
 </script>

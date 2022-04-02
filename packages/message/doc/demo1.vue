@@ -1,10 +1,14 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" placeholder="基本使用"></m-input>
+  <m-button @click="openMsg">消息提示</m-button>
 </template>
 
 <!-- js -->
 <script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
+import Message from "../index.js"; //此处为本地示例，请使用import {Message} from "mzl-ui";引入
+const openMsg = () => {
+  Message({
+    text: "默认消息提示",
+  });
+};
 </script>

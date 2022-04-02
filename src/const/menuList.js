@@ -60,6 +60,11 @@ export default [
         path: "/mzlui/textarea",
       },
       {
+        "title-cn": "Space 间距",
+        "title-en": "Space",
+        path: "/mzlui/Space",
+      },
+      {
         "title-cn": "Select 下拉框",
         "title-en": "Select",
         path: "/mzlui/select",
@@ -100,9 +105,11 @@ export default [
       {
         "title-cn": "Date 日期选择",
         "title-en": "Datepicker",
-        path: "/mzlui/datepicker",
+        path: "/mzlui/date",
       },
       { "title-cn": "Tree 树形控件", "title-en": "Tree", path: "/mzlui/tree" },
+      { "title-cn": "Menu 菜单", "title-en": "menu", path: "/mzlui/menu" },
+      { "title-cn": "Tab 切换", "title-en": "tabs", path: "/mzlui/tabs" },
     ],
   },
   {

@@ -1,10 +1,15 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" placeholder="基本使用"></m-input>
+  <m-button @click="openLoading">开始加载</m-button>
 </template>
 
 <!-- js -->
 <script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
+import Loading from "../index.js"; //此处为本地示例，请使用import { Loading } from "mzl-ui";
+const openLoading = () => {
+  Loading.show();
+  setTimeout(() => {
+    Loading.hide();
+  }, 5000);
+};
 </script>

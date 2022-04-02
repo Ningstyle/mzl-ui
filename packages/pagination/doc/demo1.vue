@@ -1,10 +1,4 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" placeholder="基本使用"></m-input>
+  <m-pagination :total="100" :current="1" :pageSize="10"></m-pagination>
 </template>
-
-<!-- js -->
-<script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
-</script>

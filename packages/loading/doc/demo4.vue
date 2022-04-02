@@ -1,14 +1,18 @@
 <!-- html -->
 <template>
-  <m-space>
-    <m-input v-model="value1" leftIcon="m-icon-search"></m-input>
-    <m-input v-model="value2" rightIcon="m-icon-calendar"></m-input>
-  </m-space>
+  <m-button @click="openLoading">自定义加载图片</m-button>
 </template>
 
 <!-- js -->
 <script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
+  import Loading from "../index.js"; //此处为本地示例，请使用import { Loading } from "mzl-ui";
+  const openLoading = () => {
+    Loading.show({
+      text:"正在努力加载中...",
+      img:"https://mzlui.codeym.com/logo.png"
+    })
+    setTimeout(()=>{
+      Loading.hide()
+    },5000)
+  }
 </script>

@@ -5,33 +5,62 @@
 <script setup>
 import { reactive } from "vue";
 const state = reactive({
-  options:{
-   fileds:[
-      {field:'attr',title:'参数',align:'center'},
-      {field:'type',title:'类型',align:'center'},
-      {field:'red',title:'说明',align:'center',width:'350px'},
-      {field:'sel',title:'可选值',align:'center'},
-      {field:'def',title:'默认值',align:'center'}
+  options: {
+    fileds: [
+      { field: "attr", title: "参数", align: "center" },
+      { field: "type", title: "类型", align: "center" },
+      { field: "red", title: "说明", align: "center", width: "350px" },
+      { field: "sel", title: "可选值", align: "center" },
+      { field: "def", title: "默认值", align: "center" },
     ],
-    datas:[
-      {attr:'v-model',type:'string / number',red:'input绑定值',sel:'——',def:"——"},
-      {attr:'type',type:'string',red:'支持所有原生type值',sel:'——',def:"——"},
-      {attr:'placeholder',type:'string',red:'输入框占位字符',sel:'——',def:"——"},
-      {attr:'disabled',type:'Boolean',red:'是否禁用',sel:'true / false',def:"false"},
-      {attr:'readonly',type:'Boolean',red:'原生属性，是否只读',sel:'true / false',def:"false"},
-      {attr:'form',type:'String',red:'原生属性，所属表单',sel:'——',def:"——"},
-      {attr:'clearable',type:'Boolean',red:'是否可清空',sel:'true / false',def:"false"},
-      {attr:'showPassword',type:'Boolean',red:'是否显示密码查看图标，需配合type为password类型一起使用',sel:'true / false',def:"false"},
-      {attr:'size',type:'String',red:'尺寸大小',sel:'default / small / mini',def:"default"},
-      {attr:'leftIcon / rightIcon',type:'String',red:'是否带图标，并确定图标的位置',sel:'参考图标库',def:"——"},
-      {attr:'autofocus',type:'Boolean',red:'是否自动获取输入框焦点',sel:'true / false',def:"false"},
-      {attr:'focusColor',type:'String',red:'自定义Focus颜色的色值',sel:'——',def:"——"}
-    ]
-  }
-})
-const { options } = state
+    datas: [
+      {
+        attr: "options",
+        type: "Object",
+        red: "表格数据,fileds 和 datas,fileds作为整体约束（具体见下方API），datas作为数据定义",
+        sel: "——",
+        def: "{fileds:[], datas:[]}",
+      },
+      {
+        attr: "size",
+        type: "String",
+        red: "表格尺寸大小",
+        sel: "default / small / mini",
+        def: "default",
+      },
+      {
+        attr: "showHeader",
+        type: "Boolean",
+        red: "是否显示表头",
+        sel: "true / false",
+        def: "true",
+      },
+      {
+        attr: "headStyle",
+        type: "Object",
+        red: "自定义表头样式",
+        sel: "——",
+        def: "——",
+      },
+      {
+        attr: "rowStyle",
+        type: "Object",
+        red: "自定义表格内容区域的样式",
+        sel: "——",
+        def: "——",
+      },
+      {
+        attr: "customClass",
+        type: "String",
+        red: "自定义表格组件整体的Class类名",
+        sel: "——",
+        def: "——",
+      },
+    ],
+  },
+});
+const { options } = state;
 </script>
 
 <style lang="scss" scoped>
-
 </style>

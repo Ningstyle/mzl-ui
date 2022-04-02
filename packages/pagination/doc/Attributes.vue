@@ -5,33 +5,105 @@
 <script setup>
 import { reactive } from "vue";
 const state = reactive({
-  options:{
-   fileds:[
-      {field:'attr',title:'参数',align:'center'},
-      {field:'type',title:'类型',align:'center'},
-      {field:'red',title:'说明',align:'center',width:'350px'},
-      {field:'sel',title:'可选值',align:'center'},
-      {field:'def',title:'默认值',align:'center'}
+  options: {
+    fileds: [
+      { field: "attr", title: "参数", align: "center" },
+      { field: "type", title: "类型", align: "center" },
+      { field: "red", title: "说明", align: "center", width: "350px" },
+      { field: "sel", title: "可选值", align: "center" },
+      { field: "def", title: "默认值", align: "center" },
     ],
-    datas:[
-      {attr:'v-model',type:'string / number',red:'input绑定值',sel:'——',def:"——"},
-      {attr:'type',type:'string',red:'支持所有原生type值',sel:'——',def:"——"},
-      {attr:'placeholder',type:'string',red:'输入框占位字符',sel:'——',def:"——"},
-      {attr:'disabled',type:'Boolean',red:'是否禁用',sel:'true / false',def:"false"},
-      {attr:'readonly',type:'Boolean',red:'原生属性，是否只读',sel:'true / false',def:"false"},
-      {attr:'form',type:'String',red:'原生属性，所属表单',sel:'——',def:"——"},
-      {attr:'clearable',type:'Boolean',red:'是否可清空',sel:'true / false',def:"false"},
-      {attr:'showPassword',type:'Boolean',red:'是否显示密码查看图标，需配合type为password类型一起使用',sel:'true / false',def:"false"},
-      {attr:'size',type:'String',red:'尺寸大小',sel:'default / small / mini',def:"default"},
-      {attr:'leftIcon / rightIcon',type:'String',red:'是否带图标，并确定图标的位置',sel:'参考图标库',def:"——"},
-      {attr:'autofocus',type:'Boolean',red:'是否自动获取输入框焦点',sel:'true / false',def:"false"},
-      {attr:'focusColor',type:'String',red:'自定义Focus颜色的色值',sel:'——',def:"——"}
-    ]
-  }
-})
-const { options } = state
+    datas: [
+      {
+        attr: "total",
+        type: "Number",
+        red: "数据总条数",
+        sel: "——",
+        def: "——",
+      },
+      { attr: "current", type: "Number", red: "当前页", sel: "——", def: "1" },
+      {
+        attr: "pageSize",
+        type: "Number",
+        red: "每页展示条数",
+        sel: "——",
+        def: "10",
+      },
+      {
+        attr: "maxSize",
+        type: "Number",
+        red: "每页最大展示页数",
+        sel: "——",
+        def: "10",
+      },
+      {
+        attr: "border",
+        type: "Boolean",
+        red: "是否需要border",
+        sel: "true / false",
+        def: "true",
+      },
+      {
+        attr: "size",
+        type: "String",
+        red: "按钮大小",
+        sel: "default / small",
+        def: "default",
+      },
+      {
+        attr: "disabled",
+        type: "Boolean",
+        red: "是否禁用",
+        sel: "true / false",
+        def: "false",
+      },
+      {
+        attr: "prevText",
+        type: "String",
+        red: "自定义上一页按钮文本",
+        sel: "——",
+        def: "——",
+      },
+      {
+        attr: "nextText",
+        type: "String",
+        red: "自定义下一页按钮文本",
+        sel: "——",
+        def: "——",
+      },
+      {
+        attr: "align",
+        type: "String",
+        red: "分页组件对齐方式",
+        sel: "left / center / right",
+        def: "left",
+      },
+      {
+        attr: "showTotal",
+        type: "Boolean",
+        red: "是否显示总条数",
+        sel: "true / false",
+        def: "false",
+      },
+      {
+        attr: "jumper",
+        type: "Boolean",
+        red: "是否显示跳转到指定页",
+        sel: "true / false",
+        def: "false",
+      },
+      {
+        attr: "activeColors",
+        type: "Object",
+        red: "自定义分页样式，见下方activeColors配置",
+        sel: "——",
+        def: "{}",
+      },
+    ],
+  },
+});
+const { options } = state;
 </script>
 
 <style lang="scss" scoped>
-
 </style>

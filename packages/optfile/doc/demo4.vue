@@ -1,14 +1,13 @@
 <!-- html -->
 <template>
-  <m-space>
-    <m-input v-model="value1" leftIcon="m-icon-search"></m-input>
-    <m-input v-model="value2" rightIcon="m-icon-calendar"></m-input>
-  </m-space>
+  <m-optfile
+    label="将文件拖拽到此处或点击选择文件"
+    showFileList
+    targetType="box"
+    multiple
+    size="big"
+    drop
+    icon="m-icon-shangchuan"
+  >
+  </m-optfile>
 </template>
-
-<!-- js -->
-<script setup>
-  import { ref } from "vue";
-  const value1 = ref('')
-  const value2 = ref('')
-</script>

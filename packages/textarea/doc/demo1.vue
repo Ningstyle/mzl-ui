@@ -1,10 +1,17 @@
 <!-- html -->
 <template>
-  <m-input v-model="value1" placeholder="基本使用"></m-input>
+  <m-textarea
+    v-model="textareaVal"
+    placeholder="请输入内容"
+    @input="textareaInpt"
+  ></m-textarea>
 </template>
 
 <!-- js -->
 <script setup>
-  import {ref} from 'vue'
-  const value1 = ref('')
+import { ref } from "vue";
+const textareaVal = ref("");
+const textareaInpt = (e) => {
+  console.log(e);
+};
 </script>
