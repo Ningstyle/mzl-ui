@@ -571,6 +571,55 @@
     <m-tab-pane label="选项卡二" name="选项卡二"> 选项卡二 </m-tab-pane>
     <m-tab-pane label="选项卡三" name="选项卡三"> 选项卡三 </m-tab-pane>
   </m-tabs>
+  <m-popover trigger="click" placement="right-start" width="600" @after-enter="AfterEneter">
+    <span style="width:750px">
+    <m-table :options="options" :headStyle="headStyle" size="default">
+      <template #head-job="item">
+        <m-dropdown
+          :title="item.scope.title"
+          :options="dorpoptions1"
+          @change="dropchange1"
+          trigger="hover"
+          size="mini"
+        ></m-dropdown>
+      </template>
+      <template #id="item">
+        <div>{{ item.scope.row.id }}</div>
+      </template>
+      <template #action="item">
+        <m-button
+          type="text"
+          leftIcon="m-icon-edit"
+          size="small"
+          :disabled="item.scope.rowIndex % 2 == 0"
+          >编辑</m-button
+        >
+        <m-button
+          type="text"
+          leftIcon="m-icon-ashbin"
+          style="color: #ec3437"
+          size="small"
+          >删除</m-button
+        >
+      </template>
+    </m-table>
+    </span>
+    <!--  -->
+    <template #reference>
+      <m-button type="success" size="medium">成功按钮</m-button>
+    </template>
+  </m-popover>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
+  <p>1</p>
 </template>
 <script setup>
 import { onMounted, reactive, ref, getCurrentInstance } from "vue";
@@ -591,6 +640,7 @@ const switchVal = ref(true);
 const fileList = ref([{ name: 1 }, { name: 2 }]);
 const textareaVal = ref("");
 const dateVal = ref("");
+const visible = ref(false); //popover
 const state = reactive({
   options: {
     fileds: [
@@ -1036,6 +1086,9 @@ const openMsg = () => {
       console.log("取消");
     });
 };
+function AfterEneter(){
+  console.log(1111111)
+}
 const drawerClose = () => {
   console.log("关闭了");
 };
@@ -1130,6 +1183,21 @@ onMounted(() => {
 });
 </script>
 <style scoped>
+.asddd1 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+.asddd2 {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+}
+.asddd3 {
+  width: 100px;
+  height: 100px;
+  background-color: darkmagenta;
+}
 .custom {
   width: 90px !important;
   height: 32px !important;

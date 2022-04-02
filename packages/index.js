@@ -26,8 +26,9 @@ import mCollapseItem from './collapse/item/index'
 import mMenu from './collapse/index'
 import mTabs from './tabs/index'
 import mTabPane from './tab-pane/index'
+import mPopover from './popover/index'
 //存在所有组件
-const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox,mModal,mDrawer,mSwitch,mTree,mOptfile,mTextarea,mRow,mCol,mPagination,mDate,mBacktop,mCollapse,mCollapseItem,mMenum,Tabs,mTabPane]
+const components = [mButton,mInput,mTable,mSelect,mDropdown,mRadio,mCheckbox,mModal,mDrawer,mSwitch,mTree,mOptfile,mTextarea,mRow,mCol,mPagination,mDate,mBacktop,mCollapse,mCollapseItem,mMenum,Tabs,mTabPane,mPopover]
 const install = app => {
   components.forEach(i => {
     app.use(i)
@@ -75,6 +76,7 @@ export {
   mCollapseItem,
   mMenu,
   mTabs,
-  mTabPane
+  mTabPane,
+  mPopover
 }
 export default mzlUi
