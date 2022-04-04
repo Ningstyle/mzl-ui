@@ -89,9 +89,4 @@ import preview from '@/components/preview.vue'
 <TabPaneAttributes/>
 <br/>
 
-## TabPane  Event 事件
-
-<Event/>
-<br/>
-
 
