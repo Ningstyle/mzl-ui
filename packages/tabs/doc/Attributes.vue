@@ -14,18 +14,16 @@ const state = reactive({
       {field:'def',title:'默认值',align:'center'}
     ],
     datas:[
-      {attr:'v-model',type:'string / number',red:'input绑定值',sel:'——',def:"——"},
-      {attr:'type',type:'string',red:'支持所有原生type值',sel:'——',def:"——"},
-      {attr:'placeholder',type:'string',red:'输入框占位字符',sel:'——',def:"——"},
-      {attr:'disabled',type:'Boolean',red:'是否禁用',sel:'true / false',def:"false"},
-      {attr:'readonly',type:'Boolean',red:'原生属性，是否只读',sel:'true / false',def:"false"},
-      {attr:'form',type:'String',red:'原生属性，所属表单',sel:'——',def:"——"},
-      {attr:'clearable',type:'Boolean',red:'是否可清空',sel:'true / false',def:"false"},
-      {attr:'showPassword',type:'Boolean',red:'是否显示密码查看图标，需配合type为password类型一起使用',sel:'true / false',def:"false"},
-      {attr:'size',type:'String',red:'尺寸大小',sel:'default / small / mini',def:"default"},
-      {attr:'leftIcon / rightIcon',type:'String',red:'是否带图标，并确定图标的位置',sel:'参考图标库',def:"——"},
-      {attr:'autofocus',type:'Boolean',red:'是否自动获取输入框焦点',sel:'true / false',def:"false"},
-      {attr:'focusColor',type:'String',red:'自定义Focus颜色的色值',sel:'——',def:"——"}
+      {attr:'model-value / v-model',type:'Srting/number',red:'绑定数据，值为选项卡的name，若选项卡未设置name，则为选项卡的索引值',sel:'——',def:"'0'"},
+      {attr:'activeName/v-model:activeName',type:'Srting/number',red:'同上',sel:'同上',def:"同上"},
+      {attr:'type',type:'string',red:'选项卡类型	',sel:'line/card',def:"line"},
+      {attr:'closable',type:'Boolean',red:'标签是否可关闭	',sel:'——',def:"false"},
+      {attr:'addable',type:'Boolean',red:'标签是否可增加，设置后出现添加的按钮，需设置回调后，手动添加，回调请查看tabs事件',sel:'——',def:"false"},
+      {attr:'before-leave',type:'Function(oldActiveName,activeName,)',red:'切换标签之前的钩子函数， 若返回 false 或者返回被 reject 的 Promise，则阻止切换。',sel:'——',def:"——"},
+      
+      {attr:'active_color',type:'string',red:'选中状态的字体颜色，以及指示器的颜色',sel:'——',def:"——"},
+      {attr:'color',type:'Boolean',red:'未选中字体的颜色	',sel:'——',def:"——"},
+     
     ]
   }
 })
