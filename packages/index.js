@@ -25,7 +25,7 @@ import mCollapse from "./collapse/index";
 import mCollapseItem from "./collapse/item/index";
 import mMenu from "./menu/index";
 import mTabs from "./tabs/index";
-import mTabPane from "./tab-pane/index";
+
 import mSpace from "./Space/index";
 //存在所有组件
 const components = [
@@ -51,7 +51,6 @@ const components = [
   mCollapseItem,
   mMenu,
   mTabs,
-  mTabPane,
   mSpace,
 ];
 const install = (app) => {
@@ -101,7 +100,6 @@ export {
   mCollapseItem,
   mMenu,
   mTabs,
-  mTabPane,
   mSpace,
 };
 export default mzlUi;
