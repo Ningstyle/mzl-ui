@@ -27,6 +27,7 @@ import mMenu from "./menu/index";
 import mTabs from "./tabs/index";
 
 import mSpace from "./Space/index";
+import mPopover from './popover/index'
 //存在所有组件
 const components = [
   mButton,
@@ -52,6 +53,7 @@ const components = [
   mMenu,
   mTabs,
   mSpace,
+  mPopover
 ];
 const install = (app) => {
   components.forEach((i) => {
@@ -100,6 +102,8 @@ export {
   mCollapseItem,
   mMenu,
   mTabs,
+  mTabPane,
+  mPopover,
   mSpace,
 };
 export default mzlUi;

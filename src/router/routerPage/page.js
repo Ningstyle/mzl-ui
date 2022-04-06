@@ -149,6 +149,11 @@ export default [
         name: "Backtop 回到顶部",
         component: () => import("/packages/backtop/doc/doc.md"),
       },
+      {
+        path: "popover",
+        name: "Popover 弹窗框",
+        component: () => import("/packages/popover/doc/doc.md"),
+      },
     ],
   },
 ];

@@ -122,6 +122,11 @@ export default [
         path: "/mzlui/message",
       },
       {
+        "title-cn": "Popover 弹出框",
+        "title-en": "Popover",
+        path: "/mzlui/popover",
+      },
+      {
         "title-cn": "Confirm 消息确认",
         "title-en": "confirm",
         path: "/mzlui/confirm",
