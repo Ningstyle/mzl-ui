@@ -98,6 +98,11 @@ const state = reactive({
       github: "https://github.com/wally94",
       img: "https://avatars.githubusercontent.com/u/40847305?v=4",
     },
+    {
+      name: "amifed",
+      github: "https://github.com/amifed",
+      img: "https://avatars.githubusercontent.com/u/36906371?s=60&v=4",
+    },
   ],
 });
 const toComponents = () => {

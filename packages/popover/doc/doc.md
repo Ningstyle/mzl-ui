@@ -15,7 +15,7 @@ import preview from '@/components/preview.vue'
 <div class="componetnsBox">
   <demo1/>
 </div>
-<preview compName="Popover" demoName="demo1"/>
+<preview compName="popover" demoName="demo1"/>
 
 ## 嵌套信息 
 ### 可以在 Popover 中嵌套多种类型信息，以下为嵌套表格的例子。
@@ -23,7 +23,7 @@ import preview from '@/components/preview.vue'
 <div class="componetnsBox">
   <demo2/>
 </div>
-<preview compName="Popover" demoName="demo2"/>
+<preview compName="popover" demoName="demo2"/>
 
 ## 嵌套操作 
 ### 可以在 Popover 中嵌套操作
@@ -31,7 +31,7 @@ import preview from '@/components/preview.vue'
 <div class="componetnsBox">
   <demo3/>
 </div>
-<preview compName="Popover" demoName="demo3"/>
+<preview compName="popover" demoName="demo3"/>
 
 ## Attributes 参数
 
