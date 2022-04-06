@@ -13,11 +13,11 @@ const state = reactive({
       {field:'exm',title:'示例',align:'center',width:'350px'}
     ],
     datas:[
-      {name:"focus",red:'input在获取焦点时触发',attr:'(event: Event)',exm:'focus=(e)=>{console.log(e.target.value)}'},
-      {name:"blur",red:'input在失去焦点时触发',attr:'(event: Event)',exm:'blur=(e)=>{console.log(e.target.value)}'},
-      {name:"input",red:'input值变化时触发',attr:'(value: string | number)',exm:'input=(e)=>{console.log(e)}'},
+      {name:"onTabRemove",red:'点击 tab 移除按钮后触发',attr:'(tabName: String)',exm:'onTabRemove(tabName){}'},
+      {name:"onTabclick",red:'选项卡被点击时触发	',attr:'(tabName: String)',exm:'onTabclick(tabName){}'},
+      {name:"onTabAdd",red:'点击 tabs 的新增按钮后触发',attr:'——',exm:'onTabAdd(){}'},
       {name:"change",red:'用户获得焦点并按下回车时触发',attr:'(event: Event)',exm:'change=(e)=>{console.log(e.target.value)}'},
-      {name:"clear",red:'可清空的input点击清空按钮时触发',attr:'——',exm:'——'},
+      {name:"onChangeTab",red:'切换选项卡时触发',attr:'——',exm:'——'},
     ]
   }
 })

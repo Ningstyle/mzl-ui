@@ -25,7 +25,7 @@ import mCollapse from "./collapse/index";
 import mCollapseItem from "./collapse/item/index";
 import mMenu from "./menu/index";
 import mTabs from "./tabs/index";
-import mTabPane from "./tab-pane/index";
+
 import mSpace from "./Space/index";
 import mPopover from './popover/index'
 //存在所有组件
@@ -52,7 +52,6 @@ const components = [
   mCollapseItem,
   mMenu,
   mTabs,
-  mTabPane,
   mSpace,
   mPopover
 ];
