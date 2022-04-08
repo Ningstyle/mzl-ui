@@ -35,7 +35,7 @@
   "scripts": {
     "dev": "vite --port 3002",
     "build": "vite build",
-    "build:html": "vite build --config ./build.js",
+    "build:html": "vite build --config ./build/build.js",
     "preview": "vite preview",
     "mzl-ui": "vite build"
   },
