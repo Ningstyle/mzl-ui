@@ -20,7 +20,9 @@ import preview from '@/components/preview.vue'
 #### button 按钮的基本使用
 
 <br/>
-<demo1/>
+<div class="componetnsBox">
+  <demo1/>
+</div>
 <preview compName="button" demoName="demo1"/>
 
 ## 禁用状态
@@ -28,7 +30,9 @@ import preview from '@/components/preview.vue'
 #### 按钮不可操作的状态——通过 _disabled_ 属性设置实现
 
 <br/>
-<demo2/>
+<div class="componetnsBox">
+  <demo2/>
+</div>
 <preview compName="button" demoName="demo2"/>
 
 ## 不同大小
@@ -36,7 +40,9 @@ import preview from '@/components/preview.vue'
 #### 不同大小类型的按钮——通过 _size_ 属性设置实现
 
 <br/>
-<demo3/>
+<div class="componetnsBox">
+  <demo3/>
+</div>
 <preview compName="button" demoName="demo3"/>
 
 ## 图标按钮
@@ -44,7 +50,9 @@ import preview from '@/components/preview.vue'
 #### 带图标类型的按钮——通过 _leftIcon_ 或者 _rightIcon_ 属性设置实现并确定 icon 出现的位置
 
 <br/>
-<demo4/>
+<div class="componetnsBox">
+  <demo4/>
+</div>
 <preview compName="button" demoName="demo4"/>
 
 ## 加载状态
@@ -52,7 +60,9 @@ import preview from '@/components/preview.vue'
 #### 正在加载中的状态按钮——通过 _loading_ 和 _leftIcon_ 或者 _rightIcon_ 属性设置实现并确定 icon 出现的位置
 
 <br/>
-<demo5/>
+<div class="componetnsBox">
+  <demo5/>
+</div>
 <preview compName="button" demoName="demo5"/>
 
 ## 自定义颜色
@@ -60,7 +70,9 @@ import preview from '@/components/preview.vue'
 #### 可以自定义颜色的按钮类型——通过设置 _type_ 为 _custom_ 和 _customColor_ 属性设置实现。 tips：需要注意的是 _type_ 为 _default_、_dashed_、_text_ 类型的按钮不支持自定义
 
 <br/>
-<demo6/>
+<div class="componetnsBox">
+  <demo6/>
+</div>
 <preview compName="button" demoName="demo6"/>
 
 ## Attributes 参数

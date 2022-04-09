@@ -192,9 +192,9 @@ const styles = computed(() => {
   }
 }
 .mzl-button-primary {
-  border: 1px solid #0e80eb;
+  border: 1px solid $primary;
   color: #fff;
-  background-color: #0e80eb;
+  background-color: $primary;
   &:hover {
     opacity: 0.8;
   }
