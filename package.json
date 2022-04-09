@@ -38,7 +38,8 @@
     "build:html": "vite build --config ./build/build.js",
     "preview": "vite preview",
     "mzl-ui": "vite build",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "cz": "git-cz"
   },
   "dependencies": {
     "highlight.js": "^11.4.0",
@@ -60,6 +61,16 @@
     "eslint": "^8.13.0",
     "eslint-plugin-vue": "^8.6.0",
     "vite": "^2.7.2",
-    "vue-jest": "^5.0.0-alpha.10"
+    "vue-jest": "^5.0.0-alpha.10",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "engines": {
+    "node": ">= 14"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
