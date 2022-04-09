@@ -27,6 +27,7 @@ import mMenu from "./menu/index";
 import mTabs from "./tabs/index";
 import mSpace from "./Space/index";
 import mPopover from './popover/index'
+import mColorPicker from './colorPicker/index'
 //存在所有组件
 const components = [
   mButton,
@@ -52,7 +53,8 @@ const components = [
   mMenu,
   mTabs,
   mSpace,
-  mPopover
+  mPopover,
+  mColorPicker
 ];
 const install = (app) => {
   components.forEach((i) => {
@@ -103,5 +105,6 @@ export {
   mTabs,
   mPopover,
   mSpace,
+  mColorPicker
 };
 export default mzlUi;
