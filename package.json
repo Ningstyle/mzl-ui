@@ -37,7 +37,8 @@
     "build": "vite build",
     "build:html": "vite build --config ./build/build.js",
     "preview": "vite preview",
-    "mzl-ui": "vite build"
+    "mzl-ui": "vite build",
+    "test": "yarn jest --runInBand tests/"
   },
   "dependencies": {
     "highlight.js": "^11.4.0",
@@ -51,6 +52,9 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
     "@vue/reactivity": "^3.2.31",
+    "@vue/test-utils": "^2.0.0-rc.19",
+    "eslint": "^8.13.0",
+    "eslint-plugin-vue": "^8.6.0",
     "vite": "^2.7.2"
   }
 }
