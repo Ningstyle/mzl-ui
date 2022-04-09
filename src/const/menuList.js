@@ -154,15 +154,15 @@ export default [
       }
     ]
   },
-  {
-    'title-cn': '方法',
-    'title-en': 'function',
-    list: [
-      {
-        'title-cn': '时间戳转换日期格式',
-        'title-en': 'formatDate',
-        path: '/mzlui/formatDate'
-      }
-    ]
-  }
+  // {
+  //   'title-cn': '方法',
+  //   'title-en': 'function',
+  //   list: [
+  //     {
+  //       'title-cn': '时间戳转换日期格式',
+  //       'title-en': 'formatDate',
+  //       path: '/mzlui/formatDate'
+  //     }
+  //   ]
+  // }
 ]
