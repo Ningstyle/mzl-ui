@@ -1,13 +1,14 @@
 <script setup>
+  
 import demo1 from './demo1.vue'
 import demo2 from './demo2.vue'
 import demo3 from './demo3.vue'
 import demo4 from './demo4.vue'
 import demo5 from './demo5.vue'
 import demo6 from './demo6.vue'
-import demo7 from './demo7.vue'
-import demo8 from './demo8.vue'
+
 import Attributes from './Attributes.vue'
+import TabPaneAttributes from './TabPaneAttributes.vue'
 import Event from './Events.vue'
 import preview from '@/components/preview.vue'
 </script>
@@ -27,75 +28,65 @@ import preview from '@/components/preview.vue'
 </div>
 <preview compName="tabs" demoName="demo1"/>
 
-## 禁用状态
+## 选项卡样式
 
-#### input 的禁用状态，通过 _disabled_ 属性限制输入及操作
+#### 选项卡样式的标签页。type指定显示的样式，默认"line"
 
 <div class="componetnsBox">
   <demo2/>
 </div>
 <preview compName="tabs" demoName="demo2"/>
 
-## 可清空数据
+## 自定义标签页(插槽方式)
 
-#### input 的 value 可快捷清空，通过 _clearable_ 属性启用
+#### 可以通过具名 slot 来实现自定义标签页的内容
 
 <div class="componetnsBox">
   <demo3/>
 </div>
 <preview compName="tabs" demoName="demo3"/>
 
-## 带图标
+## 自定义标签页(渲染函数方式)
 
-#### 可使用 _leftIcon_ 或者 _rightIcon_ 来定义显示图标并确定显示的位置。需要注意的是如果定义了右侧显示图标，那 _clearable_ 将不再起作用
+#### 通过pane的label属性绑定渲染函数自定义标签
 
 <div class="componetnsBox">
   <demo4/>
 </div>
 <preview compName="tabs" demoName="demo4"/>
 
-## 不同大小
+## 动态增减标签页
 
-#### 通过设置 _size_ 属性来适应不同大小
+#### 
 
 <div class="componetnsBox">
   <demo5/>
 </div>
 <preview compName="tabs" demoName="demo5"/>
 
-## 组合输入
+## 禁用和可关闭选项卡
 
-#### 可通过插槽完成组合输入，插槽名默认为 _btn_
+#### disabled属性禁用此选项卡，closable设置此选项卡可否关闭
 
 <div class="componetnsBox">
   <demo6/>
 </div>
 <preview compName="tabs" demoName="demo6"/>
 
-## 密码类型
 
-#### 密码类型的输入框，可通过 _showPassword_ 来启用是否开启显示密码
-
-<div class="componetnsBox">
-  <demo7/>
-</div>
-<preview compName="tabs" demoName="demo7"/>
-
-## 自定义 Focus 颜色
-
-#### 通过 _focusColor_ 属性自定义 input 在获取焦点后的颜色
-
-<div class="componetnsBox">
-  <demo8/>
-</div>
-<preview compName="tabs" demoName="demo8"/>
-
-## Attributes 参数
+## Tab Attributes 参数
 
 <Attributes/>
 <br/>
 
-## Event 事件
+## Tab Event 事件
 
 <Event/>
 <br/>
+
+## TabPane  Attributes 参数
+
+<TabPaneAttributes/>
+<br/>
+
+

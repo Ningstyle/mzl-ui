@@ -15,46 +15,25 @@ const state = reactive({
     ],
     datas: [
       {
-        attr: 'text',
-        type: 'String|VNode',
-        red: '消息提示文本内容',
+        attr: 'v-model',
+        type: 'string',
+        red: '绑定值',
         sel: '——',
         def: '——'
       },
       {
-        attr: 'type',
+        attr: 'defaultColor',
         type: 'String',
-        red: '消息提示类型',
-        sel: 'info / warn / error / success / custom',
-        def: 'info'
-      },
-      {
-        attr: 'icon',
-        type: 'String',
-        red: '消息提示Icon图标',
-        sel: '参考图标库',
-        def: '——'
-      },
-      {
-        attr: 'timeout',
-        type: 'Number',
-        red: '消息提示框消失时间（单位：毫秒ms）',
-        sel: '——',
-        def: '2500'
-      },
-      {
-        attr: 'textColor',
-        type: 'String',
-        red: '文本颜色，type 为 custom 时有效',
+        red: '默认显示的颜色',
         sel: '——',
         def: '——'
       },
       {
-        attr: 'bgColor',
-        type: 'String',
-        red: '背景颜色，type 为 custom 时有效',
+        attr: 'autoClose',
+        type: 'Boolean',
+        red: '选择完颜色之后是否自动关闭颜色面板',
         sel: '——',
-        def: '——'
+        def: 'false'
       },
       {
         attr: 'customClass',
