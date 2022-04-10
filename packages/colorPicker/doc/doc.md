@@ -17,7 +17,7 @@ import preview from '@/components/preview.vue'
 <div class="componetnsBox">
   <demo1/>
 </div>
-<preview compName="mColorPicker" demoName="demo1"/>
+<preview compName="colorPicker" demoName="demo1"/>
 
 ## Attributes 参数
 
