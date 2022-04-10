@@ -1,33 +1,52 @@
 <template>
   <transition name="fade">
-    <div v-if="isShow" :class="['mzl-color-picker', customClass]">
-    <!-- 显示颜色的小方块 -->
-    <div class="mzl-color-picker-hd">
-      <span class="hd-color-preview"></span>
-      <span class="default-color-text" @click="setColor(props.defaultColor)">默认颜色</span>
+    <div v-if="isShow" ref="colorPicker" :class="['mzl-color-picker', customClass]">
+      <!-- 显示颜色的小方块 -->
+      <div class="mzl-color-picker-hd">
+        <span class="hd-color-preview"></span>
+        <span class="default-color-text" @click="setColor(props.defaultColor)">默认颜色</span>
+      </div>
+      <div class="mzl-color-picker-bd">
+        <p>主题颜色</p>
+        <ul class="t-color">
+          <li
+            v-for="(color, index) in tColor"
+            :key="index"
+            :style="{ backgroundColor: color }"
+            @mouseenter="handleMouseEnter(color)"
+            @mouseleave="handleMouseLeave"
+            @click="setColor(color)"
+          ></li>
+        </ul>
+        <ul class="color-panel">
+          <li v-for="(item, index) of colorPanel" :key="index">
+            <ul>
+              <li
+                v-for="(color, innerIndex) of item"
+                :key="innerIndex"
+                :style="{ backgroundColor: color }"
+                @mouseenter="handleMouseEnter(color)"
+                @mouseleave="handleMouseLeave"
+                @click="setColor(color)"
+              ></li>
+            </ul>
+          </li>
+        </ul>
+        <p>标准颜色</p>
+        <ul class="t-color">
+          <li
+            v-for="(color, index) in bColor"
+            :key="index"
+            :style="{ backgroundColor: color }"
+            @mouseenter="handleMouseEnter(color)"
+            @mouseleave="handleMouseLeave"
+            @click="setColor(color)"
+          ></li>
+        </ul>
+        <p @click="showH5ColorPanel">更多颜色</p>
+        <input type="color" hidden ref="h5ColorRef" v-model="h5Color" @change="setColor(h5Color)" />
+      </div>
     </div>
-    <div class="mzl-color-picker-bd">
-      <p>主题颜色</p>
-      <ul class="t-color">
-        <li v-for="(color,index) in tColor" :key="index" :style="{'backgroundColor': color}" @mouseenter="handleMouseEnter(color)" @mouseleave="handleMouseLeave" @click="setColor(color)">
-        </li>
-      </ul>
-      <ul class="color-panel">
-        <li v-for="(item, index) of colorPanel" :key="index">
-          <ul>
-            <li v-for="(color, innerIndex) of item" :key="innerIndex" :style="{'backgroundColor': color}" @mouseenter="handleMouseEnter(color)" @mouseleave="handleMouseLeave" @click="setColor(color)"></li>
-          </ul>
-        </li>
-      </ul>
-      <p>标准颜色</p>
-      <ul class="t-color">
-        <li v-for="(color,index) in bColor" :key="index" :style="{'backgroundColor': color}" @mouseenter="handleMouseEnter(color)" @mouseleave="handleMouseLeave" @click="setColor(color)">
-        </li>
-      </ul>
-      <p @click="showH5ColorPanel">更多颜色</p>
-      <input type="color" hidden ref="h5ColorRef" v-model="h5Color" @change="setColor(h5Color)">
-    </div>
-  </div>
   </transition>
 </template>
 
@@ -38,7 +57,7 @@ export default {
 </script>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, getCurrentInstance, nextTick } from 'vue'
 const props = defineProps({
   modelValue: {
     type: String
@@ -47,13 +66,14 @@ const props = defineProps({
     type: String,
     default: '#000000'
   },
-  disabled: {
-    type: Boolean,
-    default: false
-  },
   customClass: {
     type: String,
     require: false
+  },
+  autoClose: {
+    type: Boolean,
+    require: false,
+    default: false
   }
 })
 const hoverColor = ref(null)
@@ -66,25 +86,44 @@ const handleMouseEnter = (color) => {
 const handleMouseLeave = () => {
   hoverColor.value = null
 }
-const emit = defineEmits(['update:modelValue','change'])
+const emit = defineEmits(['update:modelValue', 'change'])
 const setColor = (color) => {
   emit('update:modelValue', color)
   emit('change', color)
+  if (props.autoClose) {
+    close()
+  }
 }
 
-const h5Color = ref("")
+onMounted(() => {
+  const colorPicker = ref()
+  const vm = getCurrentInstance()
+  window.addEventListener('click', (e) => {
+    if (colorPicker && !vm.vnode.el.contains(e.target)) {
+      close()
+    }
+  })
+})
+
+const h5Color = ref('')
 const h5ColorRef = ref(null)
 const showH5ColorPanel = () => {
   h5ColorRef.value.click()
 }
-const h5ColorChange = (color) => {
-  alert(color)
-  setColor(color)
-}
-
 
 // 主题颜色
-const tColor = ['#000000', '#ffffff', '#eeece1', '#1e497b', '#4e81bb', '#e2534d', '#9aba60', '#8165a0', '#47acc5', '#f9974c']
+const tColor = [
+  '#000000',
+  '#ffffff',
+  '#eeece1',
+  '#1e497b',
+  '#4e81bb',
+  '#e2534d',
+  '#9aba60',
+  '#8165a0',
+  '#47acc5',
+  '#f9974c'
+]
 // 颜色面板
 const colorConfig = [
   ['#7f7f7f', '#f2f2f2'],
@@ -101,14 +140,25 @@ const colorConfig = [
 
 const colorPanel = computed(() => {
   const list = []
-  for(let item of colorConfig) {
+  for (let item of colorConfig) {
     list.push(gradient(item[1], item[0], 5))
   }
   return list
 })
 
 // 标准颜色
-const bColor = ['#c21401', '#ff1e02', '#ffc12a', '#ffff3a', '#90cf5b', '#00af57', '#00afee', '#0071be', '#00215f', '#72349d']
+const bColor = [
+  '#c21401',
+  '#ff1e02',
+  '#ffc12a',
+  '#ffff3a',
+  '#90cf5b',
+  '#00af57',
+  '#00afee',
+  '#0071be',
+  '#00215f',
+  '#72349d'
+]
 
 // 计算渐变过渡颜色
 const gradient = (startColor, endColor, step) => {
@@ -122,7 +172,9 @@ const gradient = (startColor, endColor, step) => {
   let gradientColorArr = []
   // 计算每一步的hex值
   for (let i = 0; i < step; i++) {
-    gradientColorArr.push(rgbToHex(parseInt(rStep * i + sColor[0]), parseInt(gStep * i + sColor[1]), parseInt(bStep * i + sColor[2])))
+    gradientColorArr.push(
+      rgbToHex(parseInt(rStep * i + sColor[0]), parseInt(gStep * i + sColor[1]), parseInt(bStep * i + sColor[2]))
+    )
   }
   return gradientColorArr
 }
@@ -150,7 +202,7 @@ const hexToRgb = (hex) => {
   return rgb
 }
 
-const isShow = ref(true)
+const isShow = ref(false)
 const show = () => {
   isShow.value = true
 }
@@ -160,15 +212,22 @@ const close = () => {
 const toggle = () => {
   isShow.value = !isShow.value
 }
+
+defineExpose({
+  show,
+  close,
+  toggle
+})
 </script>
 
 <style lang="scss" scoped>
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .1s ease;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
 
-.fade-enter-from, .fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 .mzl-color-picker {
@@ -193,35 +252,35 @@ const toggle = () => {
       cursor: pointer;
     }
   }
-  .mzl-color-picker-bd{
-    ul{
+  .mzl-color-picker-bd {
+    ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-    .t-color{
-      li{
+    .t-color {
+      li {
         display: inline-block;
         width: 15px;
         height: 15px;
         margin: 0 2px;
       }
-      li:hover{
+      li:hover {
         transform: scale(1.3);
         cursor: pointer;
       }
     }
-    .color-panel{
-      li{
+    .color-panel {
+      li {
         display: inline-block;
         width: 15px;
         height: 15px;
         margin: 0 2px;
-        ul{
-          li{
+        ul {
+          li {
             margin: 0;
           }
-          li:hover{
+          li:hover {
             transform: scale(1.3);
             cursor: pointer;
           }
