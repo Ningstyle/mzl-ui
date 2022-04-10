@@ -158,6 +158,11 @@ export default [
         path: 'colorPicker',
         name: 'colorPicker 颜色选择器',
         component: () => import('/packages/colorPicker/doc/doc.md')
+      },
+      {
+        path: 'breadcrumb',
+        name: 'breadcrumb 面包屑',
+        component: () => import('/packages/breadcrumb/doc/doc.md')
       }
     ]
   }
