@@ -6,7 +6,7 @@
 
 ```
 npm install  mzl-ui
-cnpm install  mzl-ui
+cnpm install  mzl-ui --save
 yarn add mzl-ui
 ```
 

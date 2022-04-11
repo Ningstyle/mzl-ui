@@ -53,6 +53,15 @@ title: radio
     <preview compName="button" demoName="demo2"/>
   </script>
   ```
+## 组件测试规范
+- ### 任何一个组件应完成测试后提交 *PR*
+- ### 组件测试脚本存放目录为 *tests* 目录，提供 *.spec.js* 为后拽的测试脚本文件
+- ### 测试脚本需包含初始化测试、渲染测试、插槽测试、事件测试等基础测试
+- ### 具体示例请参考 */tests/button.spec.js* 脚本文件
+- ### 组件测试命令为：
+  ```
+  yarn test || npm test
+  ```
 
 ## Issue 规范
 
