@@ -90,11 +90,11 @@ export default [
         'title-en': 'OptFile',
         path: '/mzlui/optfile'
       },
-      {
-        'title-cn': 'ColorPicker 颜色选择器',
-        'title-en': 'ColorPicker',
-        path: '/mzlui/colorPicker'
-      }
+      // {
+      //   'title-cn': 'ColorPicker 颜色选择器',
+      //   'title-en': 'ColorPicker',
+      //   path: '/mzlui/colorPicker'
+      // }
     ]
   },
   {

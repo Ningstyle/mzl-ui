@@ -3,7 +3,7 @@
     <div class="logoBox">
       <img src="../assets/logo.png" alt="mzl-ui" @click="toHome" />
       <a href="javascript:;" @click="toHome">Mzl UI</a>
-      <span>V 0.8.5</span>
+      <span>V 0.8.7</span>
       <div class="toolsBox">
         <a
           href="javascript:;"
