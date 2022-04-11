@@ -1,7 +1,7 @@
 {
   "name": "mzl-ui",
   "author": "style'me",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "private": false,
   "main": "./dist/mzl-ui.umd.js",
   "module": "./dist/mzl-ui.es.js",
@@ -21,7 +21,10 @@
     "ui",
     "vueui",
     "vertical",
-    "horizontal"
+    "horizontal",
+    "components",
+    "vue组件库",
+    "vue3组件库"
   ],
   "files": [
     "dist/*"
@@ -41,7 +44,8 @@
     "test": "jest --runInBand",
     "cz": "git-cz"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "highlight.js": "^11.4.0",
     "jest": "26.6.3",
     "pinia": "^2.0.12",
@@ -49,9 +53,7 @@
     "sass-loader": "^12.6.0",
     "vite-plugin-md": "^0.12.4",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.14"
-  },
-  "devDependencies": {
+    "vue-router": "^4.0.14",
     "@babel/preset-env": "^7.16.11",
     "@vitejs/plugin-vue": "^2.0.0",
     "@vue/reactivity": "^3.2.31",

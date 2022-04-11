@@ -56,43 +56,17 @@ import preview from '@/components/preview.vue'
 </div>
 <preview compName="menu" demoName="demo4"/>
 
-## 侧边菜单
+<!-- ## 侧边菜单
 
 #### 通过设置 type 为 horizontal 即可为侧边菜单
 
 <div class="componetnsBox">
   <demo5/>
 </div>
-<preview compName="menu" demoName="demo5"/>
+<preview compName="menu" demoName="demo5"/> -->
 
-## 禁用选项
 
-#### 可通过设置 _options_ 下的某一项树形 _disabled_ 为 _true_ 实现
-
-<div class="componetnsBox">
-  <demo6/>
-</div>
-<preview compName="menu" demoName="demo6"/>
-
-## 密码类型
-
-#### 密码类型的输入框，可通过 _showPassword_ 来启用是否开启显示密码
-
-<div class="componetnsBox">
-  <demo7/>
-</div>
-<preview compName="input" demoName="demo7"/>
-
-## 自定义 Focus 颜色
-
-#### 通过 _focusColor_ 属性自定义 input 在获取焦点后的颜色
-
-<div class="componetnsBox">
-  <demo8/>
-</div>
-<preview compName="input" demoName="demo8"/>
-
-## Attributes 参数
+<!-- ## Attributes 参数
 
 <Attributes/>
 <br/>
@@ -110,4 +84,4 @@ import preview from '@/components/preview.vue'
 ## Event 事件
 
 <Event/>
-<br/>
+<br/> -->
