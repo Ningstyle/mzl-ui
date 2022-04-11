@@ -54,24 +54,25 @@ const components = [
   mTabs,
   mSpace,
   mPopover,
-  mColorPicker
+  mColorPicker,
+  mBreadcrumb
 ];
 const install = (app) => {
   components.forEach((i) => {
-    app.use(i);
-  });
-  app.config.globalProperties.$message = Message;
-  app.config.globalProperties.$Confirm = Confirm;
-  app.config.globalProperties.$Loading = Loading;
-  app.config.globalProperties.$mzl = $mzl;
-};
+    app.use(i)
+  })
+  app.config.globalProperties.$message = Message
+  app.config.globalProperties.$Confirm = Confirm
+  app.config.globalProperties.$Loading = Loading
+  app.config.globalProperties.$mzl = $mzl
+}
 const mzlUi = {
-  version: "0.4.1",
-  install,
-};
+  version: '0.4.1',
+  install
+}
 /* istanbul ignore if */
-if (typeof window !== "undefined" && window.Vue) {
-  install(window.Vue);
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue)
 }
 export {
   // 导出的对象必须具有 install，才能被 app.use() 方法安装
@@ -105,6 +106,7 @@ export {
   mTabs,
   mPopover,
   mSpace,
-  mColorPicker
-};
-export default mzlUi;
+  mColorPicker,
+  mBreadcrumb
+}
+export default mzlUi
