@@ -28,6 +28,7 @@ import mTabs from "./tabs/index";
 import mSpace from "./Space/index";
 import mPopover from './popover/index';
 import mColorPicker from './colorPicker/index'
+import mBreadcrumb from './breadcrumb/index'
 //存在所有组件
 const components = [
   mButton,
