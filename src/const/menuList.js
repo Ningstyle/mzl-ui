@@ -155,6 +155,17 @@ export default [
       }
     ]
   },
+    {
+    'title-cn': '其他',
+    'title-en': 'other',
+    list: [
+      {
+        'title-cn': 'Divider 分割线',
+        'title-en': 'Divider',
+        path: '/mzlui/divider'
+      }
+    ]
+  }
   // {
   //   'title-cn': '方法',
   //   'title-en': 'function',

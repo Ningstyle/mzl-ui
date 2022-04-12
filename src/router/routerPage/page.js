@@ -168,6 +168,11 @@ export default [
         path: 'breadcrumb',
         name: 'breadcrumb 面包屑',
         component: () => import('/packages/breadcrumb/doc/doc.md')
+      },
+      {
+        path: 'divider',
+        name: 'divider 分割线',
+        component: () => import('/packages/divider/doc/doc.md')
       }
     ]
   }
