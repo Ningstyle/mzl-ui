@@ -90,6 +90,11 @@ export default [
         component: () => import('/packages/optfile/doc/doc.md')
       },
       {
+        path: 'badge',
+        name: 'badge 徽章',
+        component: () => import('/packages/badge/doc/doc.md')
+      },
+      {
         path: 'table',
         name: 'Table 表格',
         component: () => import('/packages/table/doc/doc.md')

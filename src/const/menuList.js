@@ -101,6 +101,7 @@ export default [
     'title-cn': '数据',
     'title-en': 'Data',
     list: [
+      { 'title-cn': 'Badge 徽章', 'title-en': 'Badge', path: '/mzlui/badge' },
       { 'title-cn': 'Table 表格', 'title-en': 'Table', path: '/mzlui/table' },
       {
         'title-cn': 'Pagination 分页',
