@@ -30,10 +30,10 @@ const state = reactive({
         ],
         datas: [
             { attr: 'value', type: 'string | number', red: '显示值', def: "''" },
-            { attr: 'max', type: 'String', red: '最大值，超过最大值会显示 {max}+。 只有当 value 是数字类型时才会工作', def: "99" },
-            { attr: 'isDot', type: 'Boolean', red: '是否显示小圆点', def: "false" },
-            { attr: 'hidden', type: 'Boolean', red: '是否隐藏 Badge', def: "false" },
-            { attr: 'type', type: 'primary | success | danger | warning', red: '徽章类型', def: "'danger'" }
+            { attr: 'max', type: 'string', red: '最大值，超过最大值会显示 {max}+。 只有当 value 是数字类型时才会工作', def: "99" },
+            { attr: 'isDot', type: 'boolean', red: '是否显示小圆点', def: "false" },
+            { attr: 'hidden', type: 'boolean', red: '是否隐藏 Badge', def: "false" },
+            { attr: 'type', type: 'primary | success | danger | warning | info', red: '徽章类型', def: "'danger'" }
         ]
     }
 })

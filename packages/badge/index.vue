@@ -1,11 +1,5 @@
 <script setup>
-import { onMounted, reactive } from 'vue';
-const styleObj = reactive({
-    backgroundColor: '',
-    fontColor: 'white',
-})
-
-const props = defineProps({
+defineProps({
     value: String | Number,
     hidden: {
         type: Boolean,
@@ -24,29 +18,6 @@ const props = defineProps({
         default: 99
     }
 })
-
-const typeWhich = () => {
-    switch (props.type) {
-        case 'primary':
-            styleObj.backgroundColor = '#0e80eb'
-            break;
-        case 'success':
-            styleObj.backgroundColor = '#3ac564'
-            break;
-        case 'warning':
-            styleObj.backgroundColor = '#f79554'
-            break;
-        case 'danger':
-            styleObj.backgroundColor = '#f05d5f'
-            break;
-        default:
-            styleObj.backgroundColor = '#ffffff'
-            styleObj.fontColor = 'black'
-            break;
-    }
-}
-console.log(typeof props.value);
-onMounted(() => typeWhich())
 </script>
 <script>
 export default {
@@ -58,7 +29,7 @@ export default {
     <div class="mzl-badge">
         <slot></slot>
         <div v-show="!hidden">
-            <sup v-if="!isDot" :style='styleObj' class="badge">
+            <sup v-if="!isDot" :class='type' class="badge">
                 <span v-if="typeof value === 'number'">{{ value <= max ? value : `${max}+` }}</span>
                         <span v-else>{{ value }}</span>
             </sup>
@@ -67,9 +38,10 @@ export default {
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .mzl-badge {
     position: relative;
+    white-space: nowrap;
 }
 
 .badge,
@@ -77,10 +49,11 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(50%) translateY(-50%);
+    border: 1px solid white;
 }
 
 .badge {
+    transform: translateX(80%) translateY(-50%);
     padding: 2px 10px;
     box-sizing: border-box;
     border-radius: 10px;
@@ -91,10 +64,30 @@ export default {
 }
 
 .isdot {
+    transform: translateX(50%) translateY(-50%);
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    border: 1px solid white;
-    background-color: #f05d5f;
+    background-color: $danger;
+}
+
+.primary {
+    background-color: $primary;
+}
+
+.info {
+    background-color: $info;
+}
+
+.success {
+    background-color: $success;
+}
+
+.warning {
+    background-color: $warn;
+}
+
+.danger {
+    background-color: $danger;
 }
 </style>
