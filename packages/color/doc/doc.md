@@ -25,8 +25,14 @@ title: button
   <span class="outherColor" style="background:rgba(14,128,235,.2)"></span>
   <span class="outherColor" style="background:rgba(14,128,235,.1)"></span>
 </div>
+
 <br/>
 <br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
 
 ## 成功状态
 
@@ -46,6 +52,10 @@ title: button
   <span class="outherColor" style="background:rgba(9,182,61,.2)"></span>
   <span class="outherColor" style="background:rgba(9,182,61,.1)"></span>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
 <br/>
 <br/>
 
@@ -69,6 +79,10 @@ title: button
 </div>
 <br/>
 <br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## 警告状态
 
@@ -90,6 +104,10 @@ title: button
 </div>
 <br/>
 <br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## 文本颜色
 
@@ -109,6 +127,10 @@ title: button
   <span class="outherColor" style="background:rgba(80,80,80,.2)"></span>
   <span class="outherColor" style="background:rgba(80,80,80,.1)"></span>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
 <br/>
 <br/>
 
