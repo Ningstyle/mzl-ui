@@ -114,7 +114,8 @@ export default [
       },
       { 'title-cn': 'Tree 树形控件', 'title-en': 'Tree', path: '/mzlui/tree' },
       { 'title-cn': 'Menu 菜单', 'title-en': 'menu', path: '/mzlui/menu' },
-      { 'title-cn': 'Tab 切换', 'title-en': 'tabs', path: '/mzlui/tabs' }
+      { 'title-cn': 'Tab 切换', 'title-en': 'tabs', path: '/mzlui/tabs' },
+      { 'title-cn': 'Progress 进度条', 'title-en': 'progress', path: '/mzlui/progress' }
     ]
   },
   {
