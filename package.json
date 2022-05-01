@@ -1,7 +1,7 @@
 {
   "name": "mzl-ui",
   "author": "style'me",
-  "version": "0.8.6",
+  "version": "0.8.8",
   "private": false,
   "main": "./dist/mzl-ui.umd.js",
   "module": "./dist/mzl-ui.es.js",
@@ -21,7 +21,10 @@
     "ui",
     "vueui",
     "vertical",
-    "horizontal"
+    "horizontal",
+    "components",
+    "vue组件库",
+    "vue3组件库"
   ],
   "files": [
     "dist/*"
@@ -38,9 +41,11 @@
     "build:html": "vite build --config ./build/build.js",
     "preview": "vite preview",
     "mzl-ui": "vite build",
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "cz": "git-cz"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "highlight.js": "^11.4.0",
     "jest": "26.6.3",
     "pinia": "^2.0.12",
@@ -48,9 +53,7 @@
     "sass-loader": "^12.6.0",
     "vite-plugin-md": "^0.12.4",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.14"
-  },
-  "devDependencies": {
+    "vue-router": "^4.0.14",
     "@babel/preset-env": "^7.16.11",
     "@vitejs/plugin-vue": "^2.0.0",
     "@vue/reactivity": "^3.2.31",
@@ -60,6 +63,16 @@
     "eslint": "^8.13.0",
     "eslint-plugin-vue": "^8.6.0",
     "vite": "^2.7.2",
-    "vue-jest": "^5.0.0-alpha.10"
+    "vue-jest": "^5.0.0-alpha.10",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "engines": {
+    "node": ">= 14"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

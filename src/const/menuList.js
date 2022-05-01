@@ -90,17 +90,18 @@ export default [
         'title-en': 'OptFile',
         path: '/mzlui/optfile'
       },
-      {
-        'title-cn': 'ColorPicker 颜色选择器',
-        'title-en': 'ColorPicker',
-        path: '/mzlui/colorPicker'
-      }
+      // {
+      //   'title-cn': 'ColorPicker 颜色选择器',
+      //   'title-en': 'ColorPicker',
+      //   path: '/mzlui/colorPicker'
+      // }
     ]
   },
   {
     'title-cn': '数据',
     'title-en': 'Data',
     list: [
+      { 'title-cn': 'Badge 徽章', 'title-en': 'Badge', path: '/mzlui/badge' },
       { 'title-cn': 'Table 表格', 'title-en': 'Table', path: '/mzlui/table' },
       {
         'title-cn': 'Pagination 分页',
@@ -155,15 +156,26 @@ export default [
       }
     ]
   },
-  {
-    'title-cn': '方法',
-    'title-en': 'function',
+    {
+    'title-cn': '其他',
+    'title-en': 'other',
     list: [
       {
-        'title-cn': '时间戳转换日期格式',
-        'title-en': 'formatDate',
-        path: '/mzlui/formatDate'
+        'title-cn': 'Divider 分割线',
+        'title-en': 'Divider',
+        path: '/mzlui/divider'
       }
     ]
   }
+  // {
+  //   'title-cn': '方法',
+  //   'title-en': 'function',
+  //   list: [
+  //     {
+  //       'title-cn': '时间戳转换日期格式',
+  //       'title-en': 'formatDate',
+  //       path: '/mzlui/formatDate'
+  //     }
+  //   ]
+  // }
 ]

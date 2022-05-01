@@ -28,6 +28,10 @@ import mTabs from "./tabs/index";
 import mSpace from "./Space/index";
 import mPopover from './popover/index';
 import mProgress from './progress/index'
+import mColorPicker from './colorPicker/index'
+import mBreadcrumb from './breadcrumb/index'
+import mBadge from './badge/index'
+import mDivider from './divider/index'
 //存在所有组件
 const components = [
   mButton,
@@ -54,24 +58,28 @@ const components = [
   mTabs,
   mSpace,
   mPopover,
-  mProgress
+  mProgress,
+  mColorPicker,
+  mBreadcrumb,
+  mBadge,
+  mDivider
 ];
 const install = (app) => {
   components.forEach((i) => {
-    app.use(i);
-  });
-  app.config.globalProperties.$message = Message;
-  app.config.globalProperties.$Confirm = Confirm;
-  app.config.globalProperties.$Loading = Loading;
-  app.config.globalProperties.$mzl = $mzl;
-};
+    app.use(i)
+  })
+  app.config.globalProperties.$message = Message
+  app.config.globalProperties.$Confirm = Confirm
+  app.config.globalProperties.$Loading = Loading
+  app.config.globalProperties.$mzl = $mzl
+}
 const mzlUi = {
-  version: "0.4.1",
-  install,
-};
+  version: '0.4.1',
+  install
+}
 /* istanbul ignore if */
-if (typeof window !== "undefined" && window.Vue) {
-  install(window.Vue);
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue)
 }
 export {
   // 导出的对象必须具有 install，才能被 app.use() 方法安装
@@ -105,6 +113,10 @@ export {
   mTabs,
   mPopover,
   mSpace,
-  mProgress
-};
-export default mzlUi;
+  mProgress,
+  mColorPicker,
+  mBreadcrumb,
+  mBadge,
+  mDivider
+}
+export default mzlUi

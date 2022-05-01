@@ -2,18 +2,13 @@
   <div class="header-block-box">
     <div class="logoBox">
       <img src="../assets/logo.png" alt="mzl-ui" @click="toHome" />
-      <a href="javascript:;" @click="toHome">Mzl UI</a>
-      <span>V 0.8.5</span>
-      <div class="toolsBox">
-        <a
-          href="javascript:;"
-          v-for="(item, index) in tools"
-          :key="index"
-          :class="{ active: tabIndex == index }"
-          @click="pageView(item, index)"
-          >{{ item.name }}</a
-        >
-      </div>
+      <m-badge type="primary" value="V 0.8.8">
+        <a href="javascript:;" @click="toHome">Mzl UI</a>
+      </m-badge>
+    </div>
+    <div class="toolsBox">
+      <a href="javascript:;" v-for="(item, index) in tools" :key="index" :class="{ active: tabIndex == index }"
+        @click="pageView(item, index)">{{ item.name }}</a>
     </div>
   </div>
 </template>
@@ -21,12 +16,11 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { reactive, ref, onMounted } from "vue";
-const router = useRouter();
-const toHome = () => {
-  router.push("/");
-};
+const { push, currentRoute } = useRouter();
+const toHome = () => push("/");
+const fullPath = ref(currentRoute.value.fullPath)
 const tabIndex = ref(
-  router.currentRoute.value.fullPath == "/mzlui"
+  fullPath == "/mzlui"
     ? 1
     : sessionStorage.getItem("tabIndex") || 0
 );
@@ -63,13 +57,13 @@ const pageView = (item, index) => {
   if (item.path == "open") {
     window.open(item.url);
   } else {
-    if (item.path != router.currentRoute.value.fullPath) {
-      router.push(item.path);
+    if (item.path != fullPath) {
+      push(item.path);
     }
   }
 };
 onMounted(() => {
-  if (router.currentRoute.value.fullPath == "/mzlui") {
+  if (fullPath == "/mzlui") {
     sessionStorage.setItem("tabIndex", 1);
   }
 });
@@ -79,65 +73,62 @@ onMounted(() => {
 .header-block-box {
   width: 100%;
   height: 64px;
+  padding: 0 40px;
   background: #fff;
   box-shadow: 0 2px 8px #f0f1f2;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   .logoBox {
-    height: 64px;
-    padding: 0 40px;
-    overflow: hidden;
-    position: relative;
+    display: flex;
+    align-items: center;
+
     img {
       width: 22px;
       height: 22px;
-      float: left;
-      margin: 20px 10px 0 0;
+      margin-right: 10px;
       cursor: pointer;
     }
+
     a {
+      padding-right: 10px;
       color: #4a5264;
       font-weight: 700;
       font-size: 18px;
       font-family: PuHuiTi, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
         Helvetica Neue, Arial, Noto Sans, sans-serif, apple color emoji,
         segoe ui emoji, Segoe UI Symbol, noto color emoji, sans-serif;
-      line-height: 64px;
       letter-spacing: -0.18px;
       white-space: nowrap;
       text-decoration: none;
-      float: left;
     }
-    span {
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 700;
-      background-color: #0e80eb;
-      color: #fff;
-      position: absolute;
-      top: 6px;
-    }
-    .toolsBox {
-      float: right;
-      line-height: 64px;
-      a {
-        font-weight: normal;
-        font-size: 16px;
-        padding: 8px 3px;
-        margin-left: 25px;
-        border-bottom: 2px solid #fff;
-        display: inline-block;
-        float: none;
-        line-height: normal;
-        transition: all 0.2s ease;
-        &:hover {
-          color: #0e80eb;
-          border-color: #0e80eb;
-        }
-      }
-      a.active {
+  }
+
+  .toolsBox {
+    a {
+      font-weight: normal;
+      font-size: 16px;
+      padding: 8px 3px;
+      margin-left: 25px;
+      border-bottom: 2px solid #fff;
+      display: inline-block;
+      float: none;
+      line-height: normal;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: #4a5264;
+
+      &:hover {
         color: #0e80eb;
         border-color: #0e80eb;
       }
+    }
+
+    a.active {
+      color: #0e80eb;
+      border-color: #0e80eb;
     }
   }
 }

@@ -79,9 +79,9 @@ onMounted(() => {
   transition: all 0.3s ease-out;
 }
 
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translate3d(0, -75px, 0);
+div.slide-fade-enter-from,
+div.slide-fade-leave-to {
+  transform: translate3d(-50%, -75px, 0);
 }
 .mzl-message {
   position: fixed;

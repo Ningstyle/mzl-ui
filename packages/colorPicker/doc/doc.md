@@ -1,25 +1,31 @@
 <script setup>
 import demo1 from './demo1.vue'
 import Attributes from './Attributes.vue'
+import Event from './Events.vue'
 import preview from '@/components/preview.vue'
 </script>
 
-# Confirm 消息确认
+# ColorPicker 颜色选择器
 
-#### 常用于交互反馈确认场景
+#### 颜色选择
 
 <br/>
 
 ## 基本使用
 
-#### Confirm 消息确认基本使用示例。
+#### ColorPicker 颜色选择器基本使用示例。
 
 <div class="componetnsBox">
   <demo1/>
 </div>
-<preview compName="mColorPicker" demoName="demo1"/>
+<preview compName="colorPicker" demoName="demo1"/>
 
 ## Attributes 参数
 
 <Attributes/>
+<br/>
+
+## Event 事件
+
+<Event/>
 <br/>
