@@ -1,0 +1,50 @@
+<!-- html -->
+<template>
+  <m-space>
+    <m-progress
+      :percent="20"
+      progressType="circle"
+      :circleSize="120"
+      isShowText
+      roundCorner
+    ></m-progress>
+    <m-progress
+      :percent="40"
+      bgColor="#505050"
+      progressType="circle"
+      :circleSize="120"
+      isShowText
+      roundCorner
+    ></m-progress>
+    <m-progress
+      :percent="60"
+      currentStatus="OTHER"
+      progressType="circle"
+      :circleSize="120"
+      isShowText
+      roundCorner
+    ></m-progress>
+    <m-progress
+      :percent="90"
+      currentStatus="FAIL"
+      progressType="circle"
+      :circleSize="120"
+      :circleHeight="10"
+      isShowText
+    ></m-progress>
+    <m-progress
+      :percent="100"
+      currentStatus="SUCCESS"
+      progressType="circle"
+      :circleSize="120"
+      :circleHeight="10"
+      isShowText
+    >
+    </m-progress>
+  </m-space>
+</template>
+<style scoped>
+.mzl-progress {
+  margin-bottom: 10px;
+}
+</style>
