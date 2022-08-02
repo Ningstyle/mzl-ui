@@ -90,6 +90,11 @@ export default [
         component: () => import('/packages/optfile/doc/doc.md')
       },
       {
+        path: 'badge',
+        name: 'badge 徽章',
+        component: () => import('/packages/badge/doc/doc.md')
+      },
+      {
         path: 'table',
         name: 'Table 表格',
         component: () => import('/packages/table/doc/doc.md')
@@ -118,6 +123,11 @@ export default [
         path: 'tabs',
         name: 'Tab 切换',
         component: () => import('/packages/tabs/doc/doc.md')
+      },
+      {
+        path: 'progress',
+        name: 'Progress 进度条',
+        component: () => import('/packages/progress/doc/doc.md')
       },
       {
         path: 'message',
@@ -163,6 +173,11 @@ export default [
         path: 'breadcrumb',
         name: 'breadcrumb 面包屑',
         component: () => import('/packages/breadcrumb/doc/doc.md')
+      },
+      {
+        path: 'divider',
+        name: 'divider 分割线',
+        component: () => import('/packages/divider/doc/doc.md')
       }
     ]
   }
