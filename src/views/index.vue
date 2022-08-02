@@ -75,6 +75,7 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { reactive } from "vue";
+import defaultTk from '@/assets/tk.png';
 const router = useRouter();
 const state = reactive({
   devoteList: [
@@ -112,6 +113,16 @@ const state = reactive({
       name: "spark154204",
       github: "https://github.com/spark154204",
       img: "https://avatars.githubusercontent.com/u/48675578?s=60&v=4",
+    },
+    {
+      name: "EvilHunter01",
+      github: "https://github.com/EvilHunter01",
+      img: defaultTk,
+    },
+    {
+      name: "hj-rookie",
+      github: "https://github.com/hj-rookie",
+      img: "https://avatars.githubusercontent.com/u/66245264?v=4",
     },
   ],
 });
