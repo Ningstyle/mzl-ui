@@ -11,7 +11,7 @@
 
 <!-- js -->
 <script setup>
-import Message from "../index.js"; //此处为本地示例，请使用import {Message} from "mzl-ui";引入
+import Message from "../index"; //此处为本地示例，请使用import {Message} from "mzl-ui";引入
 const openInfo = () => {
   Message({
     type: "info",

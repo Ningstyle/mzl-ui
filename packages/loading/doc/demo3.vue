@@ -16,7 +16,7 @@
 <!-- js -->
 <script setup>
   import { reactive } from 'vue';
-  import Loading from "../index.js"; //此处为本地示例，请使用import { Loading } from "mzl-ui";
+  import Loading from "../index"; //此处为本地示例，请使用import { Loading } from "mzl-ui";
   const openLoading = () => {
     Loading.show({
       target:"#loadingTextBox"

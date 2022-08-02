@@ -41,13 +41,13 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { ref, reactive, onMounted, useSlots } from 'vue'
 export default{
   name:"mOptfile"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 import mButton from '../button/index'
 const emit = defineEmits(['change','update:fileList','beforeChange'])
 const props = defineProps({

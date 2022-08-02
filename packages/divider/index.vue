@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
     position: {
         type: String,
@@ -14,7 +14,7 @@ const props = defineProps({
     }
 })
 </script>
-<script>
+<script lang="ts">
 export default {
     name: "mDivider",
 };

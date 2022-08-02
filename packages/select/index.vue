@@ -49,12 +49,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "mSelect",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import {
   ref,
   computed,

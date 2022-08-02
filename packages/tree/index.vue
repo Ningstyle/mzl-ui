@@ -5,12 +5,12 @@
     </template>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default{
   name:"mTree"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 import {ref} from 'vue'
 import treeItem from './treeItem.vue'
 const emit = defineEmits(['nodeClick','selectClick'])

@@ -21,12 +21,12 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default{
   name:"mPagination"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import mInput from '../input';
 const emit = defineEmits(['update:current','change'])

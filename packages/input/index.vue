@@ -12,13 +12,13 @@
     <slot name="btn"/>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { reactive, ref,computed, useSlots} from 'vue'
 export default {
   name:"mInput"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 const emit = defineEmits(['update:modelValue','clear','focus','blur','input','change'])
 const props = defineProps({
   modelValue:String|Number,

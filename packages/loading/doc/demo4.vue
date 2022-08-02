@@ -5,7 +5,7 @@
 
 <!-- js -->
 <script setup>
-  import Loading from "../index.js"; //此处为本地示例，请使用import { Loading } from "mzl-ui";
+  import Loading from "../index"; //此处为本地示例，请使用import { Loading } from "mzl-ui";
   const openLoading = () => {
     Loading.show({
       text:"正在努力加载中...",

@@ -4,13 +4,13 @@
     <div class="max-length-box" v-if="maxlength!=undefined&&maxlength>0">{{`${n}/${maxlength}`}}</div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { ref } from 'vue'
 export default{
   name:"mTextarea"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 const emit = defineEmits(['update:modelValue','focus','blur','input'])
 const props = defineProps({
   modelValue:String,

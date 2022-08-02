@@ -17,13 +17,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "mTabs",
 };
 </script>
 
-<script setup>
+<script setup lang="ts">
 import mTabsNav from "./nav.vue";
 import {
   reactive,

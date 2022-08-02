@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {computed,onMounted,ref} from 'vue'
 const emit = defineEmits(['nodeClick','change','selectClick'])
 const props = defineProps({

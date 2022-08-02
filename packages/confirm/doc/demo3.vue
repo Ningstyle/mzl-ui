@@ -5,8 +5,8 @@
 
 <!-- js -->
 <script setup>
-import Confirm from "../index.js";
-import Message from "../../message/index.js";
+import Confirm from "../index";
+import Message from "../../message/index";
 // 以上为本地示例，请使用import { Confirm, Message } from "mzl-ui";引入
 const openConfirm = () => {
   Confirm({

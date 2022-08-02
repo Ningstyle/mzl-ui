@@ -58,7 +58,7 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import {
   defineProps,
   reactive,
@@ -73,7 +73,7 @@ export default {
   name: "mProgress",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 const props = defineProps({
   // 百分比
   percent: {

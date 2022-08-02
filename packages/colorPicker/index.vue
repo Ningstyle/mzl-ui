@@ -50,14 +50,14 @@
   </transition>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'mColorPicker'
 }
 </script>
 
-<script setup>
-import { ref, computed, onMounted, getCurrentInstance, nextTick } from 'vue'
+<script setup lang="ts">
+import { ref, computed, onMounted, getCurrentInstance } from 'vue'
 const props = defineProps({
   modelValue: {
     type: String

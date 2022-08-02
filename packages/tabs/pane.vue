@@ -4,13 +4,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "mTabPane",
 };
 </script>
 
-<script setup>
+<script setup lang="ts">
 import {
   inject,
   getCurrentInstance,

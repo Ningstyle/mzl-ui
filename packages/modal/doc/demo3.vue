@@ -23,7 +23,7 @@
 <!-- js -->
 <script setup>
 import { ref } from "vue";
-import Message from "../../message/index.js"; //此处为本地示例，请使用import {Message} from "mzl-ui";引入
+import Message from "../../message/index"; //此处为本地示例，请使用import {Message} from "mzl-ui";引入
 const modalShow = ref(false);
 const value = ref("");
 const openModal = () => {

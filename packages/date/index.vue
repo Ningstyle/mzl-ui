@@ -107,12 +107,12 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default{
   name:"mDate"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 import { ref,onMounted } from 'vue'
 import mInput from '../input';
 const emit = defineEmits(['update:modelValue','clear','open','close','change'])
