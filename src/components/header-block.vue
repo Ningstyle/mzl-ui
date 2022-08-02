@@ -2,7 +2,7 @@
   <div class="header-block-box">
     <div class="logoBox">
       <img src="../assets/logo.png" alt="mzl-ui" @click="toHome" />
-      <m-badge type="primary" value="V 0.8.8">
+      <m-badge type="primary" value="V 0.8.9">
         <a href="javascript:;" @click="toHome">Mzl UI</a>
       </m-badge>
     </div>
