@@ -125,6 +125,11 @@ export default [
         component: () => import('/packages/tabs/doc/doc.md')
       },
       {
+        path: 'progress',
+        name: 'Progress 进度条',
+        component: () => import('/packages/progress/doc/doc.md')
+      },
+      {
         path: 'message',
         name: 'Message 消息提示',
         component: () => import('/packages/message/doc/doc.md')

@@ -27,6 +27,7 @@ import mMenu from "./menu/index";
 import mTabs from "./tabs/index";
 import mSpace from "./Space/index";
 import mPopover from './popover/index';
+import mProgress from './progress/index'
 import mColorPicker from './colorPicker/index'
 import mBreadcrumb from './breadcrumb/index'
 import mBadge from './badge/index'
@@ -57,6 +58,7 @@ const components = [
   mTabs,
   mSpace,
   mPopover,
+  mProgress,
   mColorPicker,
   mBreadcrumb,
   mBadge,
@@ -111,6 +113,7 @@ export {
   mTabs,
   mPopover,
   mSpace,
+  mProgress,
   mColorPicker,
   mBreadcrumb,
   mBadge,
