@@ -6,10 +6,12 @@
   >
     <transition
       :name="transition"
+      @before-enter="handleBeforeEnter"
       @after-enter="handleAfterEnter"
       @after-leave="handleAfterLeave"
     >
       <div
+        ref="outbox"
         v-show="!disabled && showPopover"
         :class="['popover-outbox', placement, popperClass]"
         :aria-hidden="disabled || !showPopover ? 'true' : 'false'"
@@ -38,7 +40,7 @@ export default {
 };
 </script>
 <script setup>
-import { ref, reactive, getCurrentInstance, onMounted, computed } from "vue";
+import { ref, computed, nextTick } from "vue";
 const emit = defineEmits(["after-enter", "after-leave"]);
 const props = defineProps({
   width: {
@@ -99,26 +101,26 @@ const popoverStyles = computed(() => {
 
 //计算arrow的位置
 const reference = ref(null);
+const outbox = ref(null)
 const popoverArrow = ref(null);
-onMounted(() => {
-  console.log(reference.value.clientWidth);
+
+function computeArrow () {
+//当弹窗显示的时候，计算reference和outbox的边长
   if (props.placement.includes("top") || props.placement.includes("bottom")) {
-    let clientWidth = reference.value.clientWidth;
-    popoverArrow.value.style.setProperty(
-      "--geticonsite",
-      clientWidth / 2 + "px"
-    );
+    let clientWidth = reference.value.clientWidth / 2;
+    let outWitch = outbox.value.clientWidth / 2;
+    const width = Math.min(clientWidth,outWitch)
+    popoverArrow.value.style.setProperty("--geticonsite", width + "px");
   } else if (
     props.placement.includes("left") ||
     props.placement.includes("right")
   ) {
-    let clientHeight = reference.value.clientHeight;
-    popoverArrow.value.style.setProperty(
-      "--geticonsite",
-      clientHeight / 2 + "px"
-    );
+    let clientHeight = reference.value.clientHeight / 2;
+    let outHeight = outbox.value.clientHeight / 2;
+    const height = Math.min(clientHeight,outHeight)
+    popoverArrow.value.style.setProperty("--geticonsite", height + "px" );
   }
-});
+}
 
 const timer = ref(null);
 //点击触发
@@ -167,6 +169,10 @@ function hoverTriggerLeaveHandler() {
 //弹窗显示时触发
 function handleAfterEnter() {
   emit("after-enter");
+}
+//弹窗载入时触发
+async function handleBeforeEnter() {
+  await nextTick(computeArrow) 
 }
 //弹窗消时时触发
 function handleAfterLeave() {
