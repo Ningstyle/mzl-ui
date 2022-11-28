@@ -14,12 +14,12 @@
     <div class="rightCoustom" v-if="type == 'vertical'"><slot></slot></div>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   name: "mMenu",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { ref, reactive } from "vue";
 import menuItem from "./menuItem.vue";
 const emit = defineEmits(["change"]);

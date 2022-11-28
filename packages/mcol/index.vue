@@ -1,12 +1,12 @@
 <template>
   <div class="mzl-col-default"><slot></slot></div>
 </template>
-<script>
+<script lang="ts">
 export default{
   name:"mCol"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 import {ref} from 'vue'
 const props = defineProps({
   span:{

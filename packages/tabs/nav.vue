@@ -39,12 +39,12 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   name: "mTabsNav",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 /**
  * 代码有点乱，找机会重构
  * 还需要添加left，bottom，right布局方式

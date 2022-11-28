@@ -1,12 +1,12 @@
 <template>
   <div class="mzl-row-default"><slot></slot></div>
 </template>
-<script>
+<script lang="ts">
 export default{
   name:"mRow"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 
 </script>
 

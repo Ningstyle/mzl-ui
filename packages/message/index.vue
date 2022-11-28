@@ -11,7 +11,7 @@
     </div>
   </Transition>
 </template>
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref, reactive, computed } from 'vue'
 const props = defineProps({
   text: {

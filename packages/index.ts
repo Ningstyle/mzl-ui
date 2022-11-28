@@ -24,7 +24,7 @@ import mBacktop from "./backtop/index";
 import mCollapse from "./collapse/index";
 import mCollapseItem from "./collapse/item/index";
 import mMenu from "./menu/index";
-import mTabs from "./tabs/index";
+import mTabs from "./tabs";
 import mSpace from "./Space/index";
 import mPopover from './popover/index';
 import mProgress from './progress/index'

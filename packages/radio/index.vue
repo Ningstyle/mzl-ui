@@ -6,13 +6,13 @@
     </label>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { ref } from '@vue/reactivity'
 export default{
   name:"mRadio"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 const emit = defineEmits(['update:modelValue','change'])
 const props = defineProps({
   modelValue:String|Number,

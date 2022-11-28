@@ -3,20 +3,16 @@
     <slot></slot>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   name: "mCollapse",
 };
 </script>
 
-<script setup>
-import collapseItem from "./item/index.vue";
-import { onMounted, ref, getCurrentInstance } from "vue";
+<script setup lang="ts">
+import { ref } from "vue";
 const collapseRef = ref(null);
-const type = getCurrentInstance();
-onMounted(() => {
-  // console.log(collapseRef.value);
-});
+
 </script>
 
 <style lang="scss" scoped>

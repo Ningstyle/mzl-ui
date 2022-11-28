@@ -8,13 +8,13 @@
     <span class="mzl-switch-right-text" v-if="textAlign=='right'&&closeText!=''&&activeText!=''" :style="{'color':modelValue?activeColor:closeColor}">{{switchText}}</span>
   </div>
 </template>
-<script>
+<script lang="ts">
 import { computed, onMounted, reactive, ref, watchEffect } from 'vue'
 export default{
   name:"mSwitch"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 const emit = defineEmits(['update:modelValue','change'])
 const props = defineProps({
   modelValue:Boolean,

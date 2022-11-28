@@ -32,12 +32,12 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   name: "mPopover",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, getCurrentInstance, onMounted, computed } from "vue";
 const emit = defineEmits(["after-enter", "after-leave"]);
 const props = defineProps({

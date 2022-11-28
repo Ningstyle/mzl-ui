@@ -14,7 +14,7 @@
   <input type="text" id="inputCopy" style="opacity: 0;">
 </template>
 
-<script setup>
+<script setup lang="ts">
   import Message from '../../message/index'
 	import {ref,reactive} from 'vue'
 	import iconList from '@/const/iconList.js'

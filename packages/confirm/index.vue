@@ -20,54 +20,9 @@
   </Transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted} from 'vue'
 import mButton from '../button/index'
-const props = defineProps({
-  title: {
-    type: String,
-    default: '提示'
-  },
-  text: {
-    type: String,
-    default: ''
-  },
-  icon:{
-    type:String,
-    default:"m-icon-warning"
-  },
-  confirmText:{
-    type:String,
-    default:"确认"
-  },
-  cancelText:{
-    type:String,
-    default:"取消"
-  },
-  confirmShow:{
-    type:Boolean,
-    default:true
-  },
-  cancelShow:{
-    type:Boolean,
-    default:true
-  },
-  closeShow:{
-    type:Boolean,
-    default:true
-  },
-  customClass:String,
-  // 确认按钮
-  confirmCallback: {
-    type: Function,
-    default: () => {}
-  },
-  // 取消按钮
-  cancelCallback: {
-    type: Function,
-    default: () => {}
-  },
-})
 const isShow = ref(false)
 onMounted(() => {
   isShow.value = true

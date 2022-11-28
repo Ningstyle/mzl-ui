@@ -21,12 +21,12 @@
     </transition>
   </Teleport> 
 </template>
-<script>
+<script lang="ts">
 export default{
   name:"mModal"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 import {useSlots,ref,watchEffect,onMounted} from 'vue'
 const props = defineProps({
   title:{

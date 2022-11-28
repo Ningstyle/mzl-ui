@@ -18,12 +18,12 @@
 		
   </div>
 </template>
-<script>
+<script lang="ts">
 export default{
   name:"mDropdown"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 import {computed,ref,reactive,useSlots} from 'vue'
 const proprs = defineProps({
 	title:String,

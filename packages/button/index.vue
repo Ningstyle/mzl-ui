@@ -1,25 +1,26 @@
 <template>
   <button :class="isClass" :style="styles">
     <i :class="isIconClass" v-if="leftIcon"></i>
-    <span
-      :style="{
-        'margin-left':
-          $slot['default'] == undefined ? '0px' : leftIcon ? '4px' : '0px',
-        'margin-right':
-          $slot['default'] == undefined ? '0px' : rightIcon ? '4px' : '0px',
-      }"
-      ><slot
-    /></span>
+    <span :style="{
+      'margin-left':
+        $slot['default'] == undefined ? '0px' : leftIcon ? '4px' : '0px',
+      'margin-right':
+        $slot['default'] == undefined ? '0px' : rightIcon ? '4px' : '0px',
+    }">
+      <slot />
+    </span>
     <i :class="isIconClass" v-if="rightIcon"></i>
   </button>
 </template>
-<script>
+<script lang="ts">
 export default {
   name: "mButton",
 };
 </script>
-<script setup>
+<script setup lang="ts">
 import { computed, useSlots } from "vue";
+
+
 const props = defineProps({
   type: {
     type: String,
@@ -45,17 +46,18 @@ const mBtnDeaultStyle = {
   color: "#fff",
 };
 const $slot = useSlots();
+
 const isClass = computed(() => {
   return [
     props.size == "default"
       ? "mzl-button"
       : props.size == "medium"
-      ? "mzl-button-medium"
-      : props.size == "small"
-      ? "mzl-button-small"
-      : props.size == "mini"
-      ? "mzl-button-mini"
-      : "mzl-button",
+        ? "mzl-button-medium"
+        : props.size == "small"
+          ? "mzl-button-small"
+          : props.size == "mini"
+            ? "mzl-button-mini"
+            : "mzl-button",
     props.type ? (props.disabled ? "" : `mzl-button-${props.type}`) : "",
     props.disabled ? `mzl-button-${props.type}-disabled` : "",
     {
@@ -90,8 +92,8 @@ const styles = computed(() => {
     props.customColor == ""
       ? {}
       : props.type == "default"
-      ? {}
-      : mBtnDeaultStyle,
+        ? {}
+        : mBtnDeaultStyle,
   ];
 });
 </script>
@@ -112,12 +114,14 @@ const styles = computed(() => {
   overflow: hidden;
   line-height: 1;
   white-space: nowrap;
-  i {
-  }
+
+  i {}
+
   span {
     display: inline-block;
   }
 }
+
 .mzl-button-medium {
   padding: 8px 18px;
   outline: none;
@@ -130,10 +134,12 @@ const styles = computed(() => {
   overflow: hidden;
   line-height: 1;
   white-space: nowrap;
+
   i {
     font-size: 14px;
   }
 }
+
 .mzl-button-small {
   padding: 7px 13px;
   outline: none;
@@ -146,10 +152,12 @@ const styles = computed(() => {
   overflow: hidden;
   line-height: 1;
   white-space: nowrap;
+
   i {
     font-size: 13px;
   }
 }
+
 .mzl-button-mini {
   padding: 7px 13px;
   outline: none;
@@ -162,104 +170,130 @@ const styles = computed(() => {
   overflow: hidden;
   line-height: 1;
   white-space: nowrap;
+
   i {
     font-size: 12px;
   }
 }
+
 .mzl-button-round {
   border-radius: 22px;
 }
+
 .mzl-button-default {
   border: 1px solid #d9d9d9;
   background: #fff;
   color: #333;
+
   &:hover {
     color: #0e80eb;
     border-color: #0e80eb;
     opacity: 0.8;
   }
+
   &:active {
     opacity: 1;
   }
 }
+
 .mzl-button-custom {
   color: #333;
+
   &:hover {
     opacity: 0.8;
   }
+
   &:active {
     opacity: 1;
   }
 }
+
 .mzl-button-primary {
   border: 1px solid $primary;
   color: #fff;
   background-color: $primary;
+
   &:hover {
     opacity: 0.8;
   }
+
   &:active {
     opacity: 1;
   }
 }
+
 .mzl-button-success {
   border: 1px solid #09b63d;
   color: #fff;
   background-color: #09b63d;
+
   &:hover {
     opacity: 0.8;
   }
+
   &:active {
     opacity: 1;
   }
 }
+
 .mzl-button-danger {
   border: 1px solid #ec3437;
   background: #ec3437;
   color: #fff;
+
   &:hover {
     color: #fff;
     border-color: #ec3437;
     opacity: 0.8;
   }
+
   &:active {
     opacity: 1;
   }
 }
+
 .mzl-button-warning {
   border: 1px solid #f57b29;
   background: #f57b29;
   color: #fff;
+
   &:hover {
     color: #fff;
     border-color: #f57b29;
     opacity: 0.8;
   }
+
   &:active {
     opacity: 1;
   }
 }
+
 .mzl-button-text {
   border: 1px solid #fff;
   background: none;
   color: #0e80eb;
+
   &:hover {
     color: #0e80eb;
     opacity: 0.8;
   }
+
   &:active {
     opacity: 1;
   }
 }
+
 .mzl-button-dashed {
   border: 1px dashed #d9d9d9;
   background: #fff;
   color: #333;
+
   &:hover {
     color: #0e80eb;
     border-color: #0e80eb;
     opacity: 0.8;
   }
+
   &:active {
     opacity: 1;
   }
@@ -272,6 +306,7 @@ const styles = computed(() => {
   opacity: 0.5;
   color: #333;
 }
+
 .mzl-button-primary-disabled {
   cursor: no-drop;
   border: 1px solid #0e80eb;
@@ -279,6 +314,7 @@ const styles = computed(() => {
   opacity: 0.5;
   color: #fff;
 }
+
 .mzl-button-success-disabled {
   cursor: no-drop;
   border: 1px solid #09b63d;
@@ -286,6 +322,7 @@ const styles = computed(() => {
   opacity: 0.5;
   color: #fff;
 }
+
 .mzl-button-danger-disabled {
   cursor: no-drop;
   border: 1px solid #ec3437;
@@ -293,6 +330,7 @@ const styles = computed(() => {
   opacity: 0.5;
   color: #fff;
 }
+
 .mzl-button-warning-disabled {
   cursor: no-drop;
   border: 1px solid #f57b29;
@@ -300,6 +338,7 @@ const styles = computed(() => {
   opacity: 0.5;
   color: #fff;
 }
+
 .mzl-button-dashed-disabled {
   cursor: no-drop;
   border: 1px solid #d9d9d9;
@@ -307,6 +346,7 @@ const styles = computed(() => {
   opacity: 0.5;
   color: #333;
 }
+
 .mzl-button-text-disabled {
   cursor: no-drop;
   border: 1px solid #fff;
@@ -314,6 +354,7 @@ const styles = computed(() => {
   opacity: 0.5;
   color: #0e80eb;
 }
+
 .mzl-button-custom-disabled {
   cursor: no-drop;
   opacity: 0.5;
@@ -323,19 +364,24 @@ const styles = computed(() => {
   animation: icon-loading 1.5s linear infinite;
   -webkit-animation: icon-loading 1.5s linear infinite;
 }
+
 @keyframes icon-loading {
   0% {
     transform: rotate(0deg);
   }
+
   25% {
     transform: rotate(90deg);
   }
+
   50% {
     transform: rotate(180deg);
   }
+
   75% {
     transform: rotate(270deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

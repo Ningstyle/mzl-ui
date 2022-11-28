@@ -25,12 +25,12 @@
     </div>
   </transition>
 </template>
-<script>
+<script lang="ts">
 export default{
   name:"mDrawer"
 }
 </script>
-<script setup>
+<script setup lang="ts">
 import { computed, watchEffect, useSlots } from 'vue'
 import mButton from '../button/index'
 const emit = defineEmits(['update:modelValue','close','confirm','cancel'])
