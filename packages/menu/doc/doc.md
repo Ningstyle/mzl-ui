@@ -79,9 +79,9 @@ import preview from '@/components/preview.vue'
 ## theme API
 
 <Theme/>
-<br/>
+<br/> -->
 
 ## Event 事件
 
 <Event/>
-<br/> -->
+<br/>

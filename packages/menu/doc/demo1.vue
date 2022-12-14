@@ -1,11 +1,14 @@
 <!-- html -->
 <template>
-  <m-menu :options="menuOptions"></m-menu>
+  <m-menu :options="menuOptions" @change="menuChange"></m-menu>
 </template>
 
 <!-- js -->
 <script setup>
 import { reactive } from "vue";
+const menuChange = (data) => {
+  console.log(data);
+};
 const state = reactive({
   menuOptions: [
     {
