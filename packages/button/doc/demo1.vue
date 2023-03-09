@@ -1,6 +1,7 @@
 <!-- html -->
 <template>
-  <m-space>
+  <m-space direction="vertical">
+    <m-space >
     <m-button>默认按钮</m-button>
     <m-button type="primary">主要按钮</m-button>
     <m-button type="success">成功按钮</m-button>
@@ -26,4 +27,6 @@
     <m-button type="dashed" leftIcon="m-icon-upload"></m-button>
     <m-button type="text" leftIcon="m-icon-ashbin">删除</m-button>
   </m-space>
+  </m-space>
+
 </template>
