@@ -1,7 +1,5 @@
 <template>
-  <div class="m-space" ref="spaceRef">
-    <!-- <slot></slot> -->
-  </div>
+      <render />
 </template>
 <script lang="ts">
 export default {
@@ -10,40 +8,43 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { h, useSlots, ref, computed } from "vue";
+import { h, useSlots, ref, computed,unref,withDefaults } from "vue";
 
-const props = defineProps({
-  inline: {
-    type: Boolean,
-    default: true,
-  },
-  size: {
-    type: Object,
-    default: [10, 10],
-  },
-  alignItems: {
-    type: String,
-    default: "center",
-  },
-});
 
+
+interface Props{
+  inline?:boolean,
+  size?:[number,number],
+  alignItems?:string,
+  direction?:'horizontal'| 'vertical',
+
+}
+
+
+const props =withDefaults(defineProps<Props>(),{
+  inline:true,
+  size:[10, 10],
+  alignItems:'center',
+  direction:'horizontal'
+}) 
+  
 const $slot = useSlots();
 const slotList = ref([]);
 const align = ref(props.inline ? props.alignItems : "left");
 const styles = computed(() => {
   return {
-    display: props.inline ? "inline-flex" : "flex",
     gap:
       props.size.length == 2
         ? `${props.size[0]}px ${props.size[1]}px`
         : `${props.size[0]}px`,
-    "flex-direction": props.inline ? "inherit" : "column",
-    "align-items": align.value,
-    "flex-wrap": "wrap",
-    margin: `${props.size[0] / 2}px 0px`,
+    margin: `${props.direction==='horizontal'?`0px ${props.size[1] / 2}px `:`${props.size[0] / 2}px 0px`}`,
     width: props.inline ? "100%" : "fit-content",
   };
 });
+
+
+// verticalSize:垂直
+// horizontalSize:水平
 
 // style: `margin-bottom:${
 //   arr.length - 1 == index ? 0 : props.size
@@ -54,10 +55,31 @@ $slot.default().forEach((item, index, arr) => {
       "div",
       {
         className: "m-space-item",
-        style: "width:fit-content",
+        style: unref(styles),
       },
       item
     )
   );
 });
+
+
+const render=()=>{
+  return h('div',{
+        className: "m-space",
+        style: {
+          display:props.direction ==='horizontal'?'inline-flex': 'flex',
+          "flex-direction": props.direction ==='horizontal'? "inherit":"column",
+        },
+      },unref(slotList))
+}
+
 </script>
+
+<style lang="scss">
+.m-space{
+  
+  .m-space-item{
+
+  }
+}
+</style>
